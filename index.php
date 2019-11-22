@@ -55,10 +55,10 @@ if (!empty($_POST)) {
 <body>
 <?php
 echo dcPage::breadcrumb(
-    array(
+    [
         html::escapeHTML($core->blog->name) => '',
         __('a11yConfig')                    => ''
-    ));
+    ]);
 echo dcPage::notices();
 
 echo
