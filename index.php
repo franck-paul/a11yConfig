@@ -13,19 +13,8 @@
 
 if (!defined('DC_CONTEXT_ADMIN')) {return;}
 
-$core->blog->settings->addNamespace('a11yConfig');
-if (is_null($core->blog->settings->a11yConfig->active)) {
-    try {
-        // Add default settings values if necessary
-        $core->blog->settings->a11yConfig->put('active', false, 'boolean', 'Active', false);
-        $core->blog->triggerBlog();
-        http::redirect($p_url);
-    } catch (Exception $e) {
-        $core->error->add($e->getMessage());
-    }
-}
-
 // Get current options
+$core->blog->settings->addNamespace('a11yConfig');
 $ac_active = (boolean) $core->blog->settings->a11yConfig->active;
 
 if (!empty($_POST)) {
