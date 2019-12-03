@@ -23,6 +23,8 @@ $this->registerModule(
         'permissions' => 'admin',                                     // Permissions
         'type'        => 'plugin',                                    // Type
         'support'     => 'https://github.com/franck-paul/a11yConfig', // Support URL
-        'settings'    => ['pref' => '#user-options.a11yConfig']      // Settings
+        'settings'    => [
+            'blog' => '#params.a11yc_prefs',
+            'pref' => '#user-options.a11yConfig'] // Settings
     ]
 );

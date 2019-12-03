@@ -16,3 +16,6 @@ if (!defined('DC_CONTEXT_ADMIN')) {return;}
 $_menu['Blog']->addItem(__('a11yConfig'), 'plugin.php?p=a11yConfig', urldecode(dcPage::getPF('a11yConfig/icon.png')),
     preg_match('/plugin.php\?p=a11yConfig(&.*)?$/', $_SERVER['REQUEST_URI']),
     $core->auth->check('admin', $core->blog->id));
+
+$core->addBehavior('adminBlogPreferencesForm', ['a11yconfigAdminBehaviors', 'adminBlogPreferencesForm']);
+$core->addBehavior('adminBeforeBlogSettingsUpdate', ['a11yconfigAdminBehaviors', 'adminBeforeBlogSettingsUpdate']);

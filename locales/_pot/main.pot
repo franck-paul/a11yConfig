@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 a11yConfig module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-22 12:18+0100\n"
+"POT-Creation-Date: 2019-12-03 12:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,17 +16,19 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../git-plugins/a11yConfig/_admin.php:16
-#: ../git-plugins/a11yConfig/_define.php:17
-#: ../git-plugins/a11yConfig/index.php:52
-#: ../git-plugins/a11yConfig/index.php:60
+#: ../git-plugins/a11yConfig//_admin.php:16
+#: ../git-plugins/a11yConfig//_define.php:17
+#: ../git-plugins/a11yConfig//inc/a11yconfig.behaviors.php:25
+#: ../git-plugins/a11yConfig//index.php:41
+#: ../git-plugins/a11yConfig//index.php:49
 msgid "a11yConfig"
 msgstr ""
 
-#: ../git-plugins/a11yConfig/_define.php:18
+#: ../git-plugins/a11yConfig//_define.php:18
 msgid "Implements Access42 accessibility configuration tool"
 msgstr ""
 
-#: ../git-plugins/a11yConfig/index.php:67
+#: ../git-plugins/a11yConfig//inc/a11yconfig.behaviors.php:27
+#: ../git-plugins/a11yConfig//index.php:56
 msgid "Active a11yConfig"
 msgstr ""

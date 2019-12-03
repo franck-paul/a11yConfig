@@ -15,16 +15,16 @@ if (!defined('DC_CONTEXT_ADMIN')) {return;}
 
 // Get current options
 $core->blog->settings->addNamespace('a11yConfig');
-$ac_active = (boolean) $core->blog->settings->a11yConfig->active;
+$a11yc_active = (boolean) $core->blog->settings->a11yConfig->active;
 
 if (!empty($_POST)) {
     try
     {
-        $ac_active = !empty($_POST['ac_active']);
+        $a11yc_active = !empty($_POST['a11yc_active']);
 
         # Everything's fine, save options
         $core->blog->settings->addNamespace('a11yConfig');
-        $core->blog->settings->a11yConfig->put('active', $ac_active);
+        $core->blog->settings->a11yConfig->put('active', $a11yc_active);
 
         $core->blog->triggerBlog();
 
@@ -52,8 +52,8 @@ echo dcPage::notices();
 
 echo
 '<form action="' . $p_url . '" method="post">' .
-'<p>' . form::checkbox('ac_active', 1, $ac_active) . ' ' .
-'<label for="ac_active" class="classic">' . __('Active a11yConfig') . '</label></p>' .
+'<p>' . form::checkbox('a11yc_active', 1, $a11yc_active) . ' ' .
+'<label for="a11yc_active" class="classic">' . __('Active a11yConfig') . '</label></p>' .
 '<p>' . $core->formNonce() . '<input type="submit" value="' . __('Save') . '" /></p>' .
     '</form>';
 
