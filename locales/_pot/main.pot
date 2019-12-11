@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 a11yConfig module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 12:33+0100\n"
+"POT-Creation-Date: 2019-12-11 12:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../git-plugins/a11yConfig//_admin.php:16
+#: ../git-plugins/a11yConfig//_admin.php:18
 #: ../git-plugins/a11yConfig//_define.php:17
 #: ../git-plugins/a11yConfig//inc/a11yconfig.behaviors.php:25
 #: ../git-plugins/a11yConfig//index.php:41
@@ -26,6 +26,34 @@ msgstr ""
 
 #: ../git-plugins/a11yConfig//_define.php:18
 msgid "Implements Access42 accessibility configuration tool"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_widgets.php:28
+msgid "Style selector to let users adapt your blog to their needs."
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_widgets.php:30
+msgid "Accessibility Settings"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_widgets.php:32
+msgid "Font adaptation"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_widgets.php:33
+msgid "Line Spacing adaptation"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_widgets.php:34
+msgid "Justification adaptation"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_widgets.php:35
+msgid "Contrast adaptation"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_widgets.php:36
+msgid "Image replacement"
 msgstr ""
 
 #: ../git-plugins/a11yConfig//inc/a11yconfig.behaviors.php:27

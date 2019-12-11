@@ -13,6 +13,8 @@
 
 if (!defined('DC_CONTEXT_ADMIN')) {return;}
 
+require dirname(__FILE__) . '/_widgets.php';
+
 $_menu['Blog']->addItem(__('a11yConfig'), 'plugin.php?p=a11yConfig', urldecode(dcPage::getPF('a11yConfig/icon.png')),
     preg_match('/plugin.php\?p=a11yConfig(&.*)?$/', $_SERVER['REQUEST_URI']),
     $core->auth->check('admin', $core->blog->id));
