@@ -49,20 +49,21 @@ class a11yconfigPublic
             return;
         }
 
-        $params = array("Prefix" => "a42-ac",
-            "Modal"                  => true,
-            "Font"                   => ($w->font ? true : false),
-            "LineSpacing"            => ($w->linespacing ? true : false),
-            "Justification"          => ($w->justification ? true : false),
-            "Contrast"               => ($w->contrast ? true : false),
-            "ImageReplacement"       => ($w->image ? true : false)
-        );
+        $params = [
+            "Prefix"           => "a42-ac",
+            "Modal"            => true,
+            "Font"             => ($w->font ? true : false),
+            "LineSpacing"      => ($w->linespacing ? true : false),
+            "Justification"    => ($w->justification ? true : false),
+            "Contrast"         => ($w->contrast ? true : false),
+            "ImageReplacement" => ($w->image ? true : false)
+        ];
 
         $res =
         '<div class="widget" id="accessconfig" data-accessconfig-buttonname="' .
         ($w->buttonname ? html::escapeHTML($w->buttonname) : '') . '" ' .
         'data-accessconfig-params=\'' . json_encode($params) . '\'>' .
-        '</div>';
+            '</div>';
 
         return $res;
     }
