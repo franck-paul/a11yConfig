@@ -29,10 +29,10 @@ class a11yconfigPublic
         }
 
         echo
-        dcUtils::cssLoad($core->blog->getPF('a11yConfig/lib/css/accessconfig' . (DC_DEBUG ? '' : '.min') . '.css')) .
+        dcUtils::cssLoad($core->blog->getPF('a11yConfig/lib/css/accessconfig.min.css')) .
         dcUtils::cssLoad($core->blog->getPF('a11yConfig/css/public.css')) .
         dcUtils::jsLoad($core->blog->getPF('a11yConfig/js/public.js')) .
-        dcUtils::jsLoad($core->blog->getPF('a11yConfig/lib/js/' . (DC_DEBUG ? 'src/' : '') . 'accessconfig' . (DC_DEBUG ? '' : '.min') . '.js'));
+        dcUtils::jsLoad($core->blog->getPF('a11yConfig/lib/js/accessconfig.min.js'));
     }
 
     # Widget function
