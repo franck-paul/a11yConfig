@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 a11yConfig module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-11 12:38+0100\n"
+"POT-Creation-Date: 2019-12-23 13:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,9 @@ msgstr ""
 
 msgid "Implements Access42 accessibility configuration tool"
 msgstr "Implémente l'outil de configuration de l'accessibilité d'Access42"
+
+msgid "Accessibility parameters"
+msgstr "Paramètres d'accessibilité"
 
 msgid "Style selector to let users adapt your blog to their needs."
 msgstr "Sélecteur de styles permettant à vos lecteurs d'adapter votre blog à leurs besoins."
@@ -43,5 +46,30 @@ msgstr "Adaptation du contraste"
 msgid "Image replacement"
 msgstr "Remplacement des images"
 
+msgid "In header"
+msgstr "Dans l'entête du blog"
+
+msgid "In footer"
+msgstr "Dans le pied de page du blog"
+
 msgid "Active a11yConfig"
 msgstr "Activer a11yConfig"
+
+#, php-format
+msgid "A widget is available (see <a href=\"%s\">%s</a>)"
+msgstr "Un widget est disponible (voir <a href=\"%s\">%s</a>)"
+
+msgid "Automatic insertion"
+msgstr "Insertion automatique"
+
+msgid "Label:"
+msgstr "Libellé :"
+
+msgid "Position:"
+msgstr "Position :"
+
+msgid "The automatic insertion in header depends on the <strong>publicTopAfterContent</strong> behavior and in footer on <strong>publicFooterContent</strong> behavior. Adapt theme's template files if necessary."
+msgstr "L'insertion automatique dans l'entête dépend du <i>behavior</i> <strong>publicTopAfterContent</strong> et dans le pied de page du <i>behavior</i> <strong>publicFooterContent</strong>. Adaptez si nécessaire les fichiers template du thème."
+
+msgid "Options:"
+msgstr "Options :"
