@@ -37,31 +37,15 @@ class a11yconfigPublic
 
     public static function publicTopAfterContent($core, $_ctx)
     {
-        $core->blog->settings->addNamespace('a11yConfig');
-        if (!(boolean) $core->blog->settings->a11yConfig->active) {
-            return;
-        }
-
-        if (!(boolean) $core->blog->settings->a11yConfig->injection) {
-            return;
-        }
-
-        if ((integer) $core->blog->settings->a11yConfig->position !== 0) {
-            return;
-        }
-
-        $params = [
-            "Font"             => (boolean) $core->blog->settings->a11yConfig->font,
-            "LineSpacing"      => (boolean) $core->blog->settings->a11yConfig->linespacing,
-            "Justification"    => (boolean) $core->blog->settings->a11yConfig->justification,
-            "Contrast"         => (boolean) $core->blog->settings->a11yConfig->contrast,
-            "ImageReplacement" => (boolean) $core->blog->settings->a11yConfig->image
-        ];
-
-        echo a11yconfigPublic::render($core->blog->settings->a11yConfig->label, $params);
+        self::inject($core, 0);
     }
 
     public static function publicFooterContent($core, $_ctx)
+    {
+        self::inject($core, 1);
+    }
+
+    private static function inject($core, $position)
     {
         $core->blog->settings->addNamespace('a11yConfig');
         if (!(boolean) $core->blog->settings->a11yConfig->active) {
@@ -72,7 +56,7 @@ class a11yconfigPublic
             return;
         }
 
-        if ((integer) $core->blog->settings->a11yConfig->position !== 1) {
+        if ((integer) $core->blog->settings->a11yConfig->position !== $position) {
             return;
         }
 
@@ -84,7 +68,7 @@ class a11yconfigPublic
             "ImageReplacement" => (boolean) $core->blog->settings->a11yConfig->image
         ];
 
-        echo a11yconfigPublic::render($core->blog->settings->a11yConfig->label, $params);
+        echo self::render($core->blog->settings->a11yConfig->label, $params);
     }
 
     # Widget function
@@ -109,7 +93,7 @@ class a11yconfigPublic
             "ImageReplacement" => ($w->image ? true : false)
         ];
 
-        return a11yconfigPublic::render($w->buttonname, $params);
+        return self::render($w->buttonname, $params);
     }
 
     # Render function
