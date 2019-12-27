@@ -27,6 +27,7 @@ try
 
     $core->blog->settings->a11yConfig->put('injection', false, 'boolean', 'Automatic insertion', false, true);
     $core->blog->settings->a11yConfig->put('label', 'Accessibility parameters', 'string', 'Label', false, true);
+    $core->blog->settings->a11yConfig->put('icon', 0, 'integer', 'Icon', false, true);
     $core->blog->settings->a11yConfig->put('position', 0, 'integer', 'Position', false, true);
 
     $core->blog->settings->a11yConfig->put('font', true, 'boolean', 'Font adaptation', false, true);

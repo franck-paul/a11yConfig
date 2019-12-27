@@ -68,7 +68,7 @@ class a11yconfigPublic
             "ImageReplacement" => (boolean) $core->blog->settings->a11yConfig->image
         ];
 
-        echo self::render($core->blog->settings->a11yConfig->label, $params);
+        echo self::render($core->blog->settings->a11yConfig->label, $core->blog->settings->a11yConfig->icon, $params);
     }
 
     # Widget function
@@ -93,11 +93,11 @@ class a11yconfigPublic
             "ImageReplacement" => ($w->image ? true : false)
         ];
 
-        return self::render($w->buttonname, $params);
+        return self::render($w->buttonname, $w->icon, $params, 'widget');
     }
 
     # Render function
-    private static function render($label, $params)
+    private static function render($label, $icon, $params, $class = '')
     {
         $options = [
             "Prefix"           => "a42-ac",
@@ -110,8 +110,17 @@ class a11yconfigPublic
         ];
         $options = array_merge($options, $params);
 
+        switch ($icon) {
+            case 1:
+                $class .= ($class !== '' ? ' ' : '') . 'a11yc-wc';
+                break;
+            case 2:
+                $class .= ($class !== '' ? ' ' : '') . 'a11yc-vd';
+                break;
+        }
+
         return
-        '<div class="widget" id="accessconfig" data-accessconfig-buttonname="' .
+        '<div ' . ($class !== '' ? 'class="' . $class . '" ' : '') . 'id="accessconfig" data-accessconfig-buttonname="' .
         ($label ? html::escapeHTML($label) : __('Accessibility parameters')) . '" ' .
         'data-accessconfig-params=\'' . json_encode($options) . '\'>' .
             '</div>';

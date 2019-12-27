@@ -27,7 +27,12 @@ class a11yconfigWidget
     {
         $w->create('a11yconfig', 'a11yconfig', array('a11yconfigPublic', 'a11yconfigWidget'), null, __('Style selector to let users adapt your blog to their needs.'));
 
-        $w->a11yconfig->setting('buttonname', __('Title') . ' :', __('Accessibility Settings'));
+        $w->a11yconfig->setting('buttonname', __('Title:'), __('Accessibility Settings'));
+        $w->a11yconfig->setting('icon', __('Icon:'), 0, 'combo', [
+            __('No')                => 0,
+            __('Wheelchair')        => 1,
+            __('Visual deficiency') => 2
+        ]);
 
         $w->a11yconfig->setting('font', __('Font adaptation'), 1, 'check');
         $w->a11yconfig->setting('linespacing', __('Line Spacing adaptation'), 1, 'check');

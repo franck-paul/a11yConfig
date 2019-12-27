@@ -6,3 +6,26 @@
   font-weight: normal;
   font-style: normal;
 }
+
+#accessconfig.a11yc-vd button, #accessconfig.a11yc-wc button {
+  border: none;
+  width: 2.5em;
+  height: 2.5em;
+  background-size: 2.5em 2.5em;
+  margin: .5em;
+  overflow: hidden;
+  color: transparent;
+}
+
+#accessconfig.a11yc-vd button {
+  background-image: url(index.php?pf=a11yConfig/img/visual-deficiency.svg), none;
+}
+
+#accessconfig.a11yc-wc button {
+  background-image: url(index.php?pf=a11yConfig/img/wheelchair.svg), none;
+}
+
+#accessconfig.a11yc-vd button:hover, #accessconfig.a11yc-wc button:hover,
+#accessconfig.a11yc-vd button:active, #accessconfig.a11yc-wc button:active {
+  cursor: pointer;
+}

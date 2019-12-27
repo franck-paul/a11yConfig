@@ -21,10 +21,17 @@ $a11yc_positions = [
     1 => __('In footer')
 ];
 
+$a11yc_icons = [
+    0 => __('No'),
+    1 => __('Wheelchair'),
+    2 => __('Visual deficiency')
+];
+
 $a11yc_active = (boolean) $core->blog->settings->a11yConfig->active;
 
 $a11yc_injection = (boolean) $core->blog->settings->a11yConfig->injection;
 $a11yc_label     = $core->blog->settings->a11yConfig->label;
+$a11yc_icon      = (integer) $core->blog->settings->a11yConfig->icon;
 $a11yc_position  = (integer) $core->blog->settings->a11yConfig->position;
 
 $a11yc_font          = (boolean) $core->blog->settings->a11yConfig->font;
@@ -40,6 +47,7 @@ if (!empty($_POST)) {
 
         $a11yc_injection     = !empty($_POST['a11yc_injection']);
         $a11yc_label         = html::escapeHTML($_POST['a11yc_label']);
+        $a11yc_icon          = abs((integer) $_POST['a11yc_icon']);
         $a11yc_position      = abs((integer) $_POST['a11yc_position']);
         $a11yc_font          = !empty($_POST['a11yc_font']);
         $a11yc_linespacing   = !empty($_POST['a11yc_linespacing']);
@@ -54,6 +62,7 @@ if (!empty($_POST)) {
 
         $core->blog->settings->a11yConfig->put('injection', $a11yc_injection);
         $core->blog->settings->a11yConfig->put('label', $a11yc_label);
+        $core->blog->settings->a11yConfig->put('icon', $a11yc_icon);
         $core->blog->settings->a11yConfig->put('position', $a11yc_position);
         $core->blog->settings->a11yConfig->put('font', $a11yc_font);
         $core->blog->settings->a11yConfig->put('linespacing', $a11yc_linespacing);
@@ -102,6 +111,17 @@ echo
 '<p><label for="a11yc_label" class="required" title="' . __('Required field') . '"><abbr title="' . __('Required field') . '">*</abbr> ' . __('Label:') . '</label> ' .
 form::field('a11yc_label', 30, 256, html::escapeHTML($a11yc_label), '', '', false, 'required placeholder="' . __('Accessibility parameters') . '"') .
     '</p>';
+
+// Options for button appearance
+echo '<h4>' . __('Icon:') . '</h4>';
+echo
+'<p class="form-note">' . __('The previous label will be used as alternative text if one of proposed icons is choosen.') . '</p>';
+$i = 0;
+foreach ($a11yc_icons as $k => $v) {
+    echo '<p><label for="a11yc_icon_' . $i . '" class="classic">' .
+    form::radio(['a11yc_icon', 'a11yc_icon_' . $i], $k, $a11yc_icon == $k) . ' ' . $v . '</label></p>';
+    $i++;
+}
 
 // Options for automatic insertion
 echo '<h4>' . __('Position:') . '</h4>';
