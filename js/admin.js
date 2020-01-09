@@ -14,9 +14,7 @@ function a11yconfig_option() {
   container.insertBefore(elt, container.firstChild);
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  a11yconfig_option();
-});
+document.addEventListener("DOMContentLoaded", a11yconfig_option);
 
 function a11yconfig_load() {
   const images = document.getElementsByTagName('img');
