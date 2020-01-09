@@ -46,7 +46,7 @@ class a11yconfigAdmin
 
             $data = [
                 // AccessConfig Library data
-                'options'  => [
+                'options' => [
                     'Prefix'           => 'a42-ac',
                     'Modal'            => true,
                     'Font'             => (boolean) $core->auth->user_prefs->a11yConfig->font,
@@ -56,10 +56,10 @@ class a11yconfigAdmin
                     'ImageReplacement' => (boolean) $core->auth->user_prefs->a11yConfig->image
                 ],
                 // Plugin specific data
-                'label'    => $core->auth->user_prefs->a11yConfig->label,
-                'class'    => $class,
-                'position' => (integer) $core->auth->user_prefs->a11yConfig->position,
-                'element'  => (integer) $core->auth->user_prefs->a11yConfig->position === 0 ? 'li' : 'div'
+                'label'   => $core->auth->user_prefs->a11yConfig->label,
+                'class'   => $class,
+                'parent'  => (integer) $core->auth->user_prefs->a11yConfig->position === 0 ? 'ul#top-info-user' : 'footer',
+                'element' => (integer) $core->auth->user_prefs->a11yConfig->position === 0 ? 'li' : 'div'
             ];
             echo dcPage::jsJson('a11yc', $data);
 

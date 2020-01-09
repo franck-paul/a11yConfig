@@ -10,7 +10,7 @@ function a11yconfig_option() {
   if (data.class !== '') {
     elt.setAttribute('class', data.class);
   }
-  let container = document.querySelector(data.position === 0 ? 'ul#top-info-user' : 'footer');
+  let container = document.querySelector(data.parent);
   container.insertBefore(elt, container.firstChild);
 }
 
