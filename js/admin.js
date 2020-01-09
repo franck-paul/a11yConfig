@@ -1,7 +1,7 @@
 /*global getData */
 'use strict';
 
-function a11yconfig_option() {
+document.addEventListener("DOMContentLoaded", () => {
   let data = getData('a11yc');
   let elt = document.createElement(data.element);
   elt.setAttribute('id', 'accessconfig');
@@ -12,17 +12,13 @@ function a11yconfig_option() {
   }
   let container = document.querySelector(data.parent);
   container.insertBefore(elt, container.firstChild);
-}
+});
 
-document.addEventListener("DOMContentLoaded", a11yconfig_option);
-
-function a11yconfig_load() {
+window.addEventListener('load', () => {
   const images = document.getElementsByTagName('img');
   for (let i = 0; i < images.length; i++) {
     if (images[i].alt !== '') {
       images[i].classList.add('a42-ac-replace-img');
     }
   }
-}
-
-window.addEventListener('load', a11yconfig_load);
+});

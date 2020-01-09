@@ -1,11 +1,10 @@
 'use strict';
 
-function a11yconfig_load() {
+window.addEventListener('load', () => {
   const images = document.getElementsByTagName('img');
   for (let i = 0; i < images.length; i++) {
     if (images[i].alt !== '') {
       images[i].classList.add('a42-ac-replace-img');
     }
   }
-}
-window.addEventListener('load', a11yconfig_load);
+});
