@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 a11yConfig module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-27 12:23+0100\n"
+"POT-Creation-Date: 2020-01-07 09:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,108 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../git-plugins/a11yConfig//_admin.php:18
+#: ../git-plugins/a11yConfig//_admin.php:126
 #: ../git-plugins/a11yConfig//_define.php:17
 #: ../git-plugins/a11yConfig//index.php:85
 #: ../git-plugins/a11yConfig//index.php:93
 msgid "a11yConfig"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_define.php:18
-msgid "Implements Access42 accessibility configuration tool"
+#: ../git-plugins/a11yConfig//_admin.php:100
+msgid "In admin header"
 msgstr ""
 
+#: ../git-plugins/a11yConfig//_admin.php:101
+msgid "In admin footer"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:105
+#: ../git-plugins/a11yConfig//_widgets.php:32
+#: ../git-plugins/a11yConfig//index.php:25
+msgid "No"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:106
+#: ../git-plugins/a11yConfig//_widgets.php:33
+#: ../git-plugins/a11yConfig//index.php:26
+msgid "Wheelchair"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:107
+#: ../git-plugins/a11yConfig//_widgets.php:34
+#: ../git-plugins/a11yConfig//index.php:27
+msgid "Visual deficiency"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:130
+#: ../git-plugins/a11yConfig//index.php:100
+msgid "Active a11yConfig"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:133
+#: ../git-plugins/a11yConfig//index.php:111
+msgid "Label:"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:134
 #: ../git-plugins/a11yConfig//_public.php:124
 #: ../git-plugins/a11yConfig//index.php:112
 msgid "Accessibility parameters"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:138
+#: ../git-plugins/a11yConfig//_widgets.php:31
+#: ../git-plugins/a11yConfig//index.php:116
+msgid "Icon:"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:140
+#: ../git-plugins/a11yConfig//index.php:118
+msgid "The previous label will be used as alternative text if one of proposed icons is choosen."
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:149
+#: ../git-plugins/a11yConfig//index.php:127
+msgid "Position:"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:157
+#: ../git-plugins/a11yConfig//index.php:137
+msgid "Options:"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:160
+#: ../git-plugins/a11yConfig//_widgets.php:37
+#: ../git-plugins/a11yConfig//index.php:140
+msgid "Font adaptation"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:162
+#: ../git-plugins/a11yConfig//_widgets.php:38
+#: ../git-plugins/a11yConfig//index.php:142
+msgid "Line Spacing adaptation"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:164
+#: ../git-plugins/a11yConfig//_widgets.php:39
+#: ../git-plugins/a11yConfig//index.php:144
+msgid "Justification adaptation"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:166
+#: ../git-plugins/a11yConfig//_widgets.php:40
+#: ../git-plugins/a11yConfig//index.php:146
+msgid "Contrast adaptation"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_admin.php:168
+#: ../git-plugins/a11yConfig//_widgets.php:41
+#: ../git-plugins/a11yConfig//index.php:148
+msgid "Image replacement"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//_define.php:18
+msgid "Implements Access42 accessibility configuration tool"
 msgstr ""
 
 #: ../git-plugins/a11yConfig//_widgets.php:28
@@ -40,60 +129,12 @@ msgstr ""
 msgid "Accessibility Settings"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_widgets.php:31
-msgid "Icon:"
-msgstr ""
-
-#: ../git-plugins/a11yConfig//_widgets.php:32
-#: ../git-plugins/a11yConfig//index.php:25
-msgid "No"
-msgstr ""
-
-#: ../git-plugins/a11yConfig//_widgets.php:33
-#: ../git-plugins/a11yConfig//index.php:26
-msgid "Wheelchair"
-msgstr ""
-
-#: ../git-plugins/a11yConfig//_widgets.php:34
-#: ../git-plugins/a11yConfig//index.php:27
-msgid "Visual deficiency"
-msgstr ""
-
-#: ../git-plugins/a11yConfig//_widgets.php:37
-#: ../git-plugins/a11yConfig//index.php:140
-msgid "Font adaptation"
-msgstr ""
-
-#: ../git-plugins/a11yConfig//_widgets.php:38
-#: ../git-plugins/a11yConfig//index.php:142
-msgid "Line Spacing adaptation"
-msgstr ""
-
-#: ../git-plugins/a11yConfig//_widgets.php:39
-#: ../git-plugins/a11yConfig//index.php:144
-msgid "Justification adaptation"
-msgstr ""
-
-#: ../git-plugins/a11yConfig//_widgets.php:40
-#: ../git-plugins/a11yConfig//index.php:146
-msgid "Contrast adaptation"
-msgstr ""
-
-#: ../git-plugins/a11yConfig//_widgets.php:41
-#: ../git-plugins/a11yConfig//index.php:148
-msgid "Image replacement"
-msgstr ""
-
 #: ../git-plugins/a11yConfig//index.php:20
 msgid "In header"
 msgstr ""
 
 #: ../git-plugins/a11yConfig//index.php:21
 msgid "In footer"
-msgstr ""
-
-#: ../git-plugins/a11yConfig//index.php:100
-msgid "Active a11yConfig"
 msgstr ""
 
 #: ../git-plugins/a11yConfig//index.php:103
@@ -106,26 +147,6 @@ msgstr ""
 msgid "Automatic insertion"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//index.php:111
-msgid "Label:"
-msgstr ""
-
-#: ../git-plugins/a11yConfig//index.php:116
-msgid "Appearance:"
-msgstr ""
-
-#: ../git-plugins/a11yConfig//index.php:118
-msgid "The previous label will be used as alternative text if one of proposed icons is choosen."
-msgstr ""
-
-#: ../git-plugins/a11yConfig//index.php:127
-msgid "Position:"
-msgstr ""
-
 #: ../git-plugins/a11yConfig//index.php:129
 msgid "The automatic insertion in header depends on the <strong>publicTopAfterContent</strong> behavior and in footer on <strong>publicFooterContent</strong> behavior. Adapt theme's template files if necessary."
-msgstr ""
-
-#: ../git-plugins/a11yConfig//index.php:137
-msgid "Options:"
 msgstr ""

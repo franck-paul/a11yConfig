@@ -22,6 +22,7 @@ if (version_compare($old_version, $new_version, '>=')) {
 
 try
 {
+    // Default blog settings
     $core->blog->settings->addNamespace('a11yConfig');
     $core->blog->settings->a11yConfig->put('active', false, 'boolean', 'Active', false, true);
 
@@ -35,6 +36,20 @@ try
     $core->blog->settings->a11yConfig->put('justification', true, 'boolean', 'justification adaptation', false, true);
     $core->blog->settings->a11yConfig->put('contrast', true, 'boolean', 'contrast adaptation', false, true);
     $core->blog->settings->a11yConfig->put('image', true, 'boolean', 'Image replacement', false, true);
+
+    // Default user settings
+    $core->auth->user_prefs->addWorkspace('a11yConfig');
+    $core->auth->user_prefs->a11yConfig->put('active', false, 'boolean', 'Active', false, true);
+
+    $core->auth->user_prefs->a11yConfig->put('label', 'Accessibility parameters', 'string', 'Label', false, true);
+    $core->auth->user_prefs->a11yConfig->put('icon', 0, 'integer', 'Icon', false, true);
+    $core->auth->user_prefs->a11yConfig->put('position', 0, 'integer', 'Position', false, true);
+
+    $core->auth->user_prefs->a11yConfig->put('font', true, 'boolean', 'Font adaptation', false, true);
+    $core->auth->user_prefs->a11yConfig->put('linespacing', true, 'boolean', 'Line spacing adaptation', false, true);
+    $core->auth->user_prefs->a11yConfig->put('justification', true, 'boolean', 'justification adaptation', false, true);
+    $core->auth->user_prefs->a11yConfig->put('contrast', true, 'boolean', 'contrast adaptation', false, true);
+    $core->auth->user_prefs->a11yConfig->put('image', true, 'boolean', 'Image replacement', false, true);
 
     $core->setVersion('a11yConfig', $new_version);
 
