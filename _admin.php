@@ -123,7 +123,7 @@ class a11yconfigAdmin
         $a11yc_image         = (boolean) $core->auth->user_prefs->a11yConfig->image;
 
         echo
-        '<div class="fieldset"><h5>' . __('a11yConfig') . '</h5>';
+        '<div class="fieldset" id="a11yConfig"><h5>' . __('a11yConfig') . '</h5>';
 
         echo
         '<p>' . form::checkbox('a11yc_active', 1, $a11yc_active) . ' ' .
