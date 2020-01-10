@@ -2,20 +2,40 @@
 
 Dotclear 2 plugin which embed the [Access42 AccessConfig tool](https://accessconfig.a11y.fr/)
 
-[Support](https://github.com/franck-paul/a11yConfig)
+This tool, which propose some settings to enforce web page readability, is activable for the blog **and/or** the Dotclear administration (user prefs).
+
+The currently proposed settings are:
+
+1. Contrast reinforcement/inversion
+1. Font replacement (dyslexia)
+1. Line spacing
+1. Justification
+1. Image replacement
+
+The settings will be accessible via a dialog form opened by a button. The plugin provided a widget or automatically insert this button in header or footer of the blog, and, for the Administration, insert a button in the header or the footer.
+
+This button may be displayed as a wheelchair or a visual deficiency icon.
+
+## Support
+
+[Source code and issues](https://github.com/franck-paul/a11yConfig)
+
+## Notes about reinforced/inverted constrast in Dotclear administration
+
+* It's recommended to disable the syntax highlighting for the theme editor (see "My preferences" > "My options" > "Other options" > "Syntax highlighting") otherwise the selected text and the cursor will not be visible.
+
+* This option will not be applied to CKEditor; you should switch back to the Legacy Editor if necessary for HTML edition (see "My preferences" > "My options" > "Edition").
+
+* In this mode the toolbar buttons of the Legacy editor will be replaced by their textual equivalent.
 
 ## Stylesheets SASS to CSS
 
 To compile Sass sources to final and compressed CSS run the following command from the plugin root directory:
 
 ```bash
-sass --watch -s compressed --no-source-map  ./scss:./css
+sass -s compressed --no-source-map  ./scss:./css
 ```
 
-## Notes about enabling reinforced/inverted constrast in Dotclear administration
+## Licence
 
-* It's recommended to disable the syntax highlighting for the theme editor (see "My preferences" > "My options" > "Other options" > "Syntax highlighting") otherwise the selected text and the cursor will not be visible.
-
-* This option will not be applied to CKEditor; you should switch back to the Legacy Editor if necessary for HTML edition (see "My preferences" > "My options" > "Edition").
-
-* If this mode the toolbar buttons of the Legacy editor will be replaced by their textual equivalent.
+See joined LICENCE file
