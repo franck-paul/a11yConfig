@@ -17,83 +17,83 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "a11yConfig"
-msgstr "Accessibilité"
+msgstr "Accessibility"
 
 msgid "In admin header"
-msgstr "Dans l'entête de l'administration"
+msgstr ""
 
 msgid "In admin footer"
-msgstr "Dans le pied de page de l'administration"
+msgstr ""
 
 msgid "No"
-msgstr "Non"
+msgstr ""
 
 msgid "Wheelchair"
-msgstr "Chaise roulante"
+msgstr ""
 
 msgid "Visual deficiency"
-msgstr "Déficience visuelle"
+msgstr ""
 
 msgid "Activate a11yConfig in admin"
-msgstr "Activer les réglages d'accessibilité pour l'administration"
+msgstr "Activate the accessibility settings for the administration"
 
 msgid "Label:"
-msgstr "Libellé :"
+msgstr ""
 
 msgid "Accessibility parameters"
-msgstr "Paramètres d'accessibilité"
+msgstr ""
 
 msgid "Icon:"
-msgstr "Icône :"
+msgstr ""
 
 msgid "The previous label will be used as alternative text if one of proposed icons is choosen."
-msgstr "Le libellé précédent sera utilisé comme alternative textuelle si l'une des icônes est sélectionnée."
+msgstr ""
 
 msgid "Position:"
-msgstr "Position :"
+msgstr ""
 
 msgid "Options:"
-msgstr "Options :"
+msgstr ""
 
 msgid "Font adaptation"
-msgstr "Adaptation de la police"
+msgstr ""
 
 msgid "Line Spacing adaptation"
-msgstr "Adaptation de l'interlignage"
+msgstr ""
 
 msgid "Justification adaptation"
-msgstr "Adaptation de la Justification"
+msgstr ""
 
 msgid "Contrast adaptation"
-msgstr "Adaptation du contraste"
+msgstr ""
 
 msgid "Image replacement"
-msgstr "Remplacement des images"
+msgstr ""
 
 msgid "Implements Access42 accessibility configuration tool"
-msgstr "Implémente l'outil de configuration de l'accessibilité d'Access42"
+msgstr ""
 
 msgid "Style selector to let users adapt your blog to their needs."
-msgstr "Sélecteur de styles permettant à vos lecteurs d'adapter votre blog à leurs besoins."
+msgstr ""
 
 msgid "Accessibility Settings"
-msgstr "Paramètres d'accessibilité"
+msgstr ""
 
 msgid "In header"
-msgstr "Dans l'entête du blog"
+msgstr ""
 
 msgid "In footer"
-msgstr "Dans le pied de page du blog"
+msgstr ""
 
 msgid "Activate a11yConfig on blog"
-msgstr "Activer les réglages d'accessibilité pour le blog"
+msgstr "Activate the accessibility settings for the blog"
 
 #, php-format
 msgid "A widget is available (see <a href=\"%s\">%s</a>)"
-msgstr "Un widget est disponible (voir <a href=\"%s\">%s</a>)"
+msgstr ""
 
 msgid "Automatic insertion"
-msgstr "Insertion automatique"
+msgstr ""
 
 msgid "The automatic insertion in header depends on the <strong>publicTopAfterContent</strong> behavior and in footer on <strong>publicFooterContent</strong> behavior. Adapt theme's template files if necessary."
-msgstr "L'insertion automatique dans l'entête dépend du <i>behavior</i> <strong>publicTopAfterContent</strong> et dans le pied de page du <i>behavior</i> <strong>publicFooterContent</strong>. Adaptez si nécessaire les fichiers template du thème."
+msgstr ""

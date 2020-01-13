@@ -12,7 +12,7 @@ The currently proposed settings are:
 1. Justification
 1. Image replacement
 
-The settings will be accessible via a dialog form opened by a button. The plugin provided a widget or automatically insert this button in header or footer of the blog, and, for the Administration, insert a button in the header or the footer.
+The settings will be accessible via a dialog form opened by a button. The plugin provides a widget (with the button) or automatically inserts this button in header or footer of the blog, and, for the Administration side, inserts a button in the header or the footer.
 
 This button may be displayed as a wheelchair or a visual deficiency icon.
 

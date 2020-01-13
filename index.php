@@ -97,7 +97,7 @@ echo dcPage::notices();
 echo
 '<form action="' . $p_url . '" method="post">' .
 '<p>' . form::checkbox('a11yc_active', 1, $a11yc_active) . ' ' .
-'<label for="a11yc_active" class="classic">' . __('Active a11yConfig') . '</label></p>';
+'<label for="a11yc_active" class="classic">' . __('Activate a11yConfig on blog') . '</label></p>';
 
 echo
 '<p class="form-note">' . sprintf(__('A widget is available (see <a href="%s">%s</a>)'), $core->adminurl->get('admin.plugin.widgets'), __('Presentation widgets')) . '</p>';

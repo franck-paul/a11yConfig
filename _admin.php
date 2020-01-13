@@ -127,7 +127,7 @@ class a11yconfigAdmin
 
         echo
         '<p>' . form::checkbox('a11yc_active', 1, $a11yc_active) . ' ' .
-        '<label for="a11yc_active" class="classic">' . __('Active a11yConfig') . '</label></p>';
+        '<label for="a11yc_active" class="classic">' . __('Activate a11yConfig in admin') . '</label></p>';
 
         echo
         '<p><label for="a11yc_label" class="required" title="' . __('Required field') . '"><abbr title="' . __('Required field') . '">*</abbr> ' . __('Label:') . '</label> ' .

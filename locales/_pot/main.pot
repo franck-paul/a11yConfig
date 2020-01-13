@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 a11yConfig module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-07 09:43+0100\n"
+"POT-Creation-Date: 2020-01-13 11:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,8 +51,7 @@ msgid "Visual deficiency"
 msgstr ""
 
 #: ../git-plugins/a11yConfig//_admin.php:130
-#: ../git-plugins/a11yConfig//index.php:100
-msgid "Active a11yConfig"
+msgid "Activate a11yConfig in admin"
 msgstr ""
 
 #: ../git-plugins/a11yConfig//_admin.php:133
@@ -135,6 +134,10 @@ msgstr ""
 
 #: ../git-plugins/a11yConfig//index.php:21
 msgid "In footer"
+msgstr ""
+
+#: ../git-plugins/a11yConfig//index.php:100
+msgid "Activate a11yConfig on blog"
 msgstr ""
 
 #: ../git-plugins/a11yConfig//index.php:103
