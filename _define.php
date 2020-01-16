@@ -20,7 +20,7 @@ $this->registerModule(
     '1.3',                                                      // Version
     [
         'requires'    => [['core', '2.15']],
-        'permissions' => 'admin',                                     // Permissions
+        'permissions' => 'usage,contentadmin',                        // Permissions
         'type'        => 'plugin',                                    // Type
         'support'     => 'https://github.com/franck-paul/a11yConfig', // Support URL
         'settings'    => [                                            // Settings
