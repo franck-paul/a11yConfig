@@ -2,7 +2,7 @@
 
 Dotclear 2 plugin which embed the [Access42 AccessConfig tool](https://accessconfig.a11y.fr/)
 
-This tool, which propose some settings to enforce web page readability, is activable for the blog **and/or** the Dotclear administration (user prefs).
+This tool, which propose some settings to enforce web page readability, is activable for the blog **and/or** the Dotclear backend (user prefs).
 
 The currently proposed settings are:
 
@@ -16,11 +16,30 @@ The settings will be accessible via a dialog form opened by a button. The plugin
 
 This button may be displayed as a wheelchair or a visual deficiency icon.
 
+## Dotclear template engine
+
+The widget may be directly inserted in one of the theme's template file by using this code:
+
+```xml
+<tpl:Widget id="a11yConfig">
+    <setting name="buttonname">Accessibility parameters</setting>
+    <setting name="icon">0</setting> (1 = wheelchair, 2 = visual deficiency)
+    <setting name="font">1</setting> (0 = disable this option)
+    <setting name="linespacing">1</setting> (0 = disable this option)
+    <setting name="justification">1</setting> (0 = disable this option)
+    <setting name="contrast">1</setting> (0 = disable this option)
+    <setting name="image">1</setting> (0 = disable this option)
+    <setting name="offline">0</setting> (1 = hide this widget)
+</tpl:Widget>
+```
+
+Note: all settings are optionals and their default value are given above (for English)
+
 ## Support
 
 [Source code and issues](https://github.com/franck-paul/a11yConfig)
 
-## Notes about reinforced/inverted constrast in Dotclear administration
+## Notes about reinforced/inverted constrast in Dotclear backend
 
 * It's recommended to disable the syntax highlighting for the theme editor (see "My preferences" > "My options" > "Other options" > "Syntax highlighting") otherwise the selected text and the cursor will not be visible.
 
