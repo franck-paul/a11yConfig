@@ -55,6 +55,15 @@ To compile Sass sources to final and compressed CSS run the following command fr
 sass -s compressed --no-source-map  ./scss:./css
 ```
 
+## Build package
+
+To build the Dotclear 2 plugin package (using Dotclear provided tool):
+
+```bash
+cd plugins/a11yConfig
+../../build-tools/build-module.sh
+```
+
 ## Licence
 
 See joined LICENCE file

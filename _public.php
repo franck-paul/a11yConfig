@@ -37,12 +37,12 @@ class a11yconfigPublic
 
     public static function publicTopAfterContent($core, $_ctx)
     {
-        self::inject($core, 0);
+        self::inject($core, a11yconfigConst::IN_TOP);
     }
 
     public static function publicFooterContent($core, $_ctx)
     {
-        self::inject($core, 1);
+        self::inject($core, a11yconfigConst::IN_BOTTOM);
     }
 
     private static function inject($core, $position)
@@ -111,10 +111,10 @@ class a11yconfigPublic
         $options = array_merge($options, $params);
 
         switch ($icon) {
-            case 1:
+            case a11yconfigConst::ICON_WHEELCHAIR:
                 $class .= ($class !== '' ? ' ' : '') . 'a11yc-wc';
                 break;
-            case 2:
+            case a11yconfigConst::ICON_VISUALDEFICIENCY:
                 $class .= ($class !== '' ? ' ' : '') . 'a11yc-vd';
                 break;
         }

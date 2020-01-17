@@ -17,14 +17,14 @@ if (!defined('DC_CONTEXT_ADMIN')) {return;}
 $core->blog->settings->addNamespace('a11yConfig');
 
 $a11yc_positions = [
-    0 => __('In header'),
-    1 => __('In footer')
+    a11yconfigConst::IN_TOP    => __('In header'),
+    a11yconfigConst::IN_BOTTOM => __('In footer')
 ];
 
 $a11yc_icons = [
-    0 => __('No'),
-    1 => __('Wheelchair'),
-    2 => __('Visual deficiency')
+    a11yconfigConst::ICON_NONE             => __('No'),
+    a11yconfigConst::ICON_WHEELCHAIR       => __('Wheelchair'),
+    a11yconfigConst::ICON_VISUALDEFICIENCY => __('Visual deficiency')
 ];
 
 $a11yc_active = (boolean) $core->blog->settings->a11yConfig->active;

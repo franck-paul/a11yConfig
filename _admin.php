@@ -36,10 +36,10 @@ class a11yconfigAdmin
 
             $class = '';
             switch ((integer) $core->auth->user_prefs->a11yConfig->icon) {
-                case 1:
+                case a11yconfigConst::ICON_WHEELCHAIR:
                     $class = 'a11yc-wc';
                     break;
-                case 2:
+                case a11yconfigConst::ICON_VISUALDEFICIENCY:
                     $class = 'a11yc-vd';
                     break;
             }
@@ -58,8 +58,10 @@ class a11yconfigAdmin
                 // Plugin specific data
                 'label'   => $core->auth->user_prefs->a11yConfig->label,
                 'class'   => $class,
-                'parent'  => (integer) $core->auth->user_prefs->a11yConfig->position === 0 ? 'ul#top-info-user' : 'footer',
-                'element' => (integer) $core->auth->user_prefs->a11yConfig->position === 0 ? 'li' : 'div'
+                'parent'  =>
+                (integer) $core->auth->user_prefs->a11yConfig->position === a11yconfigConst::IN_TOP ? 'ul#top-info-user' : 'footer',
+                'element' =>
+                (integer) $core->auth->user_prefs->a11yConfig->position === a11yconfigConst::IN_TOP ? 'li' : 'div'
             ];
             echo dcPage::jsJson('a11yc', $data);
 
@@ -97,14 +99,14 @@ class a11yconfigAdmin
     public static function adminPreferencesForm($core)
     {
         $a11yc_positions = [
-            0 => __('In admin header'),
-            1 => __('In admin footer')
+            a11yconfigConst::IN_TOP    => __('In admin header'),
+            a11yconfigConst::IN_BOTTOM => __('In admin footer')
         ];
 
         $a11yc_icons = [
-            0 => __('No'),
-            1 => __('Wheelchair'),
-            2 => __('Visual deficiency')
+            a11yconfigConst::ICON_NONE             => __('No'),
+            a11yconfigConst::ICON_WHEELCHAIR       => __('Wheelchair'),
+            a11yconfigConst::ICON_VISUALDEFICIENCY => __('Visual deficiency')
         ];
 
         // Get user's prefs for plugin options
