@@ -15,9 +15,11 @@ if (!defined('DC_RC_PATH')) {return;}
 
 require dirname(__FILE__) . '/_widgets.php';
 
-$core->addBehavior('publicHeadContent', array('a11yconfigPublic', 'publicHeadContent'));
-$core->addBehavior('publicTopAfterContent', array('a11yconfigPublic', 'publicTopAfterContent'));
-$core->addBehavior('publicFooterContent', array('a11yconfigPublic', 'publicFooterContent'));
+$core->addBehavior('publicHeadContent', ['a11yconfigPublic', 'publicHeadContent']);
+$core->addBehavior('publicTopAfterContent', ['a11yconfigPublic', 'publicTopAfterContent']);
+$core->addBehavior('publicFooterContent', ['a11yconfigPublic', 'publicFooterContent']);
+
+$core->tpl->addValue('AccessConfig', ['a11yconfigPublic', 'tplAccessConfig']);
 
 class a11yconfigPublic
 {
@@ -94,6 +96,30 @@ class a11yconfigPublic
         ];
 
         return self::render($w->buttonname, $w->icon, $params, 'widget');
+    }
+
+    # Template function
+    public static function tplAccessConfig($attr)
+    {
+        global $core;
+
+        $core->blog->settings->addNamespace('a11yConfig');
+        if (!(boolean) $core->blog->settings->a11yConfig->active) {
+            return;
+        }
+
+        $title = isset($attr['title']) ? $attr['title'] : null;
+        $icon  = isset($attr['icon']) ? (int) $attr['icon'] : a11yconfigConst::ICON_NONE;
+
+        $params = [
+            'Font'             => isset($attr['font']) ? (boolean) $attr['font'] : true,
+            'LineSpacing'      => isset($attr['linespacing']) ? (boolean) $attr['linespacing'] : true,
+            'Justification'    => isset($attr['justification']) ? (boolean) $attr['justification'] : true,
+            'Contrast'         => isset($attr['contrast']) ? (boolean) $attr['contrast'] : true,
+            'ImageReplacement' => isset($attr['image']) ? (boolean) $attr['image'] : true
+        ];
+
+        return '<?php echo "' . addcslashes(self::render($title, $icon, $params), '"\\') . '"; ?>';
     }
 
     # Render function
