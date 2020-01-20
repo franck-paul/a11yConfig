@@ -35,6 +35,28 @@ The widget may be directly inserted in one of the theme's template file by using
 
 Note: all settings are optionals and their default value are given above (for English)
 
+A template tag is also provided and may be inserted using this code:
+
+```xml
+{{tpl:AccessConfig [option [option […]]]}}
+```
+
+Where options are:
+
+* title="Accessibility parameters"
+* icon="0" (1 = wheelchair, 2 = visual deficiency)
+* font="1" (0 = disable this option)
+* linespacing="1" (0 = disable this option)
+* justification="1" (0 = disable this option)
+* contrast="1" (0 = disable this option)
+* image="1" (0 = disable this option)
+
+Note: values given for options are the default values used if the option is not present so no options at all is equivalent to:
+
+```xml
+{{tpl:AccessConfig title="Accessibility parameters" icon="0" font="1" linespacing="1" justification="1" contrast="1" image="1"}}
+```
+
 ## Support
 
 [Source code and issues](https://github.com/franck-paul/a11yConfig)
