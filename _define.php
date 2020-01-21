@@ -14,10 +14,10 @@
 if (!defined('DC_RC_PATH')) {return;}
 
 $this->registerModule(
-    __("a11yConfig"),                                           // Name
-    __("Implements Access42 accessibility configuration tool"), // Description
-    "Franck Paul, Biou and contributors",                       // Author
-    '1.4',                                                      // Version
+    "a11yConfig",                                           // Name
+    "Implements Access42 accessibility configuration tool", // Description
+    "Franck Paul, Biou and contributors",                   // Author
+    '1.4',                                                  // Version
     [
         'requires'    => [['core', '2.15']],
         'permissions' => 'usage,contentadmin',                        // Permissions
