@@ -39,7 +39,7 @@ try
 
     // Default user settings
     $core->auth->user_prefs->addWorkspace('a11yConfig');
-    $core->auth->user_prefs->a11yConfig->put('active', false, 'boolean', 'Active', false, true);
+    $core->auth->user_prefs->a11yConfig->put('active', true, 'boolean', 'Active', false, true);
 
     $core->auth->user_prefs->a11yConfig->put('label', 'Accessibility parameters', 'string', 'Label', false, true);
     $core->auth->user_prefs->a11yConfig->put('icon', 0, 'integer', 'Icon', false, true);
