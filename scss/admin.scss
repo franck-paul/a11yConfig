@@ -42,6 +42,14 @@ div#accessconfig {
   }
 }
 
+// Button on popup
+.popup li#accessconfig {
+  position: absolute;
+  list-style: none;
+  right: .5em;
+  top: .65em;
+}
+
 // AccessConfig options dialog
 #a42-ac {
   font-size: 1em;

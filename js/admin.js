@@ -3,6 +3,12 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   let data = getData('a11yc');
+  let container = document.querySelector(data.parent);
+  if (!container) {
+    if (!(container = document.querySelector('body.popup'))) {
+      return;
+    }
+  }
   let elt = document.createElement(data.element);
   elt.setAttribute('id', 'accessconfig');
   elt.setAttribute('data-accessconfig-buttonname', data.label);
@@ -10,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (data.class !== '') {
     elt.setAttribute('class', data.class);
   }
-  let container = document.querySelector(data.parent);
   container.insertBefore(elt, container.firstChild);
 });
 
