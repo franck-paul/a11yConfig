@@ -10,8 +10,9 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-
-if (!defined('DC_CONTEXT_ADMIN')) {return;}
+if (!defined('DC_CONTEXT_ADMIN')) {
+    return;
+}
 
 require dirname(__FILE__) . '/_widgets.php';
 
@@ -38,9 +39,11 @@ class a11yconfigAdmin
             switch ((integer) $core->auth->user_prefs->a11yConfig->icon) {
                 case a11yconfigConst::ICON_WHEELCHAIR:
                     $class = 'a11yc-wc';
+
                     break;
                 case a11yconfigConst::ICON_VISUALDEFICIENCY:
                     $class = 'a11yc-vd';
+
                     break;
             }
 
@@ -58,10 +61,8 @@ class a11yconfigAdmin
                 // Plugin specific data
                 'label'   => $core->auth->user_prefs->a11yConfig->label,
                 'class'   => $class,
-                'parent'  =>
-                (integer) $core->auth->user_prefs->a11yConfig->position === a11yconfigConst::IN_TOP ? 'ul#top-info-user' : 'footer',
-                'element' =>
-                (integer) $core->auth->user_prefs->a11yConfig->position === a11yconfigConst::IN_TOP ? 'li' : 'div'
+                'parent'  => (integer) $core->auth->user_prefs->a11yConfig->position === a11yconfigConst::IN_TOP ? 'ul#top-info-user' : 'footer',
+                'element' => (integer) $core->auth->user_prefs->a11yConfig->position === a11yconfigConst::IN_TOP ? 'li' : 'div'
             ];
             echo dcPage::jsJson('a11yc', $data);
 
@@ -79,6 +80,7 @@ class a11yconfigAdmin
 
         // Get and store user's prefs for plugin options
         $core->auth->user_prefs->addWorkspace('a11yConfig');
+
         try {
             $core->auth->user_prefs->a11yConfig->put('active', !empty($_POST['a11yc_active']), 'boolean');
 

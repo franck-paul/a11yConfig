@@ -10,8 +10,9 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-
-if (!defined('DC_RC_PATH')) {return;}
+if (!defined('DC_RC_PATH')) {
+    return;
+}
 
 require dirname(__FILE__) . '/_widgets.php';
 
@@ -63,11 +64,11 @@ class a11yconfigPublic
         }
 
         $params = [
-            "Font"             => (boolean) $core->blog->settings->a11yConfig->font,
-            "LineSpacing"      => (boolean) $core->blog->settings->a11yConfig->linespacing,
-            "Justification"    => (boolean) $core->blog->settings->a11yConfig->justification,
-            "Contrast"         => (boolean) $core->blog->settings->a11yConfig->contrast,
-            "ImageReplacement" => (boolean) $core->blog->settings->a11yConfig->image
+            'Font'             => (boolean) $core->blog->settings->a11yConfig->font,
+            'LineSpacing'      => (boolean) $core->blog->settings->a11yConfig->linespacing,
+            'Justification'    => (boolean) $core->blog->settings->a11yConfig->justification,
+            'Contrast'         => (boolean) $core->blog->settings->a11yConfig->contrast,
+            'ImageReplacement' => (boolean) $core->blog->settings->a11yConfig->image
         ];
 
         echo self::render($core->blog->settings->a11yConfig->label, $core->blog->settings->a11yConfig->icon, $params);
@@ -88,11 +89,11 @@ class a11yconfigPublic
         }
 
         $params = [
-            "Font"             => ($w->font ? true : false),
-            "LineSpacing"      => ($w->linespacing ? true : false),
-            "Justification"    => ($w->justification ? true : false),
-            "Contrast"         => ($w->contrast ? true : false),
-            "ImageReplacement" => ($w->image ? true : false)
+            'Font'             => ($w->font ? true : false),
+            'LineSpacing'      => ($w->linespacing ? true : false),
+            'Justification'    => ($w->justification ? true : false),
+            'Contrast'         => ($w->contrast ? true : false),
+            'ImageReplacement' => ($w->image ? true : false)
         ];
 
         return self::render($w->buttonname, $w->icon, $params, 'widget');
@@ -108,7 +109,7 @@ class a11yconfigPublic
             return;
         }
 
-        $title = isset($attr['title']) ? $attr['title'] : null;
+        $title = $attr['title'] ?? null;
         $icon  = isset($attr['icon']) ? (int) $attr['icon'] : a11yconfigConst::ICON_NONE;
 
         $params = [
@@ -126,22 +127,24 @@ class a11yconfigPublic
     private static function render($label, $icon, $params, $class = '')
     {
         $options = [
-            "Prefix"           => "a42-ac",
-            "Modal"            => true,
-            "Font"             => true,
-            "LineSpacing"      => true,
-            "Justification"    => true,
-            "Contrast"         => true,
-            "ImageReplacement" => true
+            'Prefix'           => 'a42-ac',
+            'Modal'            => true,
+            'Font'             => true,
+            'LineSpacing'      => true,
+            'Justification'    => true,
+            'Contrast'         => true,
+            'ImageReplacement' => true
         ];
         $options = array_merge($options, $params);
 
         switch ($icon) {
             case a11yconfigConst::ICON_WHEELCHAIR:
                 $class .= ($class !== '' ? ' ' : '') . 'a11yc-wc';
+
                 break;
             case a11yconfigConst::ICON_VISUALDEFICIENCY:
                 $class .= ($class !== '' ? ' ' : '') . 'a11yc-vd';
+
                 break;
         }
 

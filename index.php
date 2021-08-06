@@ -10,8 +10,9 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-
-if (!defined('DC_CONTEXT_ADMIN')) {return;}
+if (!defined('DC_CONTEXT_ADMIN')) {
+    return;
+}
 
 // Get current options
 $core->blog->settings->addNamespace('a11yConfig');
@@ -41,8 +42,7 @@ $a11yc_contrast      = (boolean) $core->blog->settings->a11yConfig->contrast;
 $a11yc_image         = (boolean) $core->blog->settings->a11yConfig->image;
 
 if (!empty($_POST)) {
-    try
-    {
+    try {
         $a11yc_active = !empty($_POST['a11yc_active']);
 
         $a11yc_injection     = !empty($_POST['a11yc_injection']);

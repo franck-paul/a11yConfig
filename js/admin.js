@@ -1,8 +1,8 @@
-/*global getData */
+/*global dotclear */
 'use strict';
 
-document.addEventListener("DOMContentLoaded", () => {
-  let data = getData('a11yc');
+document.addEventListener('DOMContentLoaded', () => {
+  let data = dotclear.getData('a11yc');
   let container = document.querySelector(data.parent);
   if (!container) {
     if (!(container = document.querySelector('body.popup'))) {
