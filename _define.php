@@ -23,10 +23,13 @@ $this->registerModule(
         'requires'    => [['core', '2.19']],
         'permissions' => 'usage,contentadmin',                        // Permissions
         'type'        => 'plugin',                                    // Type
-        'support'     => 'https://github.com/franck-paul/a11yConfig', // Support URL
         'settings'    => [                                            // Settings
             'self' => '',
             'pref' => '#user-options.a11yConfig'
-        ]
+        ],
+
+        'details'    => 'https://open-time.net/?q=a11yConfig',       // Details URL
+        'support'    => 'https://github.com/franck-paul/a11yConfig', // Support URL
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/a11yConfig/main/dcstore.xml'
     ]
 );
