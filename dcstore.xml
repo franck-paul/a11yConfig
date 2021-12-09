@@ -1,8 +1,8 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="a11yConfig">
-    <name>Implements Access42 accessibility configuration tool</name>
+    <name>a11yConfig</name>
     <version>1.6</version>
-    <author>Implements Access42 accessibility configuration tool</author>
+    <author>Franck Paul, Biou and contributors</author>
     <desc>Implements Access42 accessibility configuration tool</desc>
     <file>https://github.com/franck-paul/a11yConfig/releases/download/1.6/plugin-a11yConfig-1.6.zip</file>
     <da:dcmin>2.19</da:dcmin>
