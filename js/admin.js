@@ -4,10 +4,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   let data = dotclear.getData('a11yc');
   let container = document.querySelector(data.parent);
-  if (!container) {
-    if (!(container = document.querySelector('body.popup'))) {
-      return;
-    }
+  if (!container && !(container = document.querySelector('body.popup'))) {
+    return;
   }
   let elt = document.createElement(data.element);
   elt.setAttribute('id', 'accessconfig');

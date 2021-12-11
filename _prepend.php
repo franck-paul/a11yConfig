@@ -18,13 +18,13 @@ if (!defined('DC_RC_PATH')) {
 class a11yconfigConst
 {
     // Constants for position (public/admin)
-    const IN_TOP    = 0;
-    const IN_BOTTOM = 1;
+    public const IN_TOP    = 0;
+    public const IN_BOTTOM = 1;
 
     // Constants for icon (public/admin)
-    const ICON_NONE             = 0;
-    const ICON_WHEELCHAIR       = 1;
-    const ICON_VISUALDEFICIENCY = 2;
+    public const ICON_NONE             = 0;
+    public const ICON_WHEELCHAIR       = 1;
+    public const ICON_VISUALDEFICIENCY = 2;
 }
 
 if (!defined('DC_CONTEXT_ADMIN')) {

@@ -27,7 +27,7 @@ class a11yconfigPublic
     public static function publicHeadContent($core, $_ctx)
     {
         $core->blog->settings->addNamespace('a11yConfig');
-        if (!(boolean) $core->blog->settings->a11yConfig->active) {
+        if (!(bool) $core->blog->settings->a11yConfig->active) {
             return;
         }
 
@@ -51,24 +51,24 @@ class a11yconfigPublic
     private static function inject($core, $position)
     {
         $core->blog->settings->addNamespace('a11yConfig');
-        if (!(boolean) $core->blog->settings->a11yConfig->active) {
+        if (!(bool) $core->blog->settings->a11yConfig->active) {
             return;
         }
 
-        if (!(boolean) $core->blog->settings->a11yConfig->injection) {
+        if (!(bool) $core->blog->settings->a11yConfig->injection) {
             return;
         }
 
-        if ((integer) $core->blog->settings->a11yConfig->position !== $position) {
+        if ((int) $core->blog->settings->a11yConfig->position !== $position) {
             return;
         }
 
         $params = [
-            'Font'             => (boolean) $core->blog->settings->a11yConfig->font,
-            'LineSpacing'      => (boolean) $core->blog->settings->a11yConfig->linespacing,
-            'Justification'    => (boolean) $core->blog->settings->a11yConfig->justification,
-            'Contrast'         => (boolean) $core->blog->settings->a11yConfig->contrast,
-            'ImageReplacement' => (boolean) $core->blog->settings->a11yConfig->image
+            'Font'             => (bool) $core->blog->settings->a11yConfig->font,
+            'LineSpacing'      => (bool) $core->blog->settings->a11yConfig->linespacing,
+            'Justification'    => (bool) $core->blog->settings->a11yConfig->justification,
+            'Contrast'         => (bool) $core->blog->settings->a11yConfig->contrast,
+            'ImageReplacement' => (bool) $core->blog->settings->a11yConfig->image,
         ];
 
         echo self::render($core->blog->settings->a11yConfig->label, $core->blog->settings->a11yConfig->icon, $params);
@@ -80,7 +80,7 @@ class a11yconfigPublic
         global $core;
 
         $core->blog->settings->addNamespace('a11yConfig');
-        if (!(boolean) $core->blog->settings->a11yConfig->active) {
+        if (!(bool) $core->blog->settings->a11yConfig->active) {
             return;
         }
 
@@ -93,7 +93,7 @@ class a11yconfigPublic
             'LineSpacing'      => ($w->linespacing ? true : false),
             'Justification'    => ($w->justification ? true : false),
             'Contrast'         => ($w->contrast ? true : false),
-            'ImageReplacement' => ($w->image ? true : false)
+            'ImageReplacement' => ($w->image ? true : false),
         ];
 
         return self::render($w->buttonname, $w->icon, $params, 'widget');
@@ -105,7 +105,7 @@ class a11yconfigPublic
         global $core;
 
         $core->blog->settings->addNamespace('a11yConfig');
-        if (!(boolean) $core->blog->settings->a11yConfig->active) {
+        if (!(bool) $core->blog->settings->a11yConfig->active) {
             return;
         }
 
@@ -113,11 +113,11 @@ class a11yconfigPublic
         $icon  = isset($attr['icon']) ? (int) $attr['icon'] : a11yconfigConst::ICON_NONE;
 
         $params = [
-            'Font'             => isset($attr['font']) ? (boolean) $attr['font'] : true,
-            'LineSpacing'      => isset($attr['linespacing']) ? (boolean) $attr['linespacing'] : true,
-            'Justification'    => isset($attr['justification']) ? (boolean) $attr['justification'] : true,
-            'Contrast'         => isset($attr['contrast']) ? (boolean) $attr['contrast'] : true,
-            'ImageReplacement' => isset($attr['image']) ? (boolean) $attr['image'] : true
+            'Font'             => isset($attr['font']) ? (bool) $attr['font'] : true,
+            'LineSpacing'      => isset($attr['linespacing']) ? (bool) $attr['linespacing'] : true,
+            'Justification'    => isset($attr['justification']) ? (bool) $attr['justification'] : true,
+            'Contrast'         => isset($attr['contrast']) ? (bool) $attr['contrast'] : true,
+            'ImageReplacement' => isset($attr['image']) ? (bool) $attr['image'] : true,
         ];
 
         return '<?php echo "' . addcslashes(self::render($title, $icon, $params), '"\\') . '"; ?>';
@@ -133,7 +133,7 @@ class a11yconfigPublic
             'LineSpacing'      => true,
             'Justification'    => true,
             'Contrast'         => true,
-            'ImageReplacement' => true
+            'ImageReplacement' => true,
         ];
         $options = array_merge($options, $params);
 

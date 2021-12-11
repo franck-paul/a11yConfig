@@ -16,9 +16,13 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 
 require dirname(__FILE__) . '/_widgets.php';
 
-$_menu['Blog']->addItem(__('a11yConfig'), 'plugin.php?p=a11yConfig', urldecode(dcPage::getPF('a11yConfig/icon.png')),
+$_menu['Blog']->addItem(
+    __('a11yConfig'),
+    'plugin.php?p=a11yConfig',
+    urldecode(dcPage::getPF('a11yConfig/icon.svg')),
     preg_match('/plugin.php\?p=a11yConfig(&.*)?$/', $_SERVER['REQUEST_URI']),
-    $core->auth->check('admin', $core->blog->id));
+    $core->auth->check('admin', $core->blog->id)
+);
 
 $core->addBehavior('adminPageHTMLHead', ['a11yconfigAdmin', 'adminPageHTMLHead']);
 
@@ -36,7 +40,7 @@ class a11yconfigAdmin
             $version = $core->getVersion('a11yConfig');
 
             $class = '';
-            switch ((integer) $core->auth->user_prefs->a11yConfig->icon) {
+            switch ((int) $core->auth->user_prefs->a11yConfig->icon) {
                 case a11yconfigConst::ICON_WHEELCHAIR:
                     $class = 'a11yc-wc';
 
@@ -52,17 +56,17 @@ class a11yconfigAdmin
                 'options' => [
                     'Prefix'           => 'a42-ac',
                     'Modal'            => true,
-                    'Font'             => (boolean) $core->auth->user_prefs->a11yConfig->font,
-                    'LineSpacing'      => (boolean) $core->auth->user_prefs->a11yConfig->linespacing,
-                    'Justification'    => (boolean) $core->auth->user_prefs->a11yConfig->justification,
-                    'Contrast'         => (boolean) $core->auth->user_prefs->a11yConfig->contrast,
-                    'ImageReplacement' => (boolean) $core->auth->user_prefs->a11yConfig->image
+                    'Font'             => (bool) $core->auth->user_prefs->a11yConfig->font,
+                    'LineSpacing'      => (bool) $core->auth->user_prefs->a11yConfig->linespacing,
+                    'Justification'    => (bool) $core->auth->user_prefs->a11yConfig->justification,
+                    'Contrast'         => (bool) $core->auth->user_prefs->a11yConfig->contrast,
+                    'ImageReplacement' => (bool) $core->auth->user_prefs->a11yConfig->image,
                 ],
                 // Plugin specific data
                 'label'   => $core->auth->user_prefs->a11yConfig->label,
                 'class'   => $class,
-                'parent'  => (integer) $core->auth->user_prefs->a11yConfig->position === a11yconfigConst::IN_TOP ? 'ul#top-info-user' : 'footer',
-                'element' => (integer) $core->auth->user_prefs->a11yConfig->position === a11yconfigConst::IN_TOP ? 'li' : 'div'
+                'parent'  => (int) $core->auth->user_prefs->a11yConfig->position === a11yconfigConst::IN_TOP ? 'ul#top-info-user' : 'footer',
+                'element' => (int) $core->auth->user_prefs->a11yConfig->position === a11yconfigConst::IN_TOP ? 'li' : 'div',
             ];
             echo dcPage::jsJson('a11yc', $data);
 
@@ -85,8 +89,8 @@ class a11yconfigAdmin
             $core->auth->user_prefs->a11yConfig->put('active', !empty($_POST['a11yc_active']), 'boolean');
 
             $core->auth->user_prefs->a11yConfig->put('label', html::escapeHTML($_POST['a11yc_label']), 'string');
-            $core->auth->user_prefs->a11yConfig->put('icon', abs((integer) $_POST['a11yc_icon']), 'integer');
-            $core->auth->user_prefs->a11yConfig->put('position', abs((integer) $_POST['a11yc_position']), 'integer');
+            $core->auth->user_prefs->a11yConfig->put('icon', abs((int) $_POST['a11yc_icon']), 'integer');
+            $core->auth->user_prefs->a11yConfig->put('position', abs((int) $_POST['a11yc_position']), 'integer');
 
             $core->auth->user_prefs->a11yConfig->put('font', !empty($_POST['a11yc_font']), 'boolean');
             $core->auth->user_prefs->a11yConfig->put('linespacing', !empty($_POST['a11yc_linespacing']), 'boolean');
@@ -102,29 +106,29 @@ class a11yconfigAdmin
     {
         $a11yc_positions = [
             a11yconfigConst::IN_TOP    => __('In admin header'),
-            a11yconfigConst::IN_BOTTOM => __('In admin footer')
+            a11yconfigConst::IN_BOTTOM => __('In admin footer'),
         ];
 
         $a11yc_icons = [
             a11yconfigConst::ICON_NONE             => __('No'),
             a11yconfigConst::ICON_WHEELCHAIR       => __('Wheelchair'),
-            a11yconfigConst::ICON_VISUALDEFICIENCY => __('Visual deficiency')
+            a11yconfigConst::ICON_VISUALDEFICIENCY => __('Visual deficiency'),
         ];
 
         // Get user's prefs for plugin options
         $core->auth->user_prefs->addWorkspace('a11yConfig');
 
-        $a11yc_active = (boolean) $core->auth->user_prefs->a11yConfig->active;
+        $a11yc_active = (bool) $core->auth->user_prefs->a11yConfig->active;
 
         $a11yc_label    = $core->auth->user_prefs->a11yConfig->label;
-        $a11yc_icon     = (integer) $core->auth->user_prefs->a11yConfig->icon;
-        $a11yc_position = (integer) $core->auth->user_prefs->a11yConfig->position;
+        $a11yc_icon     = (int) $core->auth->user_prefs->a11yConfig->icon;
+        $a11yc_position = (int) $core->auth->user_prefs->a11yConfig->position;
 
-        $a11yc_font          = (boolean) $core->auth->user_prefs->a11yConfig->font;
-        $a11yc_linespacing   = (boolean) $core->auth->user_prefs->a11yConfig->linespacing;
-        $a11yc_justification = (boolean) $core->auth->user_prefs->a11yConfig->justification;
-        $a11yc_contrast      = (boolean) $core->auth->user_prefs->a11yConfig->contrast;
-        $a11yc_image         = (boolean) $core->auth->user_prefs->a11yConfig->image;
+        $a11yc_font          = (bool) $core->auth->user_prefs->a11yConfig->font;
+        $a11yc_linespacing   = (bool) $core->auth->user_prefs->a11yConfig->linespacing;
+        $a11yc_justification = (bool) $core->auth->user_prefs->a11yConfig->justification;
+        $a11yc_contrast      = (bool) $core->auth->user_prefs->a11yConfig->contrast;
+        $a11yc_image         = (bool) $core->auth->user_prefs->a11yConfig->image;
 
         echo
         '<div class="fieldset" id="a11yConfig"><h5>' . __('a11yConfig') . '</h5>';

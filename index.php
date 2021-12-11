@@ -19,27 +19,27 @@ $core->blog->settings->addNamespace('a11yConfig');
 
 $a11yc_positions = [
     a11yconfigConst::IN_TOP    => __('In header'),
-    a11yconfigConst::IN_BOTTOM => __('In footer')
+    a11yconfigConst::IN_BOTTOM => __('In footer'),
 ];
 
 $a11yc_icons = [
     a11yconfigConst::ICON_NONE             => __('No'),
     a11yconfigConst::ICON_WHEELCHAIR       => __('Wheelchair'),
-    a11yconfigConst::ICON_VISUALDEFICIENCY => __('Visual deficiency')
+    a11yconfigConst::ICON_VISUALDEFICIENCY => __('Visual deficiency'),
 ];
 
-$a11yc_active = (boolean) $core->blog->settings->a11yConfig->active;
+$a11yc_active = (bool) $core->blog->settings->a11yConfig->active;
 
-$a11yc_injection = (boolean) $core->blog->settings->a11yConfig->injection;
+$a11yc_injection = (bool) $core->blog->settings->a11yConfig->injection;
 $a11yc_label     = $core->blog->settings->a11yConfig->label;
-$a11yc_icon      = (integer) $core->blog->settings->a11yConfig->icon;
-$a11yc_position  = (integer) $core->blog->settings->a11yConfig->position;
+$a11yc_icon      = (int) $core->blog->settings->a11yConfig->icon;
+$a11yc_position  = (int) $core->blog->settings->a11yConfig->position;
 
-$a11yc_font          = (boolean) $core->blog->settings->a11yConfig->font;
-$a11yc_linespacing   = (boolean) $core->blog->settings->a11yConfig->linespacing;
-$a11yc_justification = (boolean) $core->blog->settings->a11yConfig->justification;
-$a11yc_contrast      = (boolean) $core->blog->settings->a11yConfig->contrast;
-$a11yc_image         = (boolean) $core->blog->settings->a11yConfig->image;
+$a11yc_font          = (bool) $core->blog->settings->a11yConfig->font;
+$a11yc_linespacing   = (bool) $core->blog->settings->a11yConfig->linespacing;
+$a11yc_justification = (bool) $core->blog->settings->a11yConfig->justification;
+$a11yc_contrast      = (bool) $core->blog->settings->a11yConfig->contrast;
+$a11yc_image         = (bool) $core->blog->settings->a11yConfig->image;
 
 if (!empty($_POST)) {
     try {
@@ -47,8 +47,8 @@ if (!empty($_POST)) {
 
         $a11yc_injection     = !empty($_POST['a11yc_injection']);
         $a11yc_label         = html::escapeHTML($_POST['a11yc_label']);
-        $a11yc_icon          = abs((integer) $_POST['a11yc_icon']);
-        $a11yc_position      = abs((integer) $_POST['a11yc_position']);
+        $a11yc_icon          = abs((int) $_POST['a11yc_icon']);
+        $a11yc_position      = abs((int) $_POST['a11yc_position']);
         $a11yc_font          = !empty($_POST['a11yc_font']);
         $a11yc_linespacing   = !empty($_POST['a11yc_linespacing']);
         $a11yc_justification = !empty($_POST['a11yc_justification']);
@@ -90,8 +90,9 @@ if (!empty($_POST)) {
 echo dcPage::breadcrumb(
     [
         html::escapeHTML($core->blog->name) => '',
-        __('a11yConfig')                    => ''
-    ]);
+        __('a11yConfig')                    => '',
+    ]
+);
 echo dcPage::notices();
 
 echo

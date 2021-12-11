@@ -15,7 +15,7 @@ if (!defined('DC_RC_PATH')) {
 }
 
 $core->blog->settings->addNamespace('a11yConfig');
-if (!(boolean) $core->blog->settings->a11yConfig->active) {
+if (!(bool) $core->blog->settings->a11yConfig->active) {
     return;
 }
 
@@ -32,7 +32,7 @@ class a11yconfigWidget
         $w->a11yconfig->setting('icon', __('Icon:'), a11yconfigConst::ICON_NONE, 'combo', [
             __('No')                => a11yconfigConst::ICON_NONE,
             __('Wheelchair')        => a11yconfigConst::ICON_WHEELCHAIR,
-            __('Visual deficiency') => a11yconfigConst::ICON_VISUALDEFICIENCY
+            __('Visual deficiency') => a11yconfigConst::ICON_VISUALDEFICIENCY,
         ]);
 
         $w->a11yconfig->setting('font', __('Font adaptation'), 1, 'check');
