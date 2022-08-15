@@ -15,7 +15,7 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 }
 
 // Get current options
-$core->blog->settings->addNamespace('a11yConfig');
+dcCore::app()->blog->settings->addNamespace('a11yConfig');
 
 $a11yc_positions = [
     a11yconfigConst::IN_TOP    => __('In header'),
@@ -28,18 +28,18 @@ $a11yc_icons = [
     a11yconfigConst::ICON_VISUALDEFICIENCY => __('Visual deficiency'),
 ];
 
-$a11yc_active = (bool) $core->blog->settings->a11yConfig->active;
+$a11yc_active = (bool) dcCore::app()->blog->settings->a11yConfig->active;
 
-$a11yc_injection = (bool) $core->blog->settings->a11yConfig->injection;
-$a11yc_label     = $core->blog->settings->a11yConfig->label;
-$a11yc_icon      = (int) $core->blog->settings->a11yConfig->icon;
-$a11yc_position  = (int) $core->blog->settings->a11yConfig->position;
+$a11yc_injection = (bool) dcCore::app()->blog->settings->a11yConfig->injection;
+$a11yc_label     = dcCore::app()->blog->settings->a11yConfig->label;
+$a11yc_icon      = (int) dcCore::app()->blog->settings->a11yConfig->icon;
+$a11yc_position  = (int) dcCore::app()->blog->settings->a11yConfig->position;
 
-$a11yc_font          = (bool) $core->blog->settings->a11yConfig->font;
-$a11yc_linespacing   = (bool) $core->blog->settings->a11yConfig->linespacing;
-$a11yc_justification = (bool) $core->blog->settings->a11yConfig->justification;
-$a11yc_contrast      = (bool) $core->blog->settings->a11yConfig->contrast;
-$a11yc_image         = (bool) $core->blog->settings->a11yConfig->image;
+$a11yc_font          = (bool) dcCore::app()->blog->settings->a11yConfig->font;
+$a11yc_linespacing   = (bool) dcCore::app()->blog->settings->a11yConfig->linespacing;
+$a11yc_justification = (bool) dcCore::app()->blog->settings->a11yConfig->justification;
+$a11yc_contrast      = (bool) dcCore::app()->blog->settings->a11yConfig->contrast;
+$a11yc_image         = (bool) dcCore::app()->blog->settings->a11yConfig->image;
 
 if (!empty($_POST)) {
     try {
@@ -56,26 +56,26 @@ if (!empty($_POST)) {
         $a11yc_image         = !empty($_POST['a11yc_image']);
 
         # Everything's fine, save options
-        $core->blog->settings->addNamespace('a11yConfig');
+        dcCore::app()->blog->settings->addNamespace('a11yConfig');
 
-        $core->blog->settings->a11yConfig->put('active', $a11yc_active);
+        dcCore::app()->blog->settings->a11yConfig->put('active', $a11yc_active);
 
-        $core->blog->settings->a11yConfig->put('injection', $a11yc_injection);
-        $core->blog->settings->a11yConfig->put('label', $a11yc_label);
-        $core->blog->settings->a11yConfig->put('icon', $a11yc_icon);
-        $core->blog->settings->a11yConfig->put('position', $a11yc_position);
-        $core->blog->settings->a11yConfig->put('font', $a11yc_font);
-        $core->blog->settings->a11yConfig->put('linespacing', $a11yc_linespacing);
-        $core->blog->settings->a11yConfig->put('justification', $a11yc_justification);
-        $core->blog->settings->a11yConfig->put('contrast', $a11yc_contrast);
-        $core->blog->settings->a11yConfig->put('image', $a11yc_image);
+        dcCore::app()->blog->settings->a11yConfig->put('injection', $a11yc_injection);
+        dcCore::app()->blog->settings->a11yConfig->put('label', $a11yc_label);
+        dcCore::app()->blog->settings->a11yConfig->put('icon', $a11yc_icon);
+        dcCore::app()->blog->settings->a11yConfig->put('position', $a11yc_position);
+        dcCore::app()->blog->settings->a11yConfig->put('font', $a11yc_font);
+        dcCore::app()->blog->settings->a11yConfig->put('linespacing', $a11yc_linespacing);
+        dcCore::app()->blog->settings->a11yConfig->put('justification', $a11yc_justification);
+        dcCore::app()->blog->settings->a11yConfig->put('contrast', $a11yc_contrast);
+        dcCore::app()->blog->settings->a11yConfig->put('image', $a11yc_image);
 
-        $core->blog->triggerBlog();
+        dcCore::app()->blog->triggerBlog();
 
         dcPage::addSuccessNotice(__('Settings have been successfully updated.'));
         http::redirect($p_url);
     } catch (Exception $e) {
-        $core->error->add($e->getMessage());
+        dcCore::app()->error->add($e->getMessage());
     }
 }
 
@@ -89,8 +89,8 @@ if (!empty($_POST)) {
 <?php
 echo dcPage::breadcrumb(
     [
-        html::escapeHTML($core->blog->name) => '',
-        __('a11yConfig')                    => '',
+        html::escapeHTML(dcCore::app()->blog->name) => '',
+        __('a11yConfig')                            => '',
     ]
 );
 echo dcPage::notices();
@@ -101,7 +101,7 @@ echo
 '<label for="a11yc_active" class="classic">' . __('Activate a11yConfig on blog') . '</label></p>';
 
 echo
-'<p class="form-note">' . sprintf(__('A widget is available (see <a href="%s">%s</a>)'), $core->adminurl->get('admin.plugin.widgets'), __('Presentation widgets')) . '</p>';
+'<p class="form-note">' . sprintf(__('A widget is available (see <a href="%s">%s</a>)'), dcCore::app()->adminurl->get('admin.plugin.widgets'), __('Presentation widgets')) . '</p>';
 
 echo
 '<h3>' . __('Automatic insertion') . '</h3>' .
@@ -149,7 +149,7 @@ echo
 '<label for="a11yc_image" class="classic">' . __('Image replacement') . '</label></p>';
 
 echo
-'<p>' . $core->formNonce() . '<input type="submit" value="' . __('Save') . '" /></p>' . '</form>';
+'<p>' . dcCore::app()->formNonce() . '<input type="submit" value="' . __('Save') . '" /></p>' . '</form>';
 
 ?>
 </body>

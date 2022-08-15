@@ -18,9 +18,9 @@ $this->registerModule(
     'a11yConfig',                                           // Name
     'Implements Access42 accessibility configuration tool', // Description
     'Franck Paul, Biou and contributors',                   // Author
-    '1.6',                                                  // Version
+    '1.7',
     [
-        'requires'    => [['core', '2.19']],
+        'requires'    => [['core', '2.23']],
         'permissions' => 'usage,contentadmin',                        // Permissions
         'type'        => 'plugin',                                    // Type
         'settings'    => [                                            // Settings

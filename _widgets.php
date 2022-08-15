@@ -14,13 +14,13 @@ if (!defined('DC_RC_PATH')) {
     return;
 }
 
-$core->blog->settings->addNamespace('a11yConfig');
-if (!(bool) $core->blog->settings->a11yConfig->active) {
+dcCore::app()->blog->settings->addNamespace('a11yConfig');
+if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
     return;
 }
 
-$core->addBehavior('initWidgets', ['a11yconfigWidget', 'initWidgets']);
-$core->addBehavior('initDefaultWidgets', ['a11yconfigWidget', 'initDefaultWidgets']);
+dcCore::app()->addBehavior('initWidgets', ['a11yconfigWidget', 'initWidgets']);
+dcCore::app()->addBehavior('initDefaultWidgets', ['a11yconfigWidget', 'initDefaultWidgets']);
 
 class a11yconfigWidget
 {

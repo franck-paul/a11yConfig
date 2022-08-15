@@ -14,73 +14,71 @@ if (!defined('DC_RC_PATH')) {
     return;
 }
 
-require dirname(__FILE__) . '/_widgets.php';
+require __DIR__ . '/_widgets.php';
 
-$core->addBehavior('publicHeadContent', ['a11yconfigPublic', 'publicHeadContent']);
-$core->addBehavior('publicTopAfterContent', ['a11yconfigPublic', 'publicTopAfterContent']);
-$core->addBehavior('publicFooterContent', ['a11yconfigPublic', 'publicFooterContent']);
+dcCore::app()->addBehavior('publicHeadContent', ['a11yconfigPublic', 'publicHeadContent']);
+dcCore::app()->addBehavior('publicTopAfterContent', ['a11yconfigPublic', 'publicTopAfterContent']);
+dcCore::app()->addBehavior('publicFooterContent', ['a11yconfigPublic', 'publicFooterContent']);
 
-$core->tpl->addValue('AccessConfig', ['a11yconfigPublic', 'tplAccessConfig']);
+dcCore::app()->tpl->addValue('AccessConfig', ['a11yconfigPublic', 'tplAccessConfig']);
 
 class a11yconfigPublic
 {
     public static function publicHeadContent($core, $_ctx)
     {
-        $core->blog->settings->addNamespace('a11yConfig');
-        if (!(bool) $core->blog->settings->a11yConfig->active) {
+        dcCore::app()->blog->settings->addNamespace('a11yConfig');
+        if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
             return;
         }
 
         echo
-        dcUtils::cssLoad($core->blog->getPF('a11yConfig/lib/css/accessconfig.min.css')) .
-        dcUtils::cssLoad($core->blog->getPF('a11yConfig/css/public.css')) .
-        dcUtils::jsLoad($core->blog->getPF('a11yConfig/js/public.js')) .
-        dcUtils::jsLoad($core->blog->getPF('a11yConfig/lib/js/accessconfig.min.js'));
+        dcUtils::cssModuleLoad('a11yConfig/lib/css/accessconfig.min.css') .
+        dcUtils::cssModuleLoad('a11yConfig/css/public.css') .
+        dcUtils::jsModuleLoad('a11yConfig/js/public.js') .
+        dcUtils::jsModuleLoad('a11yConfig/lib/js/accessconfig.min.js');
     }
 
     public static function publicTopAfterContent($core, $_ctx)
     {
-        self::inject($core, a11yconfigConst::IN_TOP);
+        self::inject(a11yconfigConst::IN_TOP);
     }
 
     public static function publicFooterContent($core, $_ctx)
     {
-        self::inject($core, a11yconfigConst::IN_BOTTOM);
+        self::inject(a11yconfigConst::IN_BOTTOM);
     }
 
-    private static function inject($core, $position)
+    private static function inject($position)
     {
-        $core->blog->settings->addNamespace('a11yConfig');
-        if (!(bool) $core->blog->settings->a11yConfig->active) {
+        dcCore::app()->blog->settings->addNamespace('a11yConfig');
+        if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
             return;
         }
 
-        if (!(bool) $core->blog->settings->a11yConfig->injection) {
+        if (!(bool) dcCore::app()->blog->settings->a11yConfig->injection) {
             return;
         }
 
-        if ((int) $core->blog->settings->a11yConfig->position !== $position) {
+        if ((int) dcCore::app()->blog->settings->a11yConfig->position !== $position) {
             return;
         }
 
         $params = [
-            'Font'             => (bool) $core->blog->settings->a11yConfig->font,
-            'LineSpacing'      => (bool) $core->blog->settings->a11yConfig->linespacing,
-            'Justification'    => (bool) $core->blog->settings->a11yConfig->justification,
-            'Contrast'         => (bool) $core->blog->settings->a11yConfig->contrast,
-            'ImageReplacement' => (bool) $core->blog->settings->a11yConfig->image,
+            'Font'             => (bool) dcCore::app()->blog->settings->a11yConfig->font,
+            'LineSpacing'      => (bool) dcCore::app()->blog->settings->a11yConfig->linespacing,
+            'Justification'    => (bool) dcCore::app()->blog->settings->a11yConfig->justification,
+            'Contrast'         => (bool) dcCore::app()->blog->settings->a11yConfig->contrast,
+            'ImageReplacement' => (bool) dcCore::app()->blog->settings->a11yConfig->image,
         ];
 
-        echo self::render($core->blog->settings->a11yConfig->label, $core->blog->settings->a11yConfig->icon, $params);
+        echo self::render(dcCore::app()->blog->settings->a11yConfig->label, dcCore::app()->blog->settings->a11yConfig->icon, $params);
     }
 
     # Widget function
     public static function a11yconfigWidget($w)
     {
-        global $core;
-
-        $core->blog->settings->addNamespace('a11yConfig');
-        if (!(bool) $core->blog->settings->a11yConfig->active) {
+        dcCore::app()->blog->settings->addNamespace('a11yConfig');
+        if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
             return;
         }
 
@@ -102,10 +100,8 @@ class a11yconfigPublic
     # Template function
     public static function tplAccessConfig($attr)
     {
-        global $core;
-
-        $core->blog->settings->addNamespace('a11yConfig');
-        if (!(bool) $core->blog->settings->a11yConfig->active) {
+        dcCore::app()->blog->settings->addNamespace('a11yConfig');
+        if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
             return;
         }
 

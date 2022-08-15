@@ -14,33 +14,31 @@ if (!defined('DC_CONTEXT_ADMIN')) {
     return;
 }
 
-require dirname(__FILE__) . '/_widgets.php';
+require __DIR__ . '/_widgets.php';
 
 $_menu['Blog']->addItem(
     __('a11yConfig'),
     'plugin.php?p=a11yConfig',
-    urldecode(dcPage::getPF('a11yConfig/icon.svg')),
+    [urldecode(dcPage::getPF('a11yConfig/icon.svg')),urldecode(dcPage::getPF('a11yConfig/icon-dark.svg'))],
     preg_match('/plugin.php\?p=a11yConfig(&.*)?$/', $_SERVER['REQUEST_URI']),
-    $core->auth->check('admin', $core->blog->id)
+    dcCore::app()->auth->check('admin', dcCore::app()->blog->id)
 );
 
-$core->addBehavior('adminPageHTMLHead', ['a11yconfigAdmin', 'adminPageHTMLHead']);
+dcCore::app()->addBehavior('adminPageHTMLHead', ['a11yconfigAdmin', 'adminPageHTMLHead']);
 
-$core->addBehavior('adminBeforeUserOptionsUpdate', ['a11yconfigAdmin', 'adminBeforeUserOptionsUpdate']);
-$core->addBehavior('adminPreferencesForm', ['a11yconfigAdmin', 'adminPreferencesForm']);
+dcCore::app()->addBehavior('adminBeforeUserOptionsUpdate', ['a11yconfigAdmin', 'adminBeforeUserOptionsUpdate']);
+dcCore::app()->addBehavior('adminPreferencesForm', ['a11yconfigAdmin', 'adminPreferencesForm']);
 
 class a11yconfigAdmin
 {
     public static function adminPageHTMLHead()
     {
-        global $core;
-
-        $core->auth->user_prefs->addWorkspace('a11yConfig');
-        if ($core->auth->user_prefs->a11yConfig->active) {
-            $version = $core->getVersion('a11yConfig');
+        dcCore::app()->auth->user_prefs->addWorkspace('a11yConfig');
+        if (dcCore::app()->auth->user_prefs->a11yConfig->active) {
+            $version = dcCore::app()->getVersion('a11yConfig');
 
             $class = '';
-            switch ((int) $core->auth->user_prefs->a11yConfig->icon) {
+            switch ((int) dcCore::app()->auth->user_prefs->a11yConfig->icon) {
                 case a11yconfigConst::ICON_WHEELCHAIR:
                     $class = 'a11yc-wc';
 
@@ -56,49 +54,47 @@ class a11yconfigAdmin
                 'options' => [
                     'Prefix'           => 'a42-ac',
                     'Modal'            => true,
-                    'Font'             => (bool) $core->auth->user_prefs->a11yConfig->font,
-                    'LineSpacing'      => (bool) $core->auth->user_prefs->a11yConfig->linespacing,
-                    'Justification'    => (bool) $core->auth->user_prefs->a11yConfig->justification,
-                    'Contrast'         => (bool) $core->auth->user_prefs->a11yConfig->contrast,
-                    'ImageReplacement' => (bool) $core->auth->user_prefs->a11yConfig->image,
+                    'Font'             => (bool) dcCore::app()->auth->user_prefs->a11yConfig->font,
+                    'LineSpacing'      => (bool) dcCore::app()->auth->user_prefs->a11yConfig->linespacing,
+                    'Justification'    => (bool) dcCore::app()->auth->user_prefs->a11yConfig->justification,
+                    'Contrast'         => (bool) dcCore::app()->auth->user_prefs->a11yConfig->contrast,
+                    'ImageReplacement' => (bool) dcCore::app()->auth->user_prefs->a11yConfig->image,
                 ],
                 // Plugin specific data
-                'label'   => $core->auth->user_prefs->a11yConfig->label,
+                'label'   => dcCore::app()->auth->user_prefs->a11yConfig->label,
                 'class'   => $class,
-                'parent'  => (int) $core->auth->user_prefs->a11yConfig->position === a11yconfigConst::IN_TOP ? 'ul#top-info-user' : 'footer',
-                'element' => (int) $core->auth->user_prefs->a11yConfig->position === a11yconfigConst::IN_TOP ? 'li' : 'div',
+                'parent'  => (int) dcCore::app()->auth->user_prefs->a11yConfig->position === a11yconfigConst::IN_TOP ? 'ul#top-info-user' : 'footer',
+                'element' => (int) dcCore::app()->auth->user_prefs->a11yConfig->position === a11yconfigConst::IN_TOP ? 'li' : 'div',
             ];
             echo dcPage::jsJson('a11yc', $data);
 
             echo
-            dcPage::cssLoad(urldecode(dcPage::getPF('a11yConfig/lib/css/accessconfig.min.css')), 'screen', $version) .
-            dcPage::cssLoad(urldecode(dcPage::getPF('a11yConfig/css/admin.css')), 'screen', $version) .
-            dcPage::jsLoad(urldecode(dcPage::getPF('a11yConfig/js/admin.js')), $version) .
-            dcPage::jsLoad(urldecode(dcPage::getPF('a11yConfig/lib/js/accessconfig.min.js')), $version);
+            dcPage::cssModuleLoad('a11yConfig/lib/css/accessconfig.min.css', 'screen', $version) .
+            dcPage::cssModuleLoad('a11yConfig/css/admin.css', 'screen', $version) .
+            dcPage::jsModuleLoad('a11yConfig/js/admin.js', $version) .
+            dcPage::jsModuleLoad('a11yConfig/lib/js/accessconfig.min.js', $version);
         }
     }
 
     public static function adminBeforeUserOptionsUpdate($cur, $userID)
     {
-        global $core;
-
         // Get and store user's prefs for plugin options
-        $core->auth->user_prefs->addWorkspace('a11yConfig');
+        dcCore::app()->auth->user_prefs->addWorkspace('a11yConfig');
 
         try {
-            $core->auth->user_prefs->a11yConfig->put('active', !empty($_POST['a11yc_active']), 'boolean');
+            dcCore::app()->auth->user_prefs->a11yConfig->put('active', !empty($_POST['a11yc_active']), 'boolean');
 
-            $core->auth->user_prefs->a11yConfig->put('label', html::escapeHTML($_POST['a11yc_label']), 'string');
-            $core->auth->user_prefs->a11yConfig->put('icon', abs((int) $_POST['a11yc_icon']), 'integer');
-            $core->auth->user_prefs->a11yConfig->put('position', abs((int) $_POST['a11yc_position']), 'integer');
+            dcCore::app()->auth->user_prefs->a11yConfig->put('label', html::escapeHTML($_POST['a11yc_label']), 'string');
+            dcCore::app()->auth->user_prefs->a11yConfig->put('icon', abs((int) $_POST['a11yc_icon']), 'integer');
+            dcCore::app()->auth->user_prefs->a11yConfig->put('position', abs((int) $_POST['a11yc_position']), 'integer');
 
-            $core->auth->user_prefs->a11yConfig->put('font', !empty($_POST['a11yc_font']), 'boolean');
-            $core->auth->user_prefs->a11yConfig->put('linespacing', !empty($_POST['a11yc_linespacing']), 'boolean');
-            $core->auth->user_prefs->a11yConfig->put('justification', !empty($_POST['a11yc_justification']), 'boolean');
-            $core->auth->user_prefs->a11yConfig->put('contrast', !empty($_POST['a11yc_contrast']), 'boolean');
-            $core->auth->user_prefs->a11yConfig->put('image', !empty($_POST['a11yc_image']), 'boolean');
+            dcCore::app()->auth->user_prefs->a11yConfig->put('font', !empty($_POST['a11yc_font']), 'boolean');
+            dcCore::app()->auth->user_prefs->a11yConfig->put('linespacing', !empty($_POST['a11yc_linespacing']), 'boolean');
+            dcCore::app()->auth->user_prefs->a11yConfig->put('justification', !empty($_POST['a11yc_justification']), 'boolean');
+            dcCore::app()->auth->user_prefs->a11yConfig->put('contrast', !empty($_POST['a11yc_contrast']), 'boolean');
+            dcCore::app()->auth->user_prefs->a11yConfig->put('image', !empty($_POST['a11yc_image']), 'boolean');
         } catch (Exception $e) {
-            $core->error->add($e->getMessage());
+            dcCore::app()->error->add($e->getMessage());
         }
     }
 
@@ -116,19 +112,19 @@ class a11yconfigAdmin
         ];
 
         // Get user's prefs for plugin options
-        $core->auth->user_prefs->addWorkspace('a11yConfig');
+        dcCore::app()->auth->user_prefs->addWorkspace('a11yConfig');
 
-        $a11yc_active = (bool) $core->auth->user_prefs->a11yConfig->active;
+        $a11yc_active = (bool) dcCore::app()->auth->user_prefs->a11yConfig->active;
 
-        $a11yc_label    = $core->auth->user_prefs->a11yConfig->label;
-        $a11yc_icon     = (int) $core->auth->user_prefs->a11yConfig->icon;
-        $a11yc_position = (int) $core->auth->user_prefs->a11yConfig->position;
+        $a11yc_label    = dcCore::app()->auth->user_prefs->a11yConfig->label;
+        $a11yc_icon     = (int) dcCore::app()->auth->user_prefs->a11yConfig->icon;
+        $a11yc_position = (int) dcCore::app()->auth->user_prefs->a11yConfig->position;
 
-        $a11yc_font          = (bool) $core->auth->user_prefs->a11yConfig->font;
-        $a11yc_linespacing   = (bool) $core->auth->user_prefs->a11yConfig->linespacing;
-        $a11yc_justification = (bool) $core->auth->user_prefs->a11yConfig->justification;
-        $a11yc_contrast      = (bool) $core->auth->user_prefs->a11yConfig->contrast;
-        $a11yc_image         = (bool) $core->auth->user_prefs->a11yConfig->image;
+        $a11yc_font          = (bool) dcCore::app()->auth->user_prefs->a11yConfig->font;
+        $a11yc_linespacing   = (bool) dcCore::app()->auth->user_prefs->a11yConfig->linespacing;
+        $a11yc_justification = (bool) dcCore::app()->auth->user_prefs->a11yConfig->justification;
+        $a11yc_contrast      = (bool) dcCore::app()->auth->user_prefs->a11yConfig->contrast;
+        $a11yc_image         = (bool) dcCore::app()->auth->user_prefs->a11yConfig->image;
 
         echo
         '<div class="fieldset" id="a11yConfig"><h5>' . __('a11yConfig') . '</h5>';
