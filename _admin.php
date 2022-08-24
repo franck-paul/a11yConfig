@@ -16,7 +16,7 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 
 require __DIR__ . '/_widgets.php';
 
-$_menu['Blog']->addItem(
+dcCore::app()->menu['Blog']->addItem(
     __('a11yConfig'),
     'plugin.php?p=a11yConfig',
     [urldecode(dcPage::getPF('a11yConfig/icon.svg')),urldecode(dcPage::getPF('a11yConfig/icon-dark.svg'))],
