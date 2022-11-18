@@ -19,9 +19,6 @@ if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
     return;
 }
 
-dcCore::app()->addBehavior('initWidgets', ['a11yconfigWidget', 'initWidgets']);
-dcCore::app()->addBehavior('initDefaultWidgets', ['a11yconfigWidget', 'initDefaultWidgets']);
-
 class a11yconfigWidget
 {
     public static function initWidgets($w)
@@ -46,6 +43,9 @@ class a11yconfigWidget
 
     public static function initDefaultWidgets($w, $d)
     {
-        $d['nav']->append($w->a11yconfig);
+        $d[defaultWidgets::WIDGETS_NAV]->append($w->a11yconfig);
     }
 }
+
+dcCore::app()->addBehavior('initWidgets', [a11yconfigWidget::class, 'initWidgets']);
+dcCore::app()->addBehavior('initDefaultWidgets', [a11yconfigWidget::class, 'initDefaultWidgets']);

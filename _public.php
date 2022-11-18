@@ -14,17 +14,11 @@ if (!defined('DC_RC_PATH')) {
     return;
 }
 
-require __DIR__ . '/_widgets.php';
-
-dcCore::app()->addBehavior('publicHeadContent', ['a11yconfigPublic', 'publicHeadContent']);
-dcCore::app()->addBehavior('publicTopAfterContent', ['a11yconfigPublic', 'publicTopAfterContent']);
-dcCore::app()->addBehavior('publicFooterContent', ['a11yconfigPublic', 'publicFooterContent']);
-
-dcCore::app()->tpl->addValue('AccessConfig', ['a11yconfigPublic', 'tplAccessConfig']);
+require_once __DIR__ . '/_widgets.php';
 
 class a11yconfigPublic
 {
-    public static function publicHeadContent($core, $_ctx)
+    public static function publicHeadContent()
     {
         dcCore::app()->blog->settings->addNamespace('a11yConfig');
         if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
@@ -38,12 +32,12 @@ class a11yconfigPublic
         dcUtils::jsModuleLoad('a11yConfig/lib/js/accessconfig.min.js');
     }
 
-    public static function publicTopAfterContent($core, $_ctx)
+    public static function publicTopAfterContent()
     {
         self::inject(a11yconfigConst::IN_TOP);
     }
 
-    public static function publicFooterContent($core, $_ctx)
+    public static function publicFooterContent()
     {
         self::inject(a11yconfigConst::IN_BOTTOM);
     }
@@ -151,3 +145,9 @@ class a11yconfigPublic
             '</div>';
     }
 }
+
+dcCore::app()->addBehavior('publicHeadContent', [a11yconfigPublic::class, 'publicHeadContent']);
+dcCore::app()->addBehavior('publicTopAfterContent', [a11yconfigPublic::class, 'publicTopAfterContent']);
+dcCore::app()->addBehavior('publicFooterContent', [a11yconfigPublic::class, 'publicFooterContent']);
+
+dcCore::app()->tpl->addValue('AccessConfig', [a11yconfigPublic::class, 'tplAccessConfig']);

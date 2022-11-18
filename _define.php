@@ -15,21 +15,24 @@ if (!defined('DC_RC_PATH')) {
 }
 
 $this->registerModule(
-    'a11yConfig',                                           // Name
-    'Implements Access42 accessibility configuration tool', // Description
-    'Franck Paul, Biou and contributors',                   // Author
-    '1.7',
+    'a11yConfig',
+    'Implements Access42 accessibility configuration tool',
+    'Franck Paul, Biou and contributors',
+    '1.8',
     [
-        'requires'    => [['core', '2.23']],
-        'permissions' => 'usage,contentadmin',                        // Permissions
-        'type'        => 'plugin',                                    // Type
-        'settings'    => [                                            // Settings
+        'requires'    => [['core', '2.24']],
+        'permissions' => dcCore::app()->auth->makePermissions([
+            dcAuth::PERMISSION_USAGE,
+            dcAuth::PERMISSION_CONTENT_ADMIN,
+        ]),
+        'type'     => 'plugin',
+        'settings' => [
             'self' => '',
             'pref' => '#user-options.a11yConfig',
         ],
 
-        'details'    => 'https://open-time.net/?q=a11yConfig',       // Details URL
-        'support'    => 'https://github.com/franck-paul/a11yConfig', // Support URL
+        'details'    => 'https://open-time.net/?q=a11yConfig',
+        'support'    => 'https://github.com/franck-paul/a11yConfig',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/a11yConfig/master/dcstore.xml',
     ]
 );

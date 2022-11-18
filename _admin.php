@@ -14,20 +14,17 @@ if (!defined('DC_CONTEXT_ADMIN')) {
     return;
 }
 
-require __DIR__ . '/_widgets.php';
+require_once __DIR__ . '/_widgets.php';
 
-dcCore::app()->menu['Blog']->addItem(
+dcCore::app()->menu[dcAdmin::MENU_BLOG]->addItem(
     __('a11yConfig'),
     'plugin.php?p=a11yConfig',
     [urldecode(dcPage::getPF('a11yConfig/icon.svg')),urldecode(dcPage::getPF('a11yConfig/icon-dark.svg'))],
     preg_match('/plugin.php\?p=a11yConfig(&.*)?$/', $_SERVER['REQUEST_URI']),
-    dcCore::app()->auth->check('admin', dcCore::app()->blog->id)
+    dcCore::app()->auth->check(dcCore::app()->auth->makePermissions([
+        dcAuth::PERMISSION_ADMIN,
+    ]), dcCore::app()->blog->id)
 );
-
-dcCore::app()->addBehavior('adminPageHTMLHead', ['a11yconfigAdmin', 'adminPageHTMLHead']);
-
-dcCore::app()->addBehavior('adminBeforeUserOptionsUpdate', ['a11yconfigAdmin', 'adminBeforeUserOptionsUpdate']);
-dcCore::app()->addBehavior('adminPreferencesForm', ['a11yconfigAdmin', 'adminPreferencesForm']);
 
 class a11yconfigAdmin
 {
@@ -76,7 +73,7 @@ class a11yconfigAdmin
         }
     }
 
-    public static function adminBeforeUserOptionsUpdate($cur, $userID)
+    public static function adminBeforeUserOptionsUpdate()
     {
         // Get and store user's prefs for plugin options
         dcCore::app()->auth->user_prefs->addWorkspace('a11yConfig');
@@ -98,7 +95,7 @@ class a11yconfigAdmin
         }
     }
 
-    public static function adminPreferencesForm($core)
+    public static function adminPreferencesForm()
     {
         $a11yc_positions = [
             a11yconfigConst::IN_TOP    => __('In admin header'),
@@ -175,3 +172,8 @@ class a11yconfigAdmin
             '</div>';
     }
 }
+
+dcCore::app()->addBehavior('adminPageHTMLHead', [a11yconfigAdmin::class, 'adminPageHTMLHead']);
+
+dcCore::app()->addBehavior('adminBeforeUserOptionsUpdate', [a11yconfigAdmin::class, 'adminBeforeUserOptionsUpdate']);
+dcCore::app()->addBehavior('adminPreferencesFormV2', [a11yconfigAdmin::class, 'adminPreferencesForm']);
