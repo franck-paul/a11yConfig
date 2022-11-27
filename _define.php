@@ -18,7 +18,7 @@ $this->registerModule(
     'a11yConfig',
     'Implements Access42 accessibility configuration tool',
     'Franck Paul, Biou and contributors',
-    '1.8',
+    '2.0',
     [
         'requires'    => [['core', '2.24']],
         'permissions' => dcCore::app()->auth->makePermissions([

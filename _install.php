@@ -17,7 +17,7 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 $new_version = dcCore::app()->plugins->moduleInfo('a11yConfig', 'version');
 $old_version = dcCore::app()->getVersion('a11yConfig');
 
-if (version_compare($old_version, $new_version, '>=')) {
+if (version_compare((string) $old_version, $new_version, '>=')) {
     return;
 }
 
