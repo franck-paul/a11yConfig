@@ -67,8 +67,8 @@ class a11yconfigAdmin
 
             echo
             dcPage::cssModuleLoad('a11yConfig/lib/css/accessconfig.min.css', 'screen', $version) .
-            dcPage::cssModuleLoad('a11yConfig/css/admin.css', 'screen', $version) .
-            dcPage::jsModuleLoad('a11yConfig/js/admin.js', $version) .
+            dcPage::cssModuleLoad('a11yConfig/css/admin.min.css', 'screen', $version) .
+            dcPage::jsModuleLoad('a11yConfig/js/admin.min.js', $version) .
             dcPage::jsModuleLoad('a11yConfig/lib/js/accessconfig.min.js', $version);
         }
     }
