@@ -73,7 +73,7 @@ if (!empty($_POST)) {
         dcCore::app()->blog->triggerBlog();
 
         dcPage::addSuccessNotice(__('Settings have been successfully updated.'));
-        http::redirect($p_url);
+        http::redirect(dcCore::app()->admin->getPageURL());
     } catch (Exception $e) {
         dcCore::app()->error->add($e->getMessage());
     }
@@ -96,7 +96,7 @@ echo dcPage::breadcrumb(
 echo dcPage::notices();
 
 echo
-'<form action="' . $p_url . '" method="post">' .
+'<form action="' . dcCore::app()->admin->getPageURL() . '" method="post">' .
 '<p>' . form::checkbox('a11yc_active', 1, $a11yc_active) . ' ' .
 '<label for="a11yc_active" class="classic">' . __('Activate a11yConfig on blog') . '</label></p>';
 

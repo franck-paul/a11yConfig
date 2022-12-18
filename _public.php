@@ -27,8 +27,8 @@ class a11yconfigPublic
 
         echo
         dcUtils::cssModuleLoad('a11yConfig/lib/css/accessconfig.min.css') .
-        dcUtils::cssModuleLoad('a11yConfig/css/public.min.css') .
-        dcUtils::jsModuleLoad('a11yConfig/js/public.min.js') .
+        dcUtils::cssModuleLoad('a11yConfig/css/public.css') .
+        dcUtils::jsModuleLoad('a11yConfig/js/public.js') .
         dcUtils::jsModuleLoad('a11yConfig/lib/js/accessconfig.min.js');
     }
 

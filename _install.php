@@ -14,10 +14,7 @@ if (!defined('DC_CONTEXT_ADMIN')) {
     return;
 }
 
-$new_version = dcCore::app()->plugins->moduleInfo('a11yConfig', 'version');
-$old_version = dcCore::app()->getVersion('a11yConfig');
-
-if (version_compare((string) $old_version, $new_version, '>=')) {
+if (!dcCore::app()->newVersion(basename(__DIR__), dcCore::app()->plugins->moduleInfo(basename(__DIR__), 'version'))) {
     return;
 }
 
@@ -50,8 +47,6 @@ try {
     dcCore::app()->auth->user_prefs->a11yConfig->put('justification', true, 'boolean', 'justification adaptation', false, true);
     dcCore::app()->auth->user_prefs->a11yConfig->put('contrast', true, 'boolean', 'contrast adaptation', false, true);
     dcCore::app()->auth->user_prefs->a11yConfig->put('image', true, 'boolean', 'Image replacement', false, true);
-
-    dcCore::app()->setVersion('a11yConfig', $new_version);
 
     return true;
 } catch (Exception $e) {
