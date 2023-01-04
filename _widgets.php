@@ -14,7 +14,6 @@ if (!defined('DC_RC_PATH')) {
     return;
 }
 
-dcCore::app()->blog->settings->addNamespace('a11yConfig');
 if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
     return;
 }
@@ -47,5 +46,7 @@ class a11yconfigWidget
     }
 }
 
-dcCore::app()->addBehavior('initWidgets', [a11yconfigWidget::class, 'initWidgets']);
-dcCore::app()->addBehavior('initDefaultWidgets', [a11yconfigWidget::class, 'initDefaultWidgets']);
+dcCore::app()->addBehaviors([
+    'initWidgets'        => [a11yconfigWidget::class, 'initWidgets'],
+    'initDefaultWidgets' => [a11yconfigWidget::class, 'initDefaultWidgets'],
+]);

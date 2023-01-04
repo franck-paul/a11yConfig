@@ -15,7 +15,6 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 }
 
 // Get current options
-dcCore::app()->blog->settings->addNamespace('a11yConfig');
 
 $a11yc_positions = [
     a11yconfigConst::IN_TOP    => __('In header'),
@@ -56,7 +55,6 @@ if (!empty($_POST)) {
         $a11yc_image         = !empty($_POST['a11yc_image']);
 
         # Everything's fine, save options
-        dcCore::app()->blog->settings->addNamespace('a11yConfig');
 
         dcCore::app()->blog->settings->a11yConfig->put('active', $a11yc_active);
 

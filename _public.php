@@ -20,7 +20,6 @@ class a11yconfigPublic
 {
     public static function publicHeadContent()
     {
-        dcCore::app()->blog->settings->addNamespace('a11yConfig');
         if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
             return;
         }
@@ -44,7 +43,6 @@ class a11yconfigPublic
 
     private static function inject($position)
     {
-        dcCore::app()->blog->settings->addNamespace('a11yConfig');
         if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
             return;
         }
@@ -71,7 +69,6 @@ class a11yconfigPublic
     # Widget function
     public static function a11yconfigWidget($w)
     {
-        dcCore::app()->blog->settings->addNamespace('a11yConfig');
         if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
             return;
         }
@@ -94,7 +91,6 @@ class a11yconfigPublic
     # Template function
     public static function tplAccessConfig($attr)
     {
-        dcCore::app()->blog->settings->addNamespace('a11yConfig');
         if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
             return;
         }
@@ -146,8 +142,10 @@ class a11yconfigPublic
     }
 }
 
-dcCore::app()->addBehavior('publicHeadContent', [a11yconfigPublic::class, 'publicHeadContent']);
-dcCore::app()->addBehavior('publicTopAfterContent', [a11yconfigPublic::class, 'publicTopAfterContent']);
-dcCore::app()->addBehavior('publicFooterContent', [a11yconfigPublic::class, 'publicFooterContent']);
+dcCore::app()->addBehaviors([
+    'publicHeadContent'     => [a11yconfigPublic::class, 'publicHeadContent'],
+    'publicTopAfterContent' => [a11yconfigPublic::class, 'publicTopAfterContent'],
+    'publicFooterContent'   => [a11yconfigPublic::class, 'publicFooterContent'],
+]);
 
 dcCore::app()->tpl->addValue('AccessConfig', [a11yconfigPublic::class, 'tplAccessConfig']);

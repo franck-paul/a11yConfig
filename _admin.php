@@ -30,7 +30,6 @@ class a11yconfigAdmin
 {
     public static function adminPageHTMLHead()
     {
-        dcCore::app()->auth->user_prefs->addWorkspace('a11yConfig');
         if (dcCore::app()->auth->user_prefs->a11yConfig->active) {
             $version = dcCore::app()->getVersion('a11yConfig');
 
@@ -76,8 +75,6 @@ class a11yconfigAdmin
     public static function adminBeforeUserOptionsUpdate()
     {
         // Get and store user's prefs for plugin options
-        dcCore::app()->auth->user_prefs->addWorkspace('a11yConfig');
-
         try {
             dcCore::app()->auth->user_prefs->a11yConfig->put('active', !empty($_POST['a11yc_active']), 'boolean');
 
@@ -109,7 +106,6 @@ class a11yconfigAdmin
         ];
 
         // Get user's prefs for plugin options
-        dcCore::app()->auth->user_prefs->addWorkspace('a11yConfig');
 
         $a11yc_active = (bool) dcCore::app()->auth->user_prefs->a11yConfig->active;
 
@@ -173,7 +169,9 @@ class a11yconfigAdmin
     }
 }
 
-dcCore::app()->addBehavior('adminPageHTMLHead', [a11yconfigAdmin::class, 'adminPageHTMLHead']);
+dcCore::app()->addBehaviors([
+    'adminPageHTMLHead'            => [a11yconfigAdmin::class, 'adminPageHTMLHead'],
 
-dcCore::app()->addBehavior('adminBeforeUserOptionsUpdate', [a11yconfigAdmin::class, 'adminBeforeUserOptionsUpdate']);
-dcCore::app()->addBehavior('adminPreferencesFormV2', [a11yconfigAdmin::class, 'adminPreferencesForm']);
+    'adminBeforeUserOptionsUpdate' => [a11yconfigAdmin::class, 'adminBeforeUserOptionsUpdate'],
+    'adminPreferencesFormV2'       => [a11yconfigAdmin::class, 'adminPreferencesForm'],
+]);
