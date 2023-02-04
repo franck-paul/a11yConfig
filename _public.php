@@ -10,10 +10,6 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-if (!defined('DC_RC_PATH')) {
-    return;
-}
-
 require_once __DIR__ . '/_widgets.php';
 
 class a11yconfigPublic
@@ -137,7 +133,7 @@ class a11yconfigPublic
         return
         '<div ' . ($class !== '' ? 'class="' . $class . '" ' : '') . 'id="accessconfig" data-accessconfig-buttonname="' .
         ($label ? html::escapeHTML($label) : __('Accessibility parameters')) . '" ' .
-        'data-accessconfig-params=\'' . json_encode($options) . '\'>' .
+        'data-accessconfig-params=\'' . json_encode($options, JSON_THROW_ON_ERROR) . '\'>' .
             '</div>';
     }
 }

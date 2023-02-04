@@ -10,10 +10,6 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-if (!defined('DC_RC_PATH')) {
-    return;
-}
-
 $this->registerModule(
     'a11yConfig',
     'Implements Access42 accessibility configuration tool',
@@ -25,14 +21,14 @@ $this->registerModule(
             dcAuth::PERMISSION_USAGE,
             dcAuth::PERMISSION_CONTENT_ADMIN,
         ]),
-        'type'     => 'plugin',
-        'settings' => [
+        'type'        => 'plugin',
+        'settings'    => [
             'self' => '',
             'pref' => '#user-options.a11yConfig',
         ],
 
-        'details'    => 'https://open-time.net/?q=a11yConfig',
-        'support'    => 'https://github.com/franck-paul/a11yConfig',
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/a11yConfig/master/dcstore.xml',
+        'details'     => 'https://open-time.net/?q=a11yConfig',
+        'support'     => 'https://github.com/franck-paul/a11yConfig',
+        'repository'  => 'https://raw.githubusercontent.com/franck-paul/a11yConfig/master/dcstore.xml',
     ]
 );

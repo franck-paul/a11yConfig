@@ -10,9 +10,8 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-if (!defined('DC_RC_PATH')) {
-    return;
-}
+
+use Dotclear\Plugin\widgets\Widgets;
 
 if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
     return;
@@ -42,7 +41,7 @@ class a11yconfigWidget
 
     public static function initDefaultWidgets($w, $d)
     {
-        $d[defaultWidgets::WIDGETS_NAV]->append($w->a11yconfig);
+        $d[Widgets::WIDGETS_NAV]->append($w->a11yconfig);
     }
 }
 
