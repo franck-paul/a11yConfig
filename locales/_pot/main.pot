@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 a11yConfig module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-13 11:24+0100\n"
+"POT-Creation-Date: 2023-05-04 11:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,140 +16,143 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../git-plugins/a11yConfig//_admin.php:18
-#: ../git-plugins/a11yConfig//_admin.php:126
-#: ../git-plugins/a11yConfig//_define.php:17
-#: ../git-plugins/a11yConfig//index.php:85
-#: ../git-plugins/a11yConfig//index.php:93
+#: ../git-plugins/a11yConfig/src/Backend.php:39
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:122
+#: ../git-plugins/a11yConfig/src/Manage.php:114
+#: ../git-plugins/a11yConfig/src/Manage.php:119
 msgid "a11yConfig"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:100
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:96
 msgid "In admin header"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:101
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:97
 msgid "In admin footer"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:105
-#: ../git-plugins/a11yConfig//_widgets.php:32
-#: ../git-plugins/a11yConfig//index.php:25
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:101
+#: ../git-plugins/a11yConfig/src/Manage.php:96
+#: ../git-plugins/a11yConfig/src/Widgets.php:28
 msgid "No"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:106
-#: ../git-plugins/a11yConfig//_widgets.php:33
-#: ../git-plugins/a11yConfig//index.php:26
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:102
+#: ../git-plugins/a11yConfig/src/Manage.php:97
+#: ../git-plugins/a11yConfig/src/Widgets.php:29
 msgid "Wheelchair"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:107
-#: ../git-plugins/a11yConfig//_widgets.php:34
-#: ../git-plugins/a11yConfig//index.php:27
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:103
+#: ../git-plugins/a11yConfig/src/Manage.php:98
+#: ../git-plugins/a11yConfig/src/Widgets.php:30
 msgid "Visual deficiency"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:130
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:126
 msgid "Activate a11yConfig in admin"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:133
-#: ../git-plugins/a11yConfig//index.php:111
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:129
+#: ../git-plugins/a11yConfig/src/Manage.php:139
 msgid "Label:"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:134
-#: ../git-plugins/a11yConfig//_public.php:124
-#: ../git-plugins/a11yConfig//index.php:112
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:130
+#: ../git-plugins/a11yConfig/src/FrontendHelper.php:48
+#: ../git-plugins/a11yConfig/src/Manage.php:140
 msgid "Accessibility parameters"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:138
-#: ../git-plugins/a11yConfig//_widgets.php:31
-#: ../git-plugins/a11yConfig//index.php:116
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:134
+#: ../git-plugins/a11yConfig/src/Manage.php:144
+#: ../git-plugins/a11yConfig/src/Widgets.php:27
 msgid "Icon:"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:140
-#: ../git-plugins/a11yConfig//index.php:118
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:136
+#: ../git-plugins/a11yConfig/src/Manage.php:146
 msgid "The previous label will be used as alternative text if one of proposed icons is choosen."
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:149
-#: ../git-plugins/a11yConfig//index.php:127
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:145
+#: ../git-plugins/a11yConfig/src/Manage.php:155
 msgid "Position:"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:157
-#: ../git-plugins/a11yConfig//index.php:137
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:153
+#: ../git-plugins/a11yConfig/src/Manage.php:165
 msgid "Options:"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:160
-#: ../git-plugins/a11yConfig//_widgets.php:37
-#: ../git-plugins/a11yConfig//index.php:140
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:156
+#: ../git-plugins/a11yConfig/src/Manage.php:168
+#: ../git-plugins/a11yConfig/src/Widgets.php:33
 msgid "Font adaptation"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:162
-#: ../git-plugins/a11yConfig//_widgets.php:38
-#: ../git-plugins/a11yConfig//index.php:142
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:158
+#: ../git-plugins/a11yConfig/src/Manage.php:170
+#: ../git-plugins/a11yConfig/src/Widgets.php:34
 msgid "Line Spacing adaptation"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:164
-#: ../git-plugins/a11yConfig//_widgets.php:39
-#: ../git-plugins/a11yConfig//index.php:144
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:160
+#: ../git-plugins/a11yConfig/src/Manage.php:172
+#: ../git-plugins/a11yConfig/src/Widgets.php:35
 msgid "Justification adaptation"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:166
-#: ../git-plugins/a11yConfig//_widgets.php:40
-#: ../git-plugins/a11yConfig//index.php:146
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:162
+#: ../git-plugins/a11yConfig/src/Manage.php:174
+#: ../git-plugins/a11yConfig/src/Widgets.php:36
 msgid "Contrast adaptation"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_admin.php:168
-#: ../git-plugins/a11yConfig//_widgets.php:41
-#: ../git-plugins/a11yConfig//index.php:148
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:164
+#: ../git-plugins/a11yConfig/src/Manage.php:176
+#: ../git-plugins/a11yConfig/src/Widgets.php:37
 msgid "Image replacement"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//_define.php:18
-msgid "Implements Access42 accessibility configuration tool"
-msgstr ""
-
-#: ../git-plugins/a11yConfig//_widgets.php:28
-msgid "Style selector to let users adapt your blog to their needs."
-msgstr ""
-
-#: ../git-plugins/a11yConfig//_widgets.php:30
-msgid "Accessibility Settings"
-msgstr ""
-
-#: ../git-plugins/a11yConfig//index.php:20
+#: ../git-plugins/a11yConfig/src/Manage.php:91
 msgid "In header"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//index.php:21
+#: ../git-plugins/a11yConfig/src/Manage.php:92
 msgid "In footer"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//index.php:100
+#: ../git-plugins/a11yConfig/src/Manage.php:128
 msgid "Activate a11yConfig on blog"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//index.php:103
+#: ../git-plugins/a11yConfig/src/Manage.php:131
 #, php-format
 msgid "A widget is available (see <a href=\"%s\">%s</a>)"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//index.php:106
-#: ../git-plugins/a11yConfig//index.php:108
+#: ../git-plugins/a11yConfig/src/Manage.php:134
+#: ../git-plugins/a11yConfig/src/Manage.php:136
 msgid "Automatic insertion"
 msgstr ""
 
-#: ../git-plugins/a11yConfig//index.php:129
+#: ../git-plugins/a11yConfig/src/Manage.php:157
 msgid "The automatic insertion in header depends on the <strong>publicTopAfterContent</strong> behavior and in footer on <strong>publicFooterContent</strong> behavior. Adapt theme's template files if necessary."
+msgstr ""
+
+#: ../git-plugins/a11yConfig/src/Manage.php:179
+msgid "Save"
+msgstr ""
+
+#: ../git-plugins/a11yConfig/src/Widgets.php:24
+msgid "Style selector to let users adapt your blog to their needs."
+msgstr ""
+
+#: ../git-plugins/a11yConfig/src/Widgets.php:26
+msgid "Accessibility Settings"
+msgstr ""
+
+#: ../git-plugins/a11yConfig/src/Widgets.php:26
+msgid "Title:"
 msgstr ""

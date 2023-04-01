@@ -10,7 +10,13 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-class a11yconfigConst
+declare(strict_types=1);
+
+namespace Dotclear\Plugin\a11yConfig;
+
+use dcNsProcess;
+
+class Prepend extends dcNsProcess
 {
     // Constants for position (public/admin)
     public const IN_TOP    = 0;
@@ -20,9 +26,20 @@ class a11yconfigConst
     public const ICON_NONE             = 0;
     public const ICON_WHEELCHAIR       = 1;
     public const ICON_VISUALDEFICIENCY = 2;
-}
 
-if (!defined('DC_CONTEXT_ADMIN')) {
-    return false;
+    public static function init(): bool
+    {
+        static::$init = defined('DC_RC_PATH');
+
+        return static::$init;
+    }
+
+    public static function process(): bool
+    {
+        if (!static::$init) {
+            return false;
+        }
+
+        return true;
+    }
 }
-// admin

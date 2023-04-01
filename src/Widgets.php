@@ -10,24 +10,24 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
+declare(strict_types=1);
 
-use Dotclear\Plugin\widgets\Widgets;
+namespace Dotclear\Plugin\a11yConfig;
 
-if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
-    return;
-}
+use Dotclear\Plugin\widgets\Widgets as dcWidgets;
+use Dotclear\Plugin\widgets\WidgetsStack;
 
-class a11yconfigWidget
+class Widgets
 {
-    public static function initWidgets($w)
+    public static function initWidgets(WidgetsStack $w)
     {
         $w->create('a11yconfig', 'a11yconfig', ['a11yconfigPublic', 'a11yconfigWidget'], null, __('Style selector to let users adapt your blog to their needs.'));
 
         $w->a11yconfig->setting('buttonname', __('Title:'), __('Accessibility Settings'));
-        $w->a11yconfig->setting('icon', __('Icon:'), a11yconfigConst::ICON_NONE, 'combo', [
-            __('No')                => a11yconfigConst::ICON_NONE,
-            __('Wheelchair')        => a11yconfigConst::ICON_WHEELCHAIR,
-            __('Visual deficiency') => a11yconfigConst::ICON_VISUALDEFICIENCY,
+        $w->a11yconfig->setting('icon', __('Icon:'), Prepend::ICON_NONE, 'combo', [
+            __('No')                => Prepend::ICON_NONE,
+            __('Wheelchair')        => Prepend::ICON_WHEELCHAIR,
+            __('Visual deficiency') => Prepend::ICON_VISUALDEFICIENCY,
         ]);
 
         $w->a11yconfig->setting('font', __('Font adaptation'), 1, 'check');
@@ -41,11 +41,6 @@ class a11yconfigWidget
 
     public static function initDefaultWidgets($w, $d)
     {
-        $d[Widgets::WIDGETS_NAV]->append($w->a11yconfig);
+        $d[dcWidgets::WIDGETS_NAV]->append($w->a11yconfig);
     }
 }
-
-dcCore::app()->addBehaviors([
-    'initWidgets'        => [a11yconfigWidget::class, 'initWidgets'],
-    'initDefaultWidgets' => [a11yconfigWidget::class, 'initDefaultWidgets'],
-]);
