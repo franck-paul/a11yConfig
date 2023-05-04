@@ -21,7 +21,7 @@ class Widgets
 {
     public static function initWidgets(WidgetsStack $w)
     {
-        $w->create('a11yconfig', 'a11yconfig', ['a11yconfigPublic', 'a11yconfigWidget'], null, __('Style selector to let users adapt your blog to their needs.'));
+        $w->create('a11yconfig', 'a11yconfig', [FrontendTemplate::class, 'a11yconfigWidget'], null, __('Style selector to let users adapt your blog to their needs.'));
 
         $w->a11yconfig->setting('buttonname', __('Title:'), __('Accessibility Settings'));
         $w->a11yconfig->setting('icon', __('Icon:'), Prepend::ICON_NONE, 'combo', [
@@ -39,7 +39,7 @@ class Widgets
         $w->a11yconfig->setting('offline', __('Offline'), 0, 'check');
     }
 
-    public static function initDefaultWidgets($w, $d)
+    public static function initDefaultWidgets(WidgetsStack $w, array $d)
     {
         $d[dcWidgets::WIDGETS_NAV]->append($w->a11yconfig);
     }

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 a11yConfig module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 12:37+0200\n"
+"POT-Creation-Date: 2023-05-04 15:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,11 +41,11 @@ msgstr "Accessibilité"
 msgid "Activate a11yConfig in admin"
 msgstr "Activer les réglages d'accessibilité pour l'administration"
 
-msgid "Label:"
-msgstr "Libellé :"
-
 msgid "Accessibility parameters"
 msgstr "Paramètres d'accessibilité"
+
+msgid "Label:"
+msgstr "Libellé :"
 
 msgid "Icon:"
 msgstr "Icône :"
@@ -93,7 +93,7 @@ msgstr "Insertion automatique"
 msgid "The automatic insertion in header depends on the <strong>publicTopAfterContent</strong> behavior and in footer on <strong>publicFooterContent</strong> behavior. Adapt theme's template files if necessary."
 msgstr "L'insertion automatique dans l'entête dépend du <i>behavior</i> <strong>publicTopAfterContent</strong> et dans le pied de page du <i>behavior</i> <strong>publicFooterContent</strong>. Adaptez si nécessaire les fichiers template du thème."
 
-msgid "Save"
+msgid "Check"
 msgstr ""
 
 msgid "Style selector to let users adapt your blog to their needs."

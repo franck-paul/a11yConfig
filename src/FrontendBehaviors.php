@@ -66,26 +66,4 @@ class Frontendbehaviors
 
         echo FrontendHelper::render(dcCore::app()->blog->settings->a11yConfig->label, dcCore::app()->blog->settings->a11yConfig->icon, $params);
     }
-
-    # Widget function
-    public static function a11yconfigWidget($w)
-    {
-        if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
-            return;
-        }
-
-        if ($w->offline) {
-            return;
-        }
-
-        $params = [
-            'Font'             => ($w->font ? true : false),
-            'LineSpacing'      => ($w->linespacing ? true : false),
-            'Justification'    => ($w->justification ? true : false),
-            'Contrast'         => ($w->contrast ? true : false),
-            'ImageReplacement' => ($w->image ? true : false),
-        ];
-
-        return FrontendHelper::render($w->buttonname, $w->icon, $params, 'widget');
-    }
 }

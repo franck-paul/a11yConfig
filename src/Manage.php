@@ -17,10 +17,17 @@ namespace Dotclear\Plugin\a11yConfig;
 use dcCore;
 use dcNsProcess;
 use dcPage;
+use Dotclear\Helper\Html\Form\Checkbox;
+use Dotclear\Helper\Html\Form\Form;
+use Dotclear\Helper\Html\Form\Input;
+use Dotclear\Helper\Html\Form\Label;
+use Dotclear\Helper\Html\Form\Para;
+use Dotclear\Helper\Html\Form\Radio;
+use Dotclear\Helper\Html\Form\Submit;
+use Dotclear\Helper\Html\Form\Text;
 use Dotclear\Helper\Html\Html;
 use Dotclear\Helper\Network\Http;
 use Exception;
-use form;
 
 class Manage extends dcNsProcess
 {
@@ -48,7 +55,7 @@ class Manage extends dcNsProcess
 
         if (!empty($_POST)) {
             try {
-                $settings = dcCore::app()->blog->settings->a11yConfig;
+                $settings = dcCore::app()->blog->settings->get(My::id());
 
                 $settings->put('active', !empty($_POST['a11yc_active']));
 
@@ -85,7 +92,7 @@ class Manage extends dcNsProcess
         }
 
         // Get current options
-        $settings = dcCore::app()->blog->settings->a11yConfig;
+        $settings = dcCore::app()->blog->settings->get(My::id());
 
         $a11yc_positions = [
             Prepend::IN_TOP    => __('In header'),
@@ -111,7 +118,25 @@ class Manage extends dcNsProcess
         $a11yc_contrast      = (bool) $settings->contrast;
         $a11yc_image         = (bool) $settings->image;
 
-        dcPage::openModule(__('a11yConfig'));
+        $icons = [];
+        $i     = 0;
+        foreach ($a11yc_icons as $k => $v) {
+            $icons[] = (new Radio(['a11yc_icon', 'a11yc_icon_' . $i], $a11yc_icon == $k))
+                ->label((new Label($v, Label::INSIDE_TEXT_AFTER)));
+            $i++;
+        }
+
+        $positions = [];
+        $i         = 0;
+        foreach ($a11yc_positions as $k => $v) {
+            $positions[] = (new Radio(['a11yc_position', 'a11yc_position_' . $i], $a11yc_position == $k))
+                ->label((new Label($v, Label::INSIDE_TEXT_AFTER)));
+            $i++;
+        }
+
+        $head = dcPage::jsModuleLoad(My::id() . '/js/settings.js', dcCore::app()->getVersion(My::id()));
+
+        dcPage::openModule(__('a11yConfig'), $head);
 
         echo dcPage::breadcrumb(
             [
@@ -123,60 +148,74 @@ class Manage extends dcNsProcess
 
         // Form
         echo
-        '<form action="' . dcCore::app()->admin->getPageURL() . '" method="post">' .
-        '<p>' . form::checkbox('a11yc_active', 1, $a11yc_active) . ' ' .
-        '<label for="a11yc_active" class="classic">' . __('Activate a11yConfig on blog') . '</label></p>';
-
-        echo
-        '<p class="form-note">' . sprintf(__('A widget is available (see <a href="%s">%s</a>)'), dcCore::app()->adminurl->get('admin.plugin.widgets'), __('Presentation widgets')) . '</p>';
-
-        echo
-        '<h3>' . __('Automatic insertion') . '</h3>' .
-        '<p>' . form::checkbox('a11yc_injection', 1, $a11yc_injection) . ' ' .
-        '<label for="a11yc_injection" class="classic">' . __('Automatic insertion') . '</label></p>';
-
-        echo
-        '<p><label for="a11yc_label" class="required" title="' . __('Required field') . '"><abbr title="' . __('Required field') . '">*</abbr> ' . __('Label:') . '</label> ' .
-        form::field('a11yc_label', 30, 256, Html::escapeHTML($a11yc_label), '', '', false, 'required placeholder="' . __('Accessibility parameters') . '"') .
-            '</p>';
-
-        // Options for button appearance
-        echo '<h4>' . __('Icon:') . '</h4>';
-        echo
-        '<p class="form-note">' . __('The previous label will be used as alternative text if one of proposed icons is choosen.') . '</p>';
-        $i = 0;
-        foreach ($a11yc_icons as $k => $v) {
-            echo '<p><label for="a11yc_icon_' . $i . '" class="classic">' .
-            form::radio(['a11yc_icon', 'a11yc_icon_' . $i], $k, $a11yc_icon == $k) . ' ' . $v . '</label></p>';
-            $i++;
-        }
-
-        // Options for automatic insertion
-        echo '<h4>' . __('Position:') . '</h4>';
-        echo
-        '<p class="form-note">' . __('The automatic insertion in header depends on the <strong>publicTopAfterContent</strong> behavior and in footer on <strong>publicFooterContent</strong> behavior. Adapt theme\'s template files if necessary.') . '</p>';
-        $i = 0;
-        foreach ($a11yc_positions as $k => $v) {
-            echo '<p><label for="a11yc_position_' . $i . '" class="classic">' .
-            form::radio(['a11yc_position', 'a11yc_position_' . $i], $k, $a11yc_position == $k) . ' ' . $v . '</label></p>';
-            $i++;
-        }
-
-        echo '<h4>' . __('Options:') . '</h4>';
-        echo
-        '<p>' . form::checkbox('a11yc_font', 1, $a11yc_font) . ' ' .
-        '<label for="a11yc_font" class="classic">' . __('Font adaptation') . '</label></p>' .
-        '<p>' . form::checkbox('a11yc_linespacing', 1, $a11yc_linespacing) . ' ' .
-        '<label for="a11yc_linespacing" class="classic">' . __('Line Spacing adaptation') . '</label></p>' .
-        '<p>' . form::checkbox('a11yc_justification', 1, $a11yc_justification) . ' ' .
-        '<label for="a11yc_justification" class="classic">' . __('Justification adaptation') . '</label></p>' .
-        '<p>' . form::checkbox('a11yc_contrast', 1, $a11yc_contrast) . ' ' .
-        '<label for="a11yc_contrast" class="classic">' . __('Contrast adaptation') . '</label></p>' .
-        '<p>' . form::checkbox('a11yc_image', 1, $a11yc_image) . ' ' .
-        '<label for="a11yc_image" class="classic">' . __('Image replacement') . '</label></p>';
-
-        echo
-        '<p>' . dcCore::app()->formNonce() . '<input type="submit" value="' . __('Save') . '" /></p>' . '</form>';
+        (new Form('a11y_params'))
+            ->action(dcCore::app()->admin->getPageURL())
+            ->method('post')
+            ->fields([
+                (new Para())->items([
+                    (new Checkbox('a11yc_active', $a11yc_active))
+                        ->value(1)
+                        ->label((new Label(__('Activate a11yConfig on blog'), Label::INSIDE_TEXT_AFTER))),
+                ]),
+                (new Para())->class('form-note')->items([
+                    (new Text(null, sprintf(__('A widget is available (see <a href="%s">%s</a>)'), dcCore::app()->adminurl->get('admin.plugin.widgets'), __('Presentation widgets')))),
+                ]),
+                (new Para())->items([
+                    (new Input('a11yc_label'))
+                        ->size(30)
+                        ->maxlength(256)
+                        ->value(Html::escapeHTML($a11yc_label))
+                        ->required(true)
+                        ->placeholder(__('Accessibility parameters'))
+                        ->label((new Label(
+                            (new Text('abbr', '*'))->title(__('Required field'))->render() . __('Label:'),
+                            Label::INSIDE_TEXT_BEFORE
+                        ))->id('a11yc_label_label')->class('required')->title(__('Required field'))),
+                ]),
+                // Options for button appearance
+                (new Text('h3', __('Icon:'))),
+                (new Para())->class('form-note')->items([
+                    (new Text(null, __('The previous label will be used as alternative text if one of proposed icons is choosen.'))),
+                ]),
+                (new Para())->items($icons),
+                // Options for automatic insertion
+                (new Text('h3', __('Position:'))),
+                (new Para())->items([
+                    (new Checkbox('a11yc_injection', $a11yc_injection))
+                        ->value(1)
+                        ->label((new Label(__('Automatic insertion'), Label::INSIDE_TEXT_AFTER))),
+                ]),
+                (new Para())->class('form-note')->items([
+                    (new Text(null, __('The automatic insertion in header depends on the <strong>publicTopAfterContent</strong> behavior and in footer on <strong>publicFooterContent</strong> behavior. Adapt theme\'s template files if necessary.'))),
+                ]),
+                (new Para())->items($positions),
+                // Options
+                (new Text('h3', __('Options:'))),
+                (new Para())->items([
+                    (new Checkbox('a11yc_font', $a11yc_font))
+                        ->value(1)
+                        ->label((new Label(__('Font adaptation'), Label::INSIDE_TEXT_AFTER))),
+                    (new Checkbox('a11yc_linespacing', $a11yc_linespacing))
+                        ->value(1)
+                        ->label((new Label(__('Line Spacing adaptation'), Label::INSIDE_TEXT_AFTER))),
+                    (new Checkbox('a11yc_justification', $a11yc_justification))
+                        ->value(1)
+                        ->label((new Label(__('Justification adaptation'), Label::INSIDE_TEXT_AFTER))),
+                    (new Checkbox('a11yc_contrast', $a11yc_contrast))
+                        ->value(1)
+                        ->label((new Label(__('Contrast adaptation'), Label::INSIDE_TEXT_AFTER))),
+                    (new Checkbox('a11yc_image', $a11yc_image))
+                        ->value(1)
+                        ->label((new Label(__('Image replacement'), Label::INSIDE_TEXT_AFTER))),
+                ]),
+                // Submit
+                (new Para())->items([
+                    (new Submit(['frmsubmit']))
+                        ->value(__('Check')),
+                    dcCore::app()->formNonce(false),
+                ]),
+            ])
+        ->render();
 
         dcPage::closeModule();
     }

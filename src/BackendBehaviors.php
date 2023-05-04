@@ -16,15 +16,22 @@ namespace Dotclear\Plugin\a11yConfig;
 
 use dcCore;
 use dcPage;
+use Dotclear\Helper\Html\Form\Checkbox;
+use Dotclear\Helper\Html\Form\Fieldset;
+use Dotclear\Helper\Html\Form\Input;
+use Dotclear\Helper\Html\Form\Label;
+use Dotclear\Helper\Html\Form\Legend;
+use Dotclear\Helper\Html\Form\Para;
+use Dotclear\Helper\Html\Form\Radio;
+use Dotclear\Helper\Html\Form\Text;
 use Dotclear\Helper\Html\Html;
 use Exception;
-use form;
 
 class BackendBehaviors
 {
     public static function adminPageHTMLHead()
     {
-        $settings = dcCore::app()->auth->user_prefs->a11yConfig;
+        $settings = dcCore::app()->auth->user_prefs->get(My::id());
 
         if ($settings->active) {
             $version = dcCore::app()->getVersion(My::id());
@@ -72,7 +79,7 @@ class BackendBehaviors
     {
         // Get and store user's prefs for plugin options
         try {
-            $settings = dcCore::app()->auth->user_prefs->a11yConfig;
+            $settings = dcCore::app()->auth->user_prefs->get(My::id());
 
             $settings->put('active', !empty($_POST['a11yc_active']), 'boolean');
 
@@ -90,6 +97,11 @@ class BackendBehaviors
         }
     }
 
+    public static function adminPreferencesHeaders()
+    {
+        return dcPage::jsModuleLoad(My::id() . '/js/settings.js', dcCore::app()->getVersion(My::id()));
+    }
+
     public static function adminPreferencesForm()
     {
         $a11yc_positions = [
@@ -104,7 +116,7 @@ class BackendBehaviors
         ];
 
         // Get user's prefs for plugin options
-        $settings = dcCore::app()->auth->user_prefs->a11yConfig;
+        $settings = dcCore::app()->auth->user_prefs->get(My::id());
 
         $a11yc_active = (bool) $settings->active;
 
@@ -118,52 +130,72 @@ class BackendBehaviors
         $a11yc_contrast      = (bool) $settings->contrast;
         $a11yc_image         = (bool) $settings->image;
 
-        echo
-        '<div class="fieldset" id="a11yConfig"><h5>' . __('a11yConfig') . '</h5>';
-
-        echo
-        '<p>' . form::checkbox('a11yc_active', 1, $a11yc_active) . ' ' .
-        '<label for="a11yc_active" class="classic">' . __('Activate a11yConfig in admin') . '</label></p>';
-
-        echo
-        '<p><label for="a11yc_label" class="required" title="' . __('Required field') . '"><abbr title="' . __('Required field') . '">*</abbr> ' . __('Label:') . '</label> ' .
-        form::field('a11yc_label', 30, 256, Html::escapeHTML($a11yc_label), '', '', false, 'required placeholder="' . __('Accessibility parameters') . '"') .
-            '</p>';
-
-        // Options for button appearance
-        echo '<h6>' . __('Icon:') . '</h6>';
-        echo
-        '<p class="form-note">' . __('The previous label will be used as alternative text if one of proposed icons is choosen.') . '</p>';
-        $i = 0;
+        $icons = [];
+        $i     = 0;
         foreach ($a11yc_icons as $k => $v) {
-            echo '<p><label for="a11yc_icon_' . $i . '" class="classic">' .
-            form::radio(['a11yc_icon', 'a11yc_icon_' . $i], $k, $a11yc_icon == $k) . ' ' . $v . '</label></p>';
+            $icons[] = (new Radio(['a11yc_icon', 'a11yc_icon_' . $i], $a11yc_icon == $k))
+                ->label((new Label($v, Label::INSIDE_TEXT_AFTER)));
             $i++;
         }
 
-        // Options for automatic insertion
-        echo '<h6>' . __('Position:') . '</h6>';
-        $i = 0;
+        $positions = [];
+        $i         = 0;
         foreach ($a11yc_positions as $k => $v) {
-            echo '<p><label for="a11yc_position_' . $i . '" class="classic">' .
-            form::radio(['a11yc_position', 'a11yc_position_' . $i], $k, $a11yc_position == $k) . ' ' . $v . '</label></p>';
+            $positions[] = (new Radio(['a11yc_position', 'a11yc_position_' . $i], $a11yc_position == $k))
+                ->label((new Label($v, Label::INSIDE_TEXT_AFTER)));
             $i++;
         }
 
-        echo '<h6>' . __('Options:') . '</h6>';
         echo
-        '<p>' . form::checkbox('a11yc_font', 1, $a11yc_font) . ' ' .
-        '<label for="a11yc_font" class="classic">' . __('Font adaptation') . '</label></p>' .
-        '<p>' . form::checkbox('a11yc_linespacing', 1, $a11yc_linespacing) . ' ' .
-        '<label for="a11yc_linespacing" class="classic">' . __('Line Spacing adaptation') . '</label></p>' .
-        '<p>' . form::checkbox('a11yc_justification', 1, $a11yc_justification) . ' ' .
-        '<label for="a11yc_justification" class="classic">' . __('Justification adaptation') . '</label></p>' .
-        '<p>' . form::checkbox('a11yc_contrast', 1, $a11yc_contrast) . ' ' .
-        '<label for="a11yc_contrast" class="classic">' . __('Contrast adaptation') . '</label></p>' .
-        '<p>' . form::checkbox('a11yc_image', 1, $a11yc_image) . ' ' .
-        '<label for="a11yc_image" class="classic">' . __('Image replacement') . '</label></p>';
-
-        echo
-            '</div>';
+        (new Fieldset('a11yConfig'))
+        ->legend((new Legend(__('a11yConfig'))))
+        ->fields([
+            (new Para())->items([
+                (new Checkbox('a11yc_active', $a11yc_active))
+                    ->value(1)
+                    ->label((new Label(__('Activate a11yConfig in admin'), Label::INSIDE_TEXT_AFTER))),
+            ]),
+            (new Para())->items([
+                (new Input('a11yc_label'))
+                    ->size(30)
+                    ->maxlength(256)
+                    ->value(Html::escapeHTML($a11yc_label))
+                    ->required(true)
+                    ->placeholder(__('Accessibility parameters'))
+                    ->label((new Label(
+                        (new Text('abbr', '*'))->title(__('Required field'))->render() . __('Label:'),
+                        Label::INSIDE_TEXT_BEFORE
+                    ))->id('a11yc_label_label')->class('required')->title(__('Required field'))),
+            ]),
+            // Options for button appearance
+            (new Text('h5', __('Icon:'))),
+            (new Para())->class('form-note')->items([
+                (new Text(null, __('The previous label will be used as alternative text if one of proposed icons is choosen.'))),
+            ]),
+            (new Para())->items($icons),
+            // Options for automatic insertion
+            (new Text('h5', __('Position:'))),
+            (new Para())->items($positions),
+            // Options
+            (new Text('h5', __('Options:'))),
+            (new Para())->items([
+                (new Checkbox('a11yc_font', $a11yc_font))
+                    ->value(1)
+                    ->label((new Label(__('Font adaptation'), Label::INSIDE_TEXT_AFTER))),
+                (new Checkbox('a11yc_linespacing', $a11yc_linespacing))
+                    ->value(1)
+                    ->label((new Label(__('Line Spacing adaptation'), Label::INSIDE_TEXT_AFTER))),
+                (new Checkbox('a11yc_justification', $a11yc_justification))
+                    ->value(1)
+                    ->label((new Label(__('Justification adaptation'), Label::INSIDE_TEXT_AFTER))),
+                (new Checkbox('a11yc_contrast', $a11yc_contrast))
+                    ->value(1)
+                    ->label((new Label(__('Contrast adaptation'), Label::INSIDE_TEXT_AFTER))),
+                (new Checkbox('a11yc_image', $a11yc_image))
+                    ->value(1)
+                    ->label((new Label(__('Image replacement'), Label::INSIDE_TEXT_AFTER))),
+            ]),
+        ])
+        ->render();
     }
 }

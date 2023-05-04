@@ -50,6 +50,7 @@ class Backend extends dcNsProcess
 
             'adminBeforeUserOptionsUpdate' => [BackendBehaviors::class, 'adminBeforeUserOptionsUpdate'],
             'adminPreferencesFormV2'       => [BackendBehaviors::class, 'adminPreferencesForm'],
+            'adminPreferencesHeaders'      => [BackendBehaviors::class, 'adminPreferencesHeaders'],
 
             'initWidgets'        => [Widgets::class, 'initWidgets'],
             'initDefaultWidgets' => [Widgets::class, 'initDefaultWidgets'],
