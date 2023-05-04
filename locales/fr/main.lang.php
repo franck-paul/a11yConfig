@@ -11,7 +11,7 @@
 
 use Dotclear\Helper\L10n;
 
-L10n::$locales['Accessibility'] = 'Paramètres d\'accessibilité';
+L10n::$locales['Accessibility'] = 'Accessibilité';
 L10n::$locales['In admin header'] = 'Dans l\'entête de l\'administration';
 L10n::$locales['In admin footer'] = 'Dans le pied de page de l\'administration';
 L10n::$locales['No'] = 'Non';
@@ -36,7 +36,7 @@ L10n::$locales['Activate a11yConfig on blog'] = 'Activer les réglages d\'access
 L10n::$locales['A widget is available (see <a href="%s">%s</a>)'] = 'Un widget est disponible (voir <a href="%s">%s</a>)';
 L10n::$locales['Automatic insertion'] = 'Insertion automatique';
 L10n::$locales['The automatic insertion in header depends on the <strong>publicTopAfterContent</strong> behavior and in footer on <strong>publicFooterContent</strong> behavior. Adapt theme\'s template files if necessary.'] = 'L\'insertion automatique dans l\'entête dépend du <i>behavior</i> <strong>publicTopAfterContent</strong> et dans le pied de page du <i>behavior</i> <strong>publicFooterContent</strong>. Adaptez si nécessaire les fichiers template du thème.';
-L10n::$locales['Check'] = '';
+L10n::$locales['Check'] = 'Contrôle';
 L10n::$locales['Style selector to let users adapt your blog to their needs.'] = 'Sélecteur de styles permettant à vos lecteurs d\'adapter votre blog à leurs besoins.';
 L10n::$locales['Accessibility Settings'] = 'Paramètres d\'accessibilité';
-L10n::$locales['Title:'] = '';
+L10n::$locales['Title:'] = 'Titre :';
