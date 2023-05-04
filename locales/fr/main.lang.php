@@ -11,12 +11,13 @@
 
 use Dotclear\Helper\L10n;
 
-L10n::$locales['a11yConfig'] = 'Accessibilité';
+L10n::$locales['Accessibility'] = 'Paramètres d\'accessibilité';
 L10n::$locales['In admin header'] = 'Dans l\'entête de l\'administration';
 L10n::$locales['In admin footer'] = 'Dans le pied de page de l\'administration';
 L10n::$locales['No'] = 'Non';
 L10n::$locales['Wheelchair'] = 'Chaise roulante';
 L10n::$locales['Visual deficiency'] = 'Déficience visuelle';
+L10n::$locales['a11yConfig'] = 'Accessibilité';
 L10n::$locales['Activate a11yConfig in admin'] = 'Activer les réglages d\'accessibilité pour l\'administration';
 L10n::$locales['Label:'] = 'Libellé :';
 L10n::$locales['Accessibility parameters'] = 'Paramètres d\'accessibilité';

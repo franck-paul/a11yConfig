@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 a11yConfig module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 11:47+0200\n"
+"POT-Creation-Date: 2023-05-04 12:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../git-plugins/a11yConfig/src/Backend.php:39
-#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:122
-#: ../git-plugins/a11yConfig/src/Manage.php:114
-#: ../git-plugins/a11yConfig/src/Manage.php:119
-msgid "a11yConfig"
+msgid "Accessibility"
 msgstr ""
 
 #: ../git-plugins/a11yConfig/src/BackendBehaviors.php:96
@@ -47,6 +44,12 @@ msgstr ""
 #: ../git-plugins/a11yConfig/src/Manage.php:98
 #: ../git-plugins/a11yConfig/src/Widgets.php:30
 msgid "Visual deficiency"
+msgstr ""
+
+#: ../git-plugins/a11yConfig/src/BackendBehaviors.php:122
+#: ../git-plugins/a11yConfig/src/Manage.php:114
+#: ../git-plugins/a11yConfig/src/Manage.php:119
+msgid "a11yConfig"
 msgstr ""
 
 #: ../git-plugins/a11yConfig/src/BackendBehaviors.php:126

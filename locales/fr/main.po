@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 a11yConfig module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 11:47+0200\n"
+"POT-Creation-Date: 2023-05-04 12:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,8 +16,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "a11yConfig"
-msgstr "Accessibilité"
+#, fuzzy
+msgid "Accessibility"
+msgstr "Paramètres d'accessibilité"
 
 msgid "In admin header"
 msgstr "Dans l'entête de l'administration"
@@ -33,6 +34,9 @@ msgstr "Chaise roulante"
 
 msgid "Visual deficiency"
 msgstr "Déficience visuelle"
+
+msgid "a11yConfig"
+msgstr "Accessibilité"
 
 msgid "Activate a11yConfig in admin"
 msgstr "Activer les réglages d'accessibilité pour l'administration"

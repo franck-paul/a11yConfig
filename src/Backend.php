@@ -36,7 +36,7 @@ class Backend extends dcNsProcess
         }
 
         dcCore::app()->menu[dcAdmin::MENU_BLOG]->addItem(
-            __('a11yConfig'),
+            __('Accessibility'),
             'plugin.php?p=' . My::id(),
             [urldecode(dcPage::getPF(My::id() . '/icon.svg')),urldecode(dcPage::getPF(My::id() . '/icon-dark.svg'))],
             preg_match('/plugin.php\?p=' . My::id() . '(&.*)?$/', $_SERVER['REQUEST_URI']),
