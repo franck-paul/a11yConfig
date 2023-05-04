@@ -11,13 +11,13 @@
 
 use Dotclear\Helper\L10n;
 
-L10n::$locales['a11yConfig'] = 'Accessibility';
+L10n::$locales['a11yConfig'] = '';
 L10n::$locales['In admin header'] = '';
 L10n::$locales['In admin footer'] = '';
 L10n::$locales['No'] = '';
 L10n::$locales['Wheelchair'] = '';
 L10n::$locales['Visual deficiency'] = '';
-L10n::$locales['Activate a11yConfig in admin'] = 'Activate the accessibility settings for the administration';
+L10n::$locales['Activate a11yConfig in admin'] = '';
 L10n::$locales['Label:'] = '';
 L10n::$locales['Accessibility parameters'] = '';
 L10n::$locales['Icon:'] = '';
@@ -31,7 +31,7 @@ L10n::$locales['Contrast adaptation'] = '';
 L10n::$locales['Image replacement'] = '';
 L10n::$locales['In header'] = '';
 L10n::$locales['In footer'] = '';
-L10n::$locales['Activate a11yConfig on blog'] = 'Activate the accessibility settings for the blog';
+L10n::$locales['Activate a11yConfig on blog'] = '';
 L10n::$locales['A widget is available (see <a href="%s">%s</a>)'] = '';
 L10n::$locales['Automatic insertion'] = '';
 L10n::$locales['The automatic insertion in header depends on the <strong>publicTopAfterContent</strong> behavior and in footer on <strong>publicFooterContent</strong> behavior. Adapt theme\'s template files if necessary.'] = '';

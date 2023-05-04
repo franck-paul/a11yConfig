@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "a11yConfig"
-msgstr "Accessibility"
+msgstr ""
 
 msgid "In admin header"
 msgstr ""
@@ -35,7 +35,7 @@ msgid "Visual deficiency"
 msgstr ""
 
 msgid "Activate a11yConfig in admin"
-msgstr "Activate the accessibility settings for the administration"
+msgstr ""
 
 msgid "Label:"
 msgstr ""
@@ -77,7 +77,7 @@ msgid "In footer"
 msgstr ""
 
 msgid "Activate a11yConfig on blog"
-msgstr "Activate the accessibility settings for the blog"
+msgstr ""
 
 #, php-format
 msgid "A widget is available (see <a href=\"%s\">%s</a>)"
