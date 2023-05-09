@@ -15,7 +15,6 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\a11yConfig;
 
 use dcAdmin;
-use dcAuth;
 use dcCore;
 use dcNsProcess;
 use dcPage;
@@ -24,7 +23,7 @@ class Backend extends dcNsProcess
 {
     public static function init(): bool
     {
-        static::$init = defined('DC_CONTEXT_ADMIN');
+        static::$init = My::checkContext(My::BACKEND);
 
         return static::$init;
     }
@@ -40,9 +39,7 @@ class Backend extends dcNsProcess
             'plugin.php?p=' . My::id(),
             [urldecode(dcPage::getPF(My::id() . '/icon.svg')),urldecode(dcPage::getPF(My::id() . '/icon-dark.svg'))],
             preg_match('/plugin.php\?p=' . My::id() . '(&.*)?$/', $_SERVER['REQUEST_URI']),
-            dcCore::app()->auth->check(dcCore::app()->auth->makePermissions([
-                dcAuth::PERMISSION_ADMIN,
-            ]), dcCore::app()->blog->id)
+            My::checkContext(My::MENU)
         );
 
         dcCore::app()->addBehaviors([
@@ -51,10 +48,14 @@ class Backend extends dcNsProcess
             'adminBeforeUserOptionsUpdate' => [BackendBehaviors::class, 'adminBeforeUserOptionsUpdate'],
             'adminPreferencesFormV2'       => [BackendBehaviors::class, 'adminPreferencesForm'],
             'adminPreferencesHeaders'      => [BackendBehaviors::class, 'adminPreferencesHeaders'],
-
-            'initWidgets'        => [Widgets::class, 'initWidgets'],
-            'initDefaultWidgets' => [Widgets::class, 'initDefaultWidgets'],
         ]);
+
+        if (My::checkContext(My::WIDGETS)) {
+            dcCore::app()->addBehaviors([
+                'initWidgets'        => [Widgets::class, 'initWidgets'],
+                'initDefaultWidgets' => [Widgets::class, 'initDefaultWidgets'],
+            ]);
+        }
 
         return true;
     }

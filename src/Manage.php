@@ -36,10 +36,7 @@ class Manage extends dcNsProcess
      */
     public static function init(): bool
     {
-        // Manageable only by super-admin
-        static::$init = defined('DC_CONTEXT_ADMIN')
-            && dcCore::app()->auth->isSuperAdmin()
-            && My::phpCompliant();
+        static::$init = My::checkContext(My::MANAGE);
 
         return static::$init;
     }

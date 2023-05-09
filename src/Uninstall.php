@@ -22,7 +22,7 @@ class Uninstall extends dcNsProcess
 {
     public static function init(): bool
     {
-        static::$init = defined('DC_RC_PATH');
+        static::$init = My::checkContext(My::UNINSTALL);
 
         return static::$init;
     }
