@@ -17,7 +17,6 @@ namespace Dotclear\Plugin\a11yConfig;
 use dcAdmin;
 use dcCore;
 use dcNsProcess;
-use dcPage;
 
 class Backend extends dcNsProcess
 {
@@ -36,9 +35,9 @@ class Backend extends dcNsProcess
 
         dcCore::app()->menu[dcAdmin::MENU_BLOG]->addItem(
             __('Accessibility'),
-            'plugin.php?p=' . My::id(),
-            [urldecode(dcPage::getPF(My::id() . '/icon.svg')),urldecode(dcPage::getPF(My::id() . '/icon-dark.svg'))],
-            preg_match('/plugin.php\?p=' . My::id() . '(&.*)?$/', $_SERVER['REQUEST_URI']),
+            dcCore::app()->adminurl->get('admin.plugin.' . My::id()),
+            My::icons(),
+            preg_match(My::urlScheme(), $_SERVER['REQUEST_URI']),
             My::checkContext(My::MENU)
         );
 

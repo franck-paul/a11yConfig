@@ -21,7 +21,7 @@ class Widgets
 {
     public static function initWidgets(WidgetsStack $w)
     {
-        $w->create('a11yconfig', 'a11yconfig', [FrontendTemplate::class, 'a11yconfigWidget'], null, __('Style selector to let users adapt your blog to their needs.'));
+        $w->create('a11yconfig', 'a11yconfig', [FrontendWidgets::class, 'renderWidget'], null, __('Style selector to let users adapt your blog to their needs.'));
 
         $w->a11yconfig->setting('buttonname', __('Title:'), __('Accessibility Settings'));
         $w->a11yconfig->setting('icon', __('Icon:'), Prepend::ICON_NONE, 'combo', [

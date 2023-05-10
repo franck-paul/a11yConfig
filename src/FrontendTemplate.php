@@ -18,7 +18,6 @@ use dcCore;
 
 class FrontendTemplate
 {
-    # Template function
     public static function tplAccessConfig($attr)
     {
         if (!(bool) dcCore::app()->blog->settings->get(My::id())->active) {
@@ -37,27 +36,5 @@ class FrontendTemplate
         ];
 
         return '<?php echo "' . addcslashes(FrontendHelper::render($title, $icon, $params), '"\\') . '"; ?>';
-    }
-
-    # Widget function
-    public static function a11yconfigWidget($w)
-    {
-        if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
-            return;
-        }
-
-        if ($w->offline) {
-            return;
-        }
-
-        $params = [
-            'Font'             => ($w->font ? true : false),
-            'LineSpacing'      => ($w->linespacing ? true : false),
-            'Justification'    => ($w->justification ? true : false),
-            'Contrast'         => ($w->contrast ? true : false),
-            'ImageReplacement' => ($w->image ? true : false),
-        ];
-
-        return FrontendHelper::render($w->buttonname, $w->icon, $params, 'widget');
     }
 }
