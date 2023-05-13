@@ -16,6 +16,7 @@ namespace Dotclear\Plugin\a11yConfig;
 
 use dcCore;
 use dcPage;
+use dcWorkspace;
 use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Fieldset;
 use Dotclear\Helper\Html\Form\Input;
@@ -31,13 +32,13 @@ class BackendBehaviors
 {
     public static function adminPageHTMLHead()
     {
-        $settings = dcCore::app()->auth->user_prefs->get(My::id());
+        $preferences = dcCore::app()->auth->user_prefs->get(My::id());
 
-        if ($settings->active) {
+        if ($preferences->active) {
             $version = dcCore::app()->getVersion(My::id());
 
             $class = '';
-            switch ((int) $settings->icon) {
+            switch ((int) $preferences->icon) {
                 case Prepend::ICON_WHEELCHAIR:
                     $class = 'a11yc-wc';
 
@@ -53,17 +54,17 @@ class BackendBehaviors
                 'options' => [
                     'Prefix'           => 'a42-ac',
                     'Modal'            => true,
-                    'Font'             => (bool) $settings->font,
-                    'LineSpacing'      => (bool) $settings->linespacing,
-                    'Justification'    => (bool) $settings->justification,
-                    'Contrast'         => (bool) $settings->contrast,
-                    'ImageReplacement' => (bool) $settings->image,
+                    'Font'             => (bool) $preferences->font,
+                    'LineSpacing'      => (bool) $preferences->linespacing,
+                    'Justification'    => (bool) $preferences->justification,
+                    'Contrast'         => (bool) $preferences->contrast,
+                    'ImageReplacement' => (bool) $preferences->image,
                 ],
                 // Plugin specific data
-                'label'   => $settings->label,
+                'label'   => $preferences->label,
                 'class'   => $class,
-                'parent'  => (int) $settings->position === Prepend::IN_TOP ? 'ul#top-info-user' : 'footer',
-                'element' => (int) $settings->position === Prepend::IN_TOP ? 'li' : 'div',
+                'parent'  => (int) $preferences->position === Prepend::IN_TOP ? 'ul#top-info-user' : 'footer',
+                'element' => (int) $preferences->position === Prepend::IN_TOP ? 'li' : 'div',
             ];
             echo dcPage::jsJson('a11yc', $data);
 
@@ -79,19 +80,19 @@ class BackendBehaviors
     {
         // Get and store user's prefs for plugin options
         try {
-            $settings = dcCore::app()->auth->user_prefs->get(My::id());
+            $preferences = dcCore::app()->auth->user_prefs->get(My::id());
 
-            $settings->put('active', !empty($_POST['a11yc_active']), 'boolean');
+            $preferences->put('active', !empty($_POST['a11yc_active']), dcWorkspace::WS_BOOL);
 
-            $settings->put('label', Html::escapeHTML($_POST['a11yc_label']), 'string');
-            $settings->put('icon', abs((int) $_POST['a11yc_icon']), 'integer');
-            $settings->put('position', abs((int) $_POST['a11yc_position']), 'integer');
+            $preferences->put('label', Html::escapeHTML($_POST['a11yc_label']), dcWorkspace::WS_STRING);
+            $preferences->put('icon', abs((int) $_POST['a11yc_icon']), dcWorkspace::WS_INT);
+            $preferences->put('position', abs((int) $_POST['a11yc_position']), dcWorkspace::WS_INT);
 
-            $settings->put('font', !empty($_POST['a11yc_font']), 'boolean');
-            $settings->put('linespacing', !empty($_POST['a11yc_linespacing']), 'boolean');
-            $settings->put('justification', !empty($_POST['a11yc_justification']), 'boolean');
-            $settings->put('contrast', !empty($_POST['a11yc_contrast']), 'boolean');
-            $settings->put('image', !empty($_POST['a11yc_image']), 'boolean');
+            $preferences->put('font', !empty($_POST['a11yc_font']), dcWorkspace::WS_BOOL);
+            $preferences->put('linespacing', !empty($_POST['a11yc_linespacing']), dcWorkspace::WS_BOOL);
+            $preferences->put('justification', !empty($_POST['a11yc_justification']), dcWorkspace::WS_BOOL);
+            $preferences->put('contrast', !empty($_POST['a11yc_contrast']), dcWorkspace::WS_BOOL);
+            $preferences->put('image', !empty($_POST['a11yc_image']), dcWorkspace::WS_BOOL);
         } catch (Exception $e) {
             dcCore::app()->error->add($e->getMessage());
         }
@@ -116,19 +117,19 @@ class BackendBehaviors
         ];
 
         // Get user's prefs for plugin options
-        $settings = dcCore::app()->auth->user_prefs->get(My::id());
+        $preferences = dcCore::app()->auth->user_prefs->get(My::id());
 
-        $a11yc_active = (bool) $settings->active;
+        $a11yc_active = (bool) $preferences->active;
 
-        $a11yc_label    = $settings->label;
-        $a11yc_icon     = (int) $settings->icon;
-        $a11yc_position = (int) $settings->position;
+        $a11yc_label    = $preferences->label;
+        $a11yc_icon     = (int) $preferences->icon;
+        $a11yc_position = (int) $preferences->position;
 
-        $a11yc_font          = (bool) $settings->font;
-        $a11yc_linespacing   = (bool) $settings->linespacing;
-        $a11yc_justification = (bool) $settings->justification;
-        $a11yc_contrast      = (bool) $settings->contrast;
-        $a11yc_image         = (bool) $settings->image;
+        $a11yc_font          = (bool) $preferences->font;
+        $a11yc_linespacing   = (bool) $preferences->linespacing;
+        $a11yc_justification = (bool) $preferences->justification;
+        $a11yc_contrast      = (bool) $preferences->contrast;
+        $a11yc_image         = (bool) $preferences->image;
 
         $icons = [];
         $i     = 0;

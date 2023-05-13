@@ -172,4 +172,16 @@ class My
     {
         return '/' . preg_quote(dcCore::app()->adminurl->get('admin.plugin.' . self::id())) . '(&.*)?$/';
     }
+
+    /**
+     * Makes an url including optionnal parameters.
+     *
+     * @param      array   $params  The parameters
+     *
+     * @return     string
+     */
+    public static function makeUrl(array $params = []): string
+    {
+        return dcCore::app()->adminurl->get('admin.plugin.' . self::id(), $params);
+    }
 }

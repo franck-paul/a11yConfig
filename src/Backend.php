@@ -35,7 +35,7 @@ class Backend extends dcNsProcess
 
         dcCore::app()->menu[dcAdmin::MENU_BLOG]->addItem(
             __('Accessibility'),
-            dcCore::app()->adminurl->get('admin.plugin.' . My::id()),
+            My::makeUrl(),
             My::icons(),
             preg_match(My::urlScheme(), $_SERVER['REQUEST_URI']),
             My::checkContext(My::MENU)

@@ -21,7 +21,8 @@ class Frontendbehaviors
 {
     public static function publicHeadContent()
     {
-        if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
+        $settings = dcCore::app()->blog->settings->get(My::id());
+        if (!(bool) $settings->active) {
             return;
         }
 
@@ -44,26 +45,27 @@ class Frontendbehaviors
 
     private static function inject($position)
     {
-        if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
+        $settings = dcCore::app()->blog->settings->get(My::id());
+        if (!(bool) $settings->active) {
             return;
         }
 
-        if (!(bool) dcCore::app()->blog->settings->a11yConfig->injection) {
+        if (!(bool) $settings->injection) {
             return;
         }
 
-        if ((int) dcCore::app()->blog->settings->a11yConfig->position !== $position) {
+        if ((int) $settings->position !== $position) {
             return;
         }
 
         $params = [
-            'Font'             => (bool) dcCore::app()->blog->settings->a11yConfig->font,
-            'LineSpacing'      => (bool) dcCore::app()->blog->settings->a11yConfig->linespacing,
-            'Justification'    => (bool) dcCore::app()->blog->settings->a11yConfig->justification,
-            'Contrast'         => (bool) dcCore::app()->blog->settings->a11yConfig->contrast,
-            'ImageReplacement' => (bool) dcCore::app()->blog->settings->a11yConfig->image,
+            'Font'             => (bool) $settings->font,
+            'LineSpacing'      => (bool) $settings->linespacing,
+            'Justification'    => (bool) $settings->justification,
+            'Contrast'         => (bool) $settings->contrast,
+            'ImageReplacement' => (bool) $settings->image,
         ];
 
-        echo FrontendHelper::render(dcCore::app()->blog->settings->a11yConfig->label, dcCore::app()->blog->settings->a11yConfig->icon, $params);
+        echo FrontendHelper::render($settings->label, $settings->icon, $params);
     }
 }

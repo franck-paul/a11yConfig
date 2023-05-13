@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\a11yConfig;
 
 use dcCore;
+use dcNamespace;
 use dcNsProcess;
 use dcPage;
 use Dotclear\Helper\Html\Form\Checkbox;
@@ -54,18 +55,18 @@ class Manage extends dcNsProcess
             try {
                 $settings = dcCore::app()->blog->settings->get(My::id());
 
-                $settings->put('active', !empty($_POST['a11yc_active']));
+                $settings->put('active', !empty($_POST['a11yc_active']), dcNamespace::NS_BOOL);
 
-                $settings->put('injection', !empty($_POST['a11yc_injection']));
-                $settings->put('label', Html::escapeHTML($_POST['a11yc_label']));
-                $settings->put('icon', abs((int) $_POST['a11yc_icon']));
-                $settings->put('position', abs((int) $_POST['a11yc_position']));
+                $settings->put('injection', !empty($_POST['a11yc_injection']), dcNamespace::NS_BOOL);
+                $settings->put('label', Html::escapeHTML($_POST['a11yc_label']), dcNamespace::NS_STRING);
+                $settings->put('icon', abs((int) $_POST['a11yc_icon']), dcNamespace::NS_INT);
+                $settings->put('position', abs((int) $_POST['a11yc_position']), dcNamespace::NS_INT);
 
-                $settings->put('font', !empty($_POST['a11yc_font']));
-                $settings->put('linespacing', !empty($_POST['a11yc_linespacing']));
-                $settings->put('justification', !empty($_POST['a11yc_justification']));
-                $settings->put('contrast', !empty($_POST['a11yc_contrast']));
-                $settings->put('image', !empty($_POST['a11yc_image']));
+                $settings->put('font', !empty($_POST['a11yc_font']), dcNamespace::NS_BOOL);
+                $settings->put('linespacing', !empty($_POST['a11yc_linespacing']), dcNamespace::NS_BOOL);
+                $settings->put('justification', !empty($_POST['a11yc_justification']), dcNamespace::NS_BOOL);
+                $settings->put('contrast', !empty($_POST['a11yc_contrast']), dcNamespace::NS_BOOL);
+                $settings->put('image', !empty($_POST['a11yc_image']), dcNamespace::NS_BOOL);
 
                 dcCore::app()->blog->triggerBlog();
 

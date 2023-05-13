@@ -20,7 +20,8 @@ class FrontendTemplate
 {
     public static function tplAccessConfig($attr)
     {
-        if (!(bool) dcCore::app()->blog->settings->get(My::id())->active) {
+        $settings = dcCore::app()->blog->settings->get(My::id());
+        if (!(bool) $settings->active) {
             return;
         }
 

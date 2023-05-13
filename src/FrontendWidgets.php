@@ -20,7 +20,8 @@ class FrontendWidgets
 {
     public static function renderWidget($w)
     {
-        if (!(bool) dcCore::app()->blog->settings->a11yConfig->active) {
+        $settings = dcCore::app()->blog->settings->get(My::id());
+        if (!(bool) $settings->active) {
             return;
         }
 
