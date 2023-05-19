@@ -33,9 +33,9 @@ class Frontend extends dcNsProcess
         }
 
         dcCore::app()->addBehaviors([
-            'publicHeadContent'     => [Frontendbehaviors::class, 'publicHeadContent'],
-            'publicTopAfterContent' => [Frontendbehaviors::class, 'publicTopAfterContent'],
-            'publicFooterContent'   => [Frontendbehaviors::class, 'publicFooterContent'],
+            'publicHeadContent'     => [FrontendBehaviors::class, 'publicHeadContent'],
+            'publicTopAfterContent' => [FrontendBehaviors::class, 'publicTopAfterContent'],
+            'publicFooterContent'   => [FrontendBehaviors::class, 'publicFooterContent'],
 
             'initWidgets'        => [Widgets::class, 'initWidgets'],
             'initDefaultWidgets' => [Widgets::class, 'initDefaultWidgets'],

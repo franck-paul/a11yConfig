@@ -17,7 +17,7 @@ namespace Dotclear\Plugin\a11yConfig;
 use dcCore;
 use dcUtils;
 
-class Frontendbehaviors
+class FrontendBehaviors
 {
     public static function publicHeadContent()
     {
