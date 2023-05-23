@@ -15,10 +15,11 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\a11yConfig;
 
 use dcCore;
+use Dotclear\Plugin\widgets\WidgetsElement;
 
 class FrontendWidgets
 {
-    public static function renderWidget($w)
+    public static function renderWidget(WidgetsElement $w)
     {
         $settings = dcCore::app()->blog->settings->get(My::id());
         if (!(bool) $settings->active) {
