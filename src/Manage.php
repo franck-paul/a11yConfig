@@ -120,6 +120,7 @@ class Manage extends dcNsProcess
         $i     = 0;
         foreach ($a11yc_icons as $k => $v) {
             $icons[] = (new Radio(['a11yc_icon', 'a11yc_icon_' . $i], $a11yc_icon == $k))
+                ->value($k)
                 ->label((new Label($v, Label::INSIDE_TEXT_AFTER)));
             $i++;
         }
@@ -128,6 +129,7 @@ class Manage extends dcNsProcess
         $i         = 0;
         foreach ($a11yc_positions as $k => $v) {
             $positions[] = (new Radio(['a11yc_position', 'a11yc_position_' . $i], $a11yc_position == $k))
+                ->value($k)
                 ->label((new Label($v, Label::INSIDE_TEXT_AFTER)));
             $i++;
         }
