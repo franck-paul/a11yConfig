@@ -32,6 +32,11 @@ class Frontend extends dcNsProcess
             return false;
         }
 
+        $settings = dcCore::app()->blog->settings->get(My::id());
+        if (!(bool) $settings->active) {
+            return false;
+        }
+
         dcCore::app()->addBehaviors([
             'publicHeadContent'     => [FrontendBehaviors::class, 'publicHeadContent'],
             'publicTopAfterContent' => [FrontendBehaviors::class, 'publicTopAfterContent'],
