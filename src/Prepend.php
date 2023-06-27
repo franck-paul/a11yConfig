@@ -18,6 +18,7 @@ use dcNsProcess;
 
 class Prepend extends dcNsProcess
 {
+    protected static $init = false; /** @deprecated since 2.27 */
     // Constants for position (public/admin)
     public const IN_TOP    = 0;
     public const IN_BOTTOM = 1;
