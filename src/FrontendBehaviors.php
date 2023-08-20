@@ -15,7 +15,6 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\a11yConfig;
 
 use dcCore;
-use dcUtils;
 
 class FrontendBehaviors
 {
@@ -27,10 +26,10 @@ class FrontendBehaviors
         }
 
         echo
-        dcUtils::cssModuleLoad(My::id() . '/lib/css/accessconfig.min.css') .
-        dcUtils::cssModuleLoad(My::id() . '/css/public.css') .
-        dcUtils::jsModuleLoad(My::id() . '/js/public.js') .
-        dcUtils::jsModuleLoad(My::id() . '/lib/js/accessconfig.min.js');
+        My::cssLoad('/lib/css/accessconfig.min.css') .
+        My::cssLoad('public.css') .
+        My::jsLoad('public.js') .
+        My::jsLoad('/lib/js/accessconfig.min.js');
     }
 
     public static function publicTopAfterContent()

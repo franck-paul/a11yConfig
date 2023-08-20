@@ -15,21 +15,18 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\a11yConfig;
 
 use dcCore;
-use dcNsProcess;
+use Dotclear\Core\Process;
 
-class Frontend extends dcNsProcess
+class Frontend extends Process
 {
-    protected static $init = false; /** @deprecated since 2.27 */
     public static function init(): bool
     {
-        static::$init = My::checkContext(My::FRONTEND);
-
-        return static::$init;
+        return self::status(My::checkContext(My::FRONTEND));
     }
 
     public static function process(): bool
     {
-        if (!static::$init) {
+        if (!self::status()) {
             return false;
         }
 
@@ -39,15 +36,15 @@ class Frontend extends dcNsProcess
         }
 
         dcCore::app()->addBehaviors([
-            'publicHeadContent'     => [FrontendBehaviors::class, 'publicHeadContent'],
-            'publicTopAfterContent' => [FrontendBehaviors::class, 'publicTopAfterContent'],
-            'publicFooterContent'   => [FrontendBehaviors::class, 'publicFooterContent'],
+            'publicHeadContent'     => FrontendBehaviors::publicHeadContent(...),
+            'publicTopAfterContent' => FrontendBehaviors::publicTopAfterContent(...),
+            'publicFooterContent'   => FrontendBehaviors::publicFooterContent(...),
 
-            'initWidgets'        => [Widgets::class, 'initWidgets'],
-            'initDefaultWidgets' => [Widgets::class, 'initDefaultWidgets'],
+            'initWidgets'        => Widgets::initWidgets(...),
+            'initDefaultWidgets' => Widgets::initDefaultWidgets(...),
         ]);
 
-        dcCore::app()->tpl->addValue('AccessConfig', [FrontendTemplate::class, 'tplAccessConfig']);
+        dcCore::app()->tpl->addValue('AccessConfig', FrontendTemplate::tplAccessConfig(...));
 
         return true;
     }

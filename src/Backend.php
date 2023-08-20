@@ -14,46 +14,37 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\a11yConfig;
 
-use dcAdmin;
 use dcCore;
-use dcNsProcess;
+use Dotclear\Core\Backend\Menus;
+use Dotclear\Core\Process;
 
-class Backend extends dcNsProcess
+class Backend extends Process
 {
-    protected static $init = false; /** @deprecated since 2.27 */
     public static function init(): bool
     {
-        static::$init = My::checkContext(My::BACKEND);
-
-        return static::$init;
+        return self::status(My::checkContext(My::BACKEND));
     }
 
     public static function process(): bool
     {
-        if (!static::$init) {
+        if (!self::status()) {
             return false;
         }
 
-        dcCore::app()->menu[dcAdmin::MENU_BLOG]->addItem(
-            __('Accessibility'),
-            My::makeUrl(),
-            My::icons(),
-            preg_match(My::urlScheme(), $_SERVER['REQUEST_URI']),
-            My::checkContext(My::MENU)
-        );
+        My::addBackendMenuItem(Menus::MENU_BLOG);
 
         dcCore::app()->addBehaviors([
-            'adminPageHTMLHead' => [BackendBehaviors::class, 'adminPageHTMLHead'],
+            'adminPageHTMLHead' => BackendBehaviors::adminPageHTMLHead(...),
 
-            'adminBeforeUserOptionsUpdate' => [BackendBehaviors::class, 'adminBeforeUserOptionsUpdate'],
-            'adminPreferencesFormV2'       => [BackendBehaviors::class, 'adminPreferencesForm'],
-            'adminPreferencesHeaders'      => [BackendBehaviors::class, 'adminPreferencesHeaders'],
+            'adminBeforeUserOptionsUpdate' => BackendBehaviors::adminBeforeUserOptionsUpdate(...),
+            'adminPreferencesFormV2'       => BackendBehaviors::adminPreferencesForm(...),
+            'adminPreferencesHeaders'      => BackendBehaviors::adminPreferencesHeaders(...),
         ]);
 
         if (My::checkContext(My::WIDGETS)) {
             dcCore::app()->addBehaviors([
-                'initWidgets'        => [Widgets::class, 'initWidgets'],
-                'initDefaultWidgets' => [Widgets::class, 'initDefaultWidgets'],
+                'initWidgets'        => Widgets::initWidgets(...),
+                'initDefaultWidgets' => Widgets::initDefaultWidgets(...),
             ]);
         }
 

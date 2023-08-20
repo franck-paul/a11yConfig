@@ -15,8 +15,8 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\a11yConfig;
 
 use dcCore;
-use dcPage;
 use dcWorkspace;
+use Dotclear\Core\Backend\Page;
 use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Fieldset;
 use Dotclear\Helper\Html\Form\Input;
@@ -66,13 +66,13 @@ class BackendBehaviors
                 'parent'  => (int) $preferences->position === Prepend::IN_TOP ? 'ul#top-info-user' : 'footer',
                 'element' => (int) $preferences->position === Prepend::IN_TOP ? 'li' : 'div',
             ];
-            echo dcPage::jsJson('a11yc', $data);
+            echo Page::jsJson('a11yc', $data);
 
             echo
-            dcPage::cssModuleLoad(My::id() . '/lib/css/accessconfig.min.css', 'screen', $version) .
-            dcPage::cssModuleLoad(My::id() . '/css/admin.css', 'screen', $version) .
-            dcPage::jsModuleLoad(My::id() . '/js/admin.js', $version) .
-            dcPage::jsModuleLoad(My::id() . '/lib/js/accessconfig.min.js', $version);
+            My::cssLoad('/lib/css/accessconfig.min.css') .
+            My::cssLoad('admin.css') .
+            My::jsLoad('admin.js') .
+            My::jsLoad('/lib/js/accessconfig.min.js');
         }
     }
 
@@ -100,7 +100,7 @@ class BackendBehaviors
 
     public static function adminPreferencesHeaders()
     {
-        return dcPage::jsModuleLoad(My::id() . '/js/settings.js', dcCore::app()->getVersion(My::id()));
+        return My::jsLoad('settings.js');
     }
 
     public static function adminPreferencesForm()
