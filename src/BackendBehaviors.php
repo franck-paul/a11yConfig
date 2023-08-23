@@ -32,7 +32,7 @@ class BackendBehaviors
 {
     public static function adminPageHTMLHead()
     {
-        $preferences = dcCore::app()->auth->user_prefs->get(My::id());
+        $preferences = My::prefs();
 
         if ($preferences->active) {
             $version = dcCore::app()->getVersion(My::id());
@@ -80,7 +80,7 @@ class BackendBehaviors
     {
         // Get and store user's prefs for plugin options
         try {
-            $preferences = dcCore::app()->auth->user_prefs->get(My::id());
+            $preferences = My::prefs();
 
             $preferences->put('active', !empty($_POST['a11yc_active']), dcWorkspace::WS_BOOL);
 
@@ -117,7 +117,7 @@ class BackendBehaviors
         ];
 
         // Get user's prefs for plugin options
-        $preferences = dcCore::app()->auth->user_prefs->get(My::id());
+        $preferences = My::prefs();
 
         $a11yc_active = (bool) $preferences->active;
 

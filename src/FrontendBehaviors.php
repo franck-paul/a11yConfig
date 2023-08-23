@@ -14,13 +14,11 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\a11yConfig;
 
-use dcCore;
-
 class FrontendBehaviors
 {
     public static function publicHeadContent()
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
         if (!(bool) $settings->active) {
             return;
         }
@@ -44,7 +42,7 @@ class FrontendBehaviors
 
     private static function inject($position)
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
         if (!(bool) $settings->active) {
             return;
         }

@@ -51,7 +51,7 @@ class Manage extends Process
 
         if (!empty($_POST)) {
             try {
-                $settings = dcCore::app()->blog->settings->get(My::id());
+                $settings = My::settings();
 
                 $settings->put('active', !empty($_POST['a11yc_active']), dcNamespace::NS_BOOL);
 
@@ -88,7 +88,7 @@ class Manage extends Process
         }
 
         // Get current options
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
 
         $a11yc_positions = [
             Prepend::IN_TOP    => __('In header'),
@@ -134,7 +134,7 @@ class Manage extends Process
 
         $head = My::jsLoad('settings.js');
 
-        Page::openModule(__('a11yConfig'), $head);
+        Page::openModule(My::name(), $head);
 
         echo Page::breadcrumb(
             [
@@ -210,7 +210,7 @@ class Manage extends Process
                 (new Para())->items([
                     (new Submit(['frmsubmit']))
                         ->value(__('Check')),
-                    dcCore::app()->formNonce(false),
+                    ... My::hiddenFields(),
                 ]),
             ])
         ->render();

@@ -14,13 +14,11 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\a11yConfig;
 
-use dcCore;
-
 class FrontendTemplate
 {
     public static function tplAccessConfig($attr)
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
         if (!(bool) $settings->active) {
             return;
         }

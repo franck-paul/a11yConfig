@@ -30,7 +30,7 @@ class Frontend extends Process
             return false;
         }
 
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
         if (!(bool) $settings->active) {
             return false;
         }
