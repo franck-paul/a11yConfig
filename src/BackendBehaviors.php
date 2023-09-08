@@ -35,19 +35,11 @@ class BackendBehaviors
         $preferences = My::prefs();
 
         if ($preferences->active) {
-            $version = dcCore::app()->getVersion(My::id());
-
-            $class = '';
-            switch ((int) $preferences->icon) {
-                case Prepend::ICON_WHEELCHAIR:
-                    $class = 'a11yc-wc';
-
-                    break;
-                case Prepend::ICON_VISUALDEFICIENCY:
-                    $class = 'a11yc-vd';
-
-                    break;
-            }
+            $class = match ((int) $preferences->icon) {
+                Prepend::ICON_WHEELCHAIR       => 'a11yc-wc',
+                Prepend::ICON_VISUALDEFICIENCY => 'a11yc-vd',
+                default                        => '',
+            };
 
             $data = [
                 // AccessConfig Library data

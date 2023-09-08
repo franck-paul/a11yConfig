@@ -32,21 +32,16 @@ class FrontendHelper
         ];
         $options = array_merge($options, $params);
 
-        switch ($icon) {
-            case Prepend::ICON_WHEELCHAIR:
-                $class .= ($class !== '' ? ' ' : '') . 'a11yc-wc';
-
-                break;
-            case Prepend::ICON_VISUALDEFICIENCY:
-                $class .= ($class !== '' ? ' ' : '') . 'a11yc-vd';
-
-                break;
-        }
+        $class .= match ($icon) {
+            Prepend::ICON_WHEELCHAIR       => ($class !== '' ? ' ' : '') . 'a11yc-wc',
+            Prepend::ICON_VISUALDEFICIENCY => ($class !== '' ? ' ' : '') . 'a11yc-vd',
+            default                        => '',
+        };
 
         return
         '<div ' . ($class !== '' ? 'class="' . $class . '" ' : '') . 'id="accessconfig" data-accessconfig-buttonname="' .
         ($label ? Html::escapeHTML($label) : __('Accessibility parameters')) . '" ' .
         'data-accessconfig-params=\'' . json_encode($options, JSON_THROW_ON_ERROR) . '\'>' .
-            '</div>';
+        '</div>';
     }
 }
