@@ -69,7 +69,7 @@ class Manage extends Process
                 dcCore::app()->blog->triggerBlog();
 
                 Notices::addSuccessNotice(__('Settings have been successfully updated.'));
-                dcCore::app()->admin->url->redirect('admin.plugin.' . My::id());
+                dcCore::app()->adminurl->redirect('admin.plugin.' . My::id());
             } catch (Exception $e) {
                 dcCore::app()->error->add($e->getMessage());
             }
@@ -156,7 +156,7 @@ class Manage extends Process
                         ->label((new Label(__('Activate a11yConfig on blog'), Label::INSIDE_TEXT_AFTER))),
                 ]),
                 (new Para())->class('form-note')->items([
-                    (new Text(null, sprintf(__('A widget is available (see <a href="%s">%s</a>)'), dcCore::app()->admin->url->get('admin.plugin.widgets'), __('Presentation widgets')))),
+                    (new Text(null, sprintf(__('A widget is available (see <a href="%s">%s</a>)'), dcCore::app()->adminurl->get('admin.plugin.widgets'), __('Presentation widgets')))),
                 ]),
                 (new Para())->items([
                     (new Input('a11yc_label'))

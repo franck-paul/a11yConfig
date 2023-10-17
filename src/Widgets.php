@@ -19,7 +19,7 @@ use Dotclear\Plugin\widgets\WidgetsStack;
 
 class Widgets
 {
-    public static function initWidgets(WidgetsStack $w)
+    public static function initWidgets(WidgetsStack $w): string
     {
         $w->create('a11yconfig', 'a11yconfig', FrontendWidgets::renderWidget(...), null, __('Style selector to let users adapt your blog to their needs.'));
 
@@ -37,9 +37,17 @@ class Widgets
         $w->a11yconfig->setting('image', __('Image replacement'), 1, 'check');
 
         $w->a11yconfig->setting('offline', __('Offline'), 0, 'check');
+
+        return '';
     }
 
-    public static function initDefaultWidgets(WidgetsStack $w, array $d)
+    /**
+     * Initializes the default widgets.
+     *
+     * @param      \Dotclear\Plugin\widgets\WidgetsStack    $w  Widgets stack
+     * @param      array<string, WidgetsStack>              $d  Widgets definitions
+     */
+    public static function initDefaultWidgets(WidgetsStack $w, array $d): void
     {
         $d[dcWidgets::WIDGETS_NAV]->append($w->a11yconfig);
     }

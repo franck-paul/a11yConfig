@@ -30,7 +30,7 @@ use Exception;
 
 class BackendBehaviors
 {
-    public static function adminPageHTMLHead()
+    public static function adminPageHTMLHead(): string
     {
         $preferences = My::prefs();
 
@@ -66,9 +66,11 @@ class BackendBehaviors
             My::jsLoad('admin.js') .
             My::jsLoad('/lib/js/accessconfig.min.js');
         }
+
+        return '';
     }
 
-    public static function adminBeforeUserOptionsUpdate()
+    public static function adminBeforeUserOptionsUpdate(): string
     {
         // Get and store user's prefs for plugin options
         try {
@@ -88,14 +90,16 @@ class BackendBehaviors
         } catch (Exception $e) {
             dcCore::app()->error->add($e->getMessage());
         }
+
+        return '';
     }
 
-    public static function adminPreferencesHeaders()
+    public static function adminPreferencesHeaders(): string
     {
         return My::jsLoad('settings.js');
     }
 
-    public static function adminPreferencesForm()
+    public static function adminPreferencesForm(): string
     {
         $a11yc_positions = [
             Prepend::IN_TOP    => __('In admin header'),
@@ -192,5 +196,7 @@ class BackendBehaviors
             ]),
         ])
         ->render();
+
+        return '';
     }
 }

@@ -14,13 +14,20 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\a11yConfig;
 
+use ArrayObject;
+
 class FrontendTemplate
 {
-    public static function tplAccessConfig($attr)
+    /**
+     * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr      The attribute
+     *
+     * @return     string
+     */
+    public static function tplAccessConfig(array|ArrayObject $attr): string
     {
         $settings = My::settings();
         if (!(bool) $settings->active) {
-            return;
+            return '';
         }
 
         $title = $attr['title'] ?? null;

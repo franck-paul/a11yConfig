@@ -16,11 +16,11 @@ namespace Dotclear\Plugin\a11yConfig;
 
 class FrontendBehaviors
 {
-    public static function publicHeadContent()
+    public static function publicHeadContent(): string
     {
         $settings = My::settings();
         if (!(bool) $settings->active) {
-            return;
+            return '';
         }
 
         echo
@@ -28,19 +28,25 @@ class FrontendBehaviors
         My::cssLoad('public.css') .
         My::jsLoad('public.js') .
         My::jsLoad('/lib/js/accessconfig.min.js');
+
+        return '';
     }
 
-    public static function publicTopAfterContent()
+    public static function publicTopAfterContent(): string
     {
         self::inject(Prepend::IN_TOP);
+
+        return '';
     }
 
-    public static function publicFooterContent()
+    public static function publicFooterContent(): string
     {
         self::inject(Prepend::IN_BOTTOM);
+
+        return '';
     }
 
-    private static function inject($position)
+    private static function inject(int $position): void
     {
         $settings = My::settings();
         if (!(bool) $settings->active) {

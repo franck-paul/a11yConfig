@@ -18,15 +18,15 @@ use Dotclear\Plugin\widgets\WidgetsElement;
 
 class FrontendWidgets
 {
-    public static function renderWidget(WidgetsElement $w)
+    public static function renderWidget(WidgetsElement $w): string
     {
         $settings = My::settings();
         if (!(bool) $settings->active) {
-            return;
+            return '';
         }
 
         if ($w->offline) {
-            return;
+            return '';
         }
 
         $params = [

@@ -18,8 +18,17 @@ use Dotclear\Helper\Html\Html;
 
 class FrontendHelper
 {
-    # Render function
-    public static function render($label, $icon, $params, $class = '')
+    /**
+     * Render function
+     *
+     * @param      null|string              $label   The label
+     * @param      int                      $icon    The icon
+     * @param      array<string, mixed>     $params  The parameters
+     * @param      string                   $class   The class
+     *
+     * @return     string
+     */
+    public static function render(?string $label, int $icon, array $params, string $class = ''): string
     {
         $options = [
             'Prefix'           => 'a42-ac',
