@@ -16,6 +16,7 @@ namespace Dotclear\Plugin\a11yConfig;
 
 use dcCore;
 use dcNamespace;
+use Dotclear\App;
 use Dotclear\Core\Backend\Notices;
 use Dotclear\Core\Backend\Page;
 use Dotclear\Core\Process;
@@ -66,7 +67,7 @@ class Manage extends Process
                 $settings->put('contrast', !empty($_POST['a11yc_contrast']), dcNamespace::NS_BOOL);
                 $settings->put('image', !empty($_POST['a11yc_image']), dcNamespace::NS_BOOL);
 
-                dcCore::app()->blog->triggerBlog();
+                App::blog()->triggerBlog();
 
                 Notices::addSuccessNotice(__('Settings have been successfully updated.'));
                 dcCore::app()->adminurl->redirect('admin.plugin.' . My::id());
@@ -138,8 +139,8 @@ class Manage extends Process
 
         echo Page::breadcrumb(
             [
-                Html::escapeHTML(dcCore::app()->blog->name) => '',
-                __('a11yConfig')                            => '',
+                Html::escapeHTML(App::blog()->name()) => '',
+                __('a11yConfig')                      => '',
             ]
         );
         echo Notices::getNotices();

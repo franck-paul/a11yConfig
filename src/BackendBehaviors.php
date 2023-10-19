@@ -34,7 +34,7 @@ class BackendBehaviors
     {
         $preferences = My::prefs();
 
-        if ($preferences->active) {
+        if ($preferences?->active) {
             $class = match ((int) $preferences->icon) {
                 Prepend::ICON_WHEELCHAIR       => 'a11yc-wc',
                 Prepend::ICON_VISUALDEFICIENCY => 'a11yc-vd',
@@ -76,17 +76,19 @@ class BackendBehaviors
         try {
             $preferences = My::prefs();
 
-            $preferences->put('active', !empty($_POST['a11yc_active']), dcWorkspace::WS_BOOL);
+            if ($preferences) {
+                $preferences->put('active', !empty($_POST['a11yc_active']), dcWorkspace::WS_BOOL);
 
-            $preferences->put('label', Html::escapeHTML($_POST['a11yc_label']), dcWorkspace::WS_STRING);
-            $preferences->put('icon', abs((int) $_POST['a11yc_icon']), dcWorkspace::WS_INT);
-            $preferences->put('position', abs((int) $_POST['a11yc_position']), dcWorkspace::WS_INT);
+                $preferences->put('label', Html::escapeHTML($_POST['a11yc_label']), dcWorkspace::WS_STRING);
+                $preferences->put('icon', abs((int) $_POST['a11yc_icon']), dcWorkspace::WS_INT);
+                $preferences->put('position', abs((int) $_POST['a11yc_position']), dcWorkspace::WS_INT);
 
-            $preferences->put('font', !empty($_POST['a11yc_font']), dcWorkspace::WS_BOOL);
-            $preferences->put('linespacing', !empty($_POST['a11yc_linespacing']), dcWorkspace::WS_BOOL);
-            $preferences->put('justification', !empty($_POST['a11yc_justification']), dcWorkspace::WS_BOOL);
-            $preferences->put('contrast', !empty($_POST['a11yc_contrast']), dcWorkspace::WS_BOOL);
-            $preferences->put('image', !empty($_POST['a11yc_image']), dcWorkspace::WS_BOOL);
+                $preferences->put('font', !empty($_POST['a11yc_font']), dcWorkspace::WS_BOOL);
+                $preferences->put('linespacing', !empty($_POST['a11yc_linespacing']), dcWorkspace::WS_BOOL);
+                $preferences->put('justification', !empty($_POST['a11yc_justification']), dcWorkspace::WS_BOOL);
+                $preferences->put('contrast', !empty($_POST['a11yc_contrast']), dcWorkspace::WS_BOOL);
+                $preferences->put('image', !empty($_POST['a11yc_image']), dcWorkspace::WS_BOOL);
+            }
         } catch (Exception $e) {
             dcCore::app()->error->add($e->getMessage());
         }
@@ -115,17 +117,17 @@ class BackendBehaviors
         // Get user's prefs for plugin options
         $preferences = My::prefs();
 
-        $a11yc_active = (bool) $preferences->active;
+        $a11yc_active = (bool) $preferences?->active;
 
-        $a11yc_label    = $preferences->label;
-        $a11yc_icon     = (int) $preferences->icon;
-        $a11yc_position = (int) $preferences->position;
+        $a11yc_label    = $preferences?->label;
+        $a11yc_icon     = (int) $preferences?->icon;
+        $a11yc_position = (int) $preferences?->position;
 
-        $a11yc_font          = (bool) $preferences->font;
-        $a11yc_linespacing   = (bool) $preferences->linespacing;
-        $a11yc_justification = (bool) $preferences->justification;
-        $a11yc_contrast      = (bool) $preferences->contrast;
-        $a11yc_image         = (bool) $preferences->image;
+        $a11yc_font          = (bool) $preferences?->font;
+        $a11yc_linespacing   = (bool) $preferences?->linespacing;
+        $a11yc_justification = (bool) $preferences?->justification;
+        $a11yc_contrast      = (bool) $preferences?->contrast;
+        $a11yc_image         = (bool) $preferences?->image;
 
         $icons = [];
         $i     = 0;

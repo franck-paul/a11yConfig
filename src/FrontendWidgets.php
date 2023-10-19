@@ -37,6 +37,6 @@ class FrontendWidgets
             'ImageReplacement' => ($w->image ? true : false),
         ];
 
-        return FrontendHelper::render($w->buttonname, $w->icon, $params, 'widget');
+        return FrontendHelper::render($w->buttonname, (int) $w->icon, $params, 'widget');
     }
 }
