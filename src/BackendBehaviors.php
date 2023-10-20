@@ -14,8 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\a11yConfig;
 
-use dcCore;
-use dcWorkspace;
+use Dotclear\App;
 use Dotclear\Core\Backend\Page;
 use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Fieldset;
@@ -77,20 +76,20 @@ class BackendBehaviors
             $preferences = My::prefs();
 
             if ($preferences) {
-                $preferences->put('active', !empty($_POST['a11yc_active']), dcWorkspace::WS_BOOL);
+                $preferences->put('active', !empty($_POST['a11yc_active']), App::userWorkspace()::WS_BOOL);
 
-                $preferences->put('label', Html::escapeHTML($_POST['a11yc_label']), dcWorkspace::WS_STRING);
-                $preferences->put('icon', abs((int) $_POST['a11yc_icon']), dcWorkspace::WS_INT);
-                $preferences->put('position', abs((int) $_POST['a11yc_position']), dcWorkspace::WS_INT);
+                $preferences->put('label', Html::escapeHTML($_POST['a11yc_label']), App::userWorkspace()::WS_STRING);
+                $preferences->put('icon', abs((int) $_POST['a11yc_icon']), App::userWorkspace()::WS_INT);
+                $preferences->put('position', abs((int) $_POST['a11yc_position']), App::userWorkspace()::WS_INT);
 
-                $preferences->put('font', !empty($_POST['a11yc_font']), dcWorkspace::WS_BOOL);
-                $preferences->put('linespacing', !empty($_POST['a11yc_linespacing']), dcWorkspace::WS_BOOL);
-                $preferences->put('justification', !empty($_POST['a11yc_justification']), dcWorkspace::WS_BOOL);
-                $preferences->put('contrast', !empty($_POST['a11yc_contrast']), dcWorkspace::WS_BOOL);
-                $preferences->put('image', !empty($_POST['a11yc_image']), dcWorkspace::WS_BOOL);
+                $preferences->put('font', !empty($_POST['a11yc_font']), App::userWorkspace()::WS_BOOL);
+                $preferences->put('linespacing', !empty($_POST['a11yc_linespacing']), App::userWorkspace()::WS_BOOL);
+                $preferences->put('justification', !empty($_POST['a11yc_justification']), App::userWorkspace()::WS_BOOL);
+                $preferences->put('contrast', !empty($_POST['a11yc_contrast']), App::userWorkspace()::WS_BOOL);
+                $preferences->put('image', !empty($_POST['a11yc_image']), App::userWorkspace()::WS_BOOL);
             }
         } catch (Exception $e) {
-            dcCore::app()->error->add($e->getMessage());
+            App::error()->add($e->getMessage());
         }
 
         return '';

@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\a11yConfig;
 
-use dcCore;
-use dcNamespace;
 use Dotclear\App;
 use Dotclear\Core\Backend\Notices;
 use Dotclear\Core\Backend\Page;
@@ -54,25 +52,25 @@ class Manage extends Process
             try {
                 $settings = My::settings();
 
-                $settings->put('active', !empty($_POST['a11yc_active']), dcNamespace::NS_BOOL);
+                $settings->put('active', !empty($_POST['a11yc_active']), App::blogWorkspace()::NS_BOOL);
 
-                $settings->put('injection', !empty($_POST['a11yc_injection']), dcNamespace::NS_BOOL);
-                $settings->put('label', Html::escapeHTML($_POST['a11yc_label']), dcNamespace::NS_STRING);
-                $settings->put('icon', abs((int) $_POST['a11yc_icon']), dcNamespace::NS_INT);
-                $settings->put('position', abs((int) $_POST['a11yc_position']), dcNamespace::NS_INT);
+                $settings->put('injection', !empty($_POST['a11yc_injection']), App::blogWorkspace()::NS_BOOL);
+                $settings->put('label', Html::escapeHTML($_POST['a11yc_label']), App::blogWorkspace()::NS_STRING);
+                $settings->put('icon', abs((int) $_POST['a11yc_icon']), App::blogWorkspace()::NS_INT);
+                $settings->put('position', abs((int) $_POST['a11yc_position']), App::blogWorkspace()::NS_INT);
 
-                $settings->put('font', !empty($_POST['a11yc_font']), dcNamespace::NS_BOOL);
-                $settings->put('linespacing', !empty($_POST['a11yc_linespacing']), dcNamespace::NS_BOOL);
-                $settings->put('justification', !empty($_POST['a11yc_justification']), dcNamespace::NS_BOOL);
-                $settings->put('contrast', !empty($_POST['a11yc_contrast']), dcNamespace::NS_BOOL);
-                $settings->put('image', !empty($_POST['a11yc_image']), dcNamespace::NS_BOOL);
+                $settings->put('font', !empty($_POST['a11yc_font']), App::blogWorkspace()::NS_BOOL);
+                $settings->put('linespacing', !empty($_POST['a11yc_linespacing']), App::blogWorkspace()::NS_BOOL);
+                $settings->put('justification', !empty($_POST['a11yc_justification']), App::blogWorkspace()::NS_BOOL);
+                $settings->put('contrast', !empty($_POST['a11yc_contrast']), App::blogWorkspace()::NS_BOOL);
+                $settings->put('image', !empty($_POST['a11yc_image']), App::blogWorkspace()::NS_BOOL);
 
                 App::blog()->triggerBlog();
 
                 Notices::addSuccessNotice(__('Settings have been successfully updated.'));
-                dcCore::app()->adminurl->redirect('admin.plugin.' . My::id());
+                My::redirect();
             } catch (Exception $e) {
-                dcCore::app()->error->add($e->getMessage());
+                App::error()->add($e->getMessage());
             }
         }
 
@@ -148,7 +146,7 @@ class Manage extends Process
         // Form
         echo
         (new Form('a11y_params'))
-            ->action(dcCore::app()->admin->getPageURL())
+            ->action(App::backend()->getPageURL())
             ->method('post')
             ->fields([
                 (new Para())->items([
@@ -157,7 +155,7 @@ class Manage extends Process
                         ->label((new Label(__('Activate a11yConfig on blog'), Label::INSIDE_TEXT_AFTER))),
                 ]),
                 (new Para())->class('form-note')->items([
-                    (new Text(null, sprintf(__('A widget is available (see <a href="%s">%s</a>)'), dcCore::app()->adminurl->get('admin.plugin.widgets'), __('Presentation widgets')))),
+                    (new Text(null, sprintf(__('A widget is available (see <a href="%s">%s</a>)'), App::backend()->url()->get('admin.plugin.widgets'), __('Presentation widgets')))),
                 ]),
                 (new Para())->items([
                     (new Input('a11yc_label'))

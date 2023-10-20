@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\a11yConfig;
 
-use dcCore;
+use Dotclear\App;
 use Dotclear\Core\Backend\Menus;
 use Dotclear\Core\Process;
 
@@ -33,7 +33,7 @@ class Backend extends Process
 
         My::addBackendMenuItem(Menus::MENU_BLOG);
 
-        dcCore::app()->addBehaviors([
+        App::behavior()->addBehaviors([
             'adminPageHTMLHead' => BackendBehaviors::adminPageHTMLHead(...),
 
             'adminBeforeUserOptionsUpdate' => BackendBehaviors::adminBeforeUserOptionsUpdate(...),
@@ -42,7 +42,7 @@ class Backend extends Process
         ]);
 
         if (My::checkContext(My::WIDGETS)) {
-            dcCore::app()->addBehaviors([
+            App::behavior()->addBehaviors([
                 'initWidgets'        => Widgets::initWidgets(...),
                 'initDefaultWidgets' => Widgets::initDefaultWidgets(...),
             ]);

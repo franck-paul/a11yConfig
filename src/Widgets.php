@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\a11yConfig;
 
-use Dotclear\Plugin\widgets\Widgets as dcWidgets;
+use Dotclear\Plugin\widgets\Widgets as AppWidgets;
 use Dotclear\Plugin\widgets\WidgetsStack;
 
 class Widgets
@@ -49,6 +49,6 @@ class Widgets
      */
     public static function initDefaultWidgets(WidgetsStack $w, array $d): void
     {
-        $d[dcWidgets::WIDGETS_NAV]->append($w->a11yconfig);
+        $d[AppWidgets::WIDGETS_NAV]->append($w->a11yconfig);
     }
 }
