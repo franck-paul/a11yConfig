@@ -19,24 +19,24 @@ use Dotclear\Plugin\widgets\WidgetsStack;
 
 class Widgets
 {
+    private const WIDGET_ID = 'a11yconfig';
+
     public static function initWidgets(WidgetsStack $w): string
     {
-        $w->create('a11yconfig', 'a11yconfig', FrontendWidgets::renderWidget(...), null, __('Style selector to let users adapt your blog to their needs.'));
-
-        $w->a11yconfig->setting('buttonname', __('Title:'), __('Accessibility Settings'));
-        $w->a11yconfig->setting('icon', __('Icon:'), Prepend::ICON_NONE, 'combo', [
-            __('No')                => Prepend::ICON_NONE,
-            __('Wheelchair')        => Prepend::ICON_WHEELCHAIR,
-            __('Visual deficiency') => Prepend::ICON_VISUALDEFICIENCY,
-        ]);
-
-        $w->a11yconfig->setting('font', __('Font adaptation'), 1, 'check');
-        $w->a11yconfig->setting('linespacing', __('Line Spacing adaptation'), 1, 'check');
-        $w->a11yconfig->setting('justification', __('Justification adaptation'), 1, 'check');
-        $w->a11yconfig->setting('contrast', __('Contrast adaptation'), 1, 'check');
-        $w->a11yconfig->setting('image', __('Image replacement'), 1, 'check');
-
-        $w->a11yconfig->setting('offline', __('Offline'), 0, 'check');
+        $w
+            ->create(self::WIDGET_ID, 'a11yconfig', FrontendWidgets::renderWidget(...), null, __('Style selector to let users adapt your blog to their needs.'))
+            ->setting('buttonname', __('Title:'), __('Accessibility Settings'))
+            ->setting('icon', __('Icon:'), Prepend::ICON_NONE, 'combo', [
+                __('No')                => Prepend::ICON_NONE,
+                __('Wheelchair')        => Prepend::ICON_WHEELCHAIR,
+                __('Visual deficiency') => Prepend::ICON_VISUALDEFICIENCY,
+            ])
+            ->setting('font', __('Font adaptation'), 1, 'check')
+            ->setting('linespacing', __('Line Spacing adaptation'), 1, 'check')
+            ->setting('justification', __('Justification adaptation'), 1, 'check')
+            ->setting('contrast', __('Contrast adaptation'), 1, 'check')
+            ->setting('image', __('Image replacement'), 1, 'check')
+            ->setting('offline', __('Offline'), 0, 'check');
 
         return '';
     }
@@ -49,6 +49,6 @@ class Widgets
      */
     public static function initDefaultWidgets(WidgetsStack $w, array $d): void
     {
-        $d[AppWidgets::WIDGETS_NAV]->append($w->a11yconfig);
+        $d[AppWidgets::WIDGETS_NAV]->append($w->get(self::WIDGET_ID));
     }
 }
