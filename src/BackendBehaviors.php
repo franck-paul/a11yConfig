@@ -88,8 +88,8 @@ class BackendBehaviors
                 $preferences->put('contrast', !empty($_POST['a11yc_contrast']), App::userWorkspace()::WS_BOOL);
                 $preferences->put('image', !empty($_POST['a11yc_image']), App::userWorkspace()::WS_BOOL);
             }
-        } catch (Exception $e) {
-            App::error()->add($e->getMessage());
+        } catch (Exception $exception) {
+            App::error()->add($exception->getMessage());
         }
 
         return '';
@@ -134,7 +134,7 @@ class BackendBehaviors
             $icons[] = (new Radio(['a11yc_icon', 'a11yc_icon_' . $i], $a11yc_icon == $k))
                 ->value($k)
                 ->label((new Label($v, Label::INSIDE_TEXT_AFTER)));
-            $i++;
+            ++$i;
         }
 
         $positions = [];
@@ -143,7 +143,7 @@ class BackendBehaviors
             $positions[] = (new Radio(['a11yc_position', 'a11yc_position_' . $i], $a11yc_position == $k))
                 ->value($k)
                 ->label((new Label($v, Label::INSIDE_TEXT_AFTER)));
-            $i++;
+            ++$i;
         }
 
         echo

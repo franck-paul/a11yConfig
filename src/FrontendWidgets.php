@@ -30,11 +30,11 @@ class FrontendWidgets
         }
 
         $params = [
-            'Font'             => ($w->get('font') ? true : false),
-            'LineSpacing'      => ($w->get('linespacing') ? true : false),
-            'Justification'    => ($w->get('justification') ? true : false),
-            'Contrast'         => ($w->get('contrast') ? true : false),
-            'ImageReplacement' => ($w->get('image') ? true : false),
+            'Font'             => ((bool) $w->get('font')),
+            'LineSpacing'      => ((bool) $w->get('linespacing')),
+            'Justification'    => ((bool) $w->get('justification')),
+            'Contrast'         => ((bool) $w->get('contrast')),
+            'ImageReplacement' => ((bool) $w->get('image')),
         ];
 
         return FrontendHelper::render($w->get('buttonname'), (int) $w->get('icon'), $params, 'widget');

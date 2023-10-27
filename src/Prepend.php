@@ -19,13 +19,16 @@ use Dotclear\Core\Process;
 class Prepend extends Process
 {
     // Constants for position (public/admin)
-    public const IN_TOP    = 0;
-    public const IN_BOTTOM = 1;
+    final public const IN_TOP    = 0;
+
+    final public const IN_BOTTOM = 1;
 
     // Constants for icon (public/admin)
-    public const ICON_NONE             = 0;
-    public const ICON_WHEELCHAIR       = 1;
-    public const ICON_VISUALDEFICIENCY = 2;
+    final public const ICON_NONE             = 0;
+
+    final public const ICON_WHEELCHAIR       = 1;
+
+    final public const ICON_VISUALDEFICIENCY = 2;
 
     public static function init(): bool
     {
@@ -34,10 +37,6 @@ class Prepend extends Process
 
     public static function process(): bool
     {
-        if (!self::status()) {
-            return false;
-        }
-
-        return true;
+        return (bool) self::status();
     }
 }

@@ -48,7 +48,7 @@ class Manage extends Process
             return false;
         }
 
-        if (!empty($_POST)) {
+        if ($_POST !== []) {
             try {
                 $settings = My::settings();
 
@@ -119,7 +119,7 @@ class Manage extends Process
             $icons[] = (new Radio(['a11yc_icon', 'a11yc_icon_' . $i], $a11yc_icon == $k))
                 ->value($k)
                 ->label((new Label($v, Label::INSIDE_TEXT_AFTER)));
-            $i++;
+            ++$i;
         }
 
         $positions = [];
@@ -128,7 +128,7 @@ class Manage extends Process
             $positions[] = (new Radio(['a11yc_position', 'a11yc_position_' . $i], $a11yc_position == $k))
                 ->value($k)
                 ->label((new Label($v, Label::INSIDE_TEXT_AFTER)));
-            $i++;
+            ++$i;
         }
 
         $head = My::jsLoad('settings.js');

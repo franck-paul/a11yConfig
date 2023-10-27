@@ -25,8 +25,6 @@ class FrontendHelper
      * @param      int                      $icon    The icon
      * @param      array<string, mixed>     $params  The parameters
      * @param      string                   $class   The class
-     *
-     * @return     string
      */
     public static function render(?string $label, int $icon, array $params, string $class = ''): string
     {
@@ -39,7 +37,7 @@ class FrontendHelper
             'Contrast'         => true,
             'ImageReplacement' => true,
         ];
-        $options = array_merge($options, $params);
+        $options = [...$options, ...$params];
 
         $class .= match ($icon) {
             Prepend::ICON_WHEELCHAIR       => ($class !== '' ? ' ' : '') . 'a11yc-wc',

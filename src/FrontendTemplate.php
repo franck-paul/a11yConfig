@@ -20,8 +20,6 @@ class FrontendTemplate
 {
     /**
      * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr      The attribute
-     *
-     * @return     string
      */
     public static function tplAccessConfig(array|ArrayObject $attr): string
     {
