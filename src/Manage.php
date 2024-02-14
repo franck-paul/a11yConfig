@@ -164,10 +164,13 @@ class Manage extends Process
                         ->value(Html::escapeHTML($a11yc_label))
                         ->required(true)
                         ->placeholder(__('Accessibility parameters'))
-                        ->label((new Label(
-                            (new Text('abbr', '*'))->title(__('Required field'))->render() . __('Label:'),
-                            Label::INSIDE_TEXT_BEFORE
-                        ))->id('a11yc_label_label')->class('required')->title(__('Required field'))),
+                        ->label(
+                            (new Label(
+                                (new Text('span', '*'))->render() . __('Label:'),
+                                Label::INSIDE_TEXT_BEFORE
+                            ))
+                        )
+                        ->title(__('Required field')),
                 ]),
                 // Options for button appearance
                 (new Text('h3', __('Icon:'))),

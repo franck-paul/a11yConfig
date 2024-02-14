@@ -21,6 +21,7 @@ use Dotclear\Helper\Html\Form\Fieldset;
 use Dotclear\Helper\Html\Form\Input;
 use Dotclear\Helper\Html\Form\Label;
 use Dotclear\Helper\Html\Form\Legend;
+use Dotclear\Helper\Html\Form\Note;
 use Dotclear\Helper\Html\Form\Para;
 use Dotclear\Helper\Html\Form\Radio;
 use Dotclear\Helper\Html\Form\Text;
@@ -150,6 +151,9 @@ class BackendBehaviors
         (new Fieldset('a11yConfig'))
         ->legend((new Legend(__('a11yConfig'))))
         ->fields([
+            (new Note())
+                ->class('form-note')
+                ->text(sprintf(__('Fields preceded by %s are mandatory.'), '<span class="required">*</span>')),
             (new Para())->items([
                 (new Checkbox('a11yc_active', $a11yc_active))
                     ->value(1)
@@ -162,10 +166,13 @@ class BackendBehaviors
                     ->value(Html::escapeHTML($a11yc_label))
                     ->required(true)
                     ->placeholder(__('Accessibility parameters'))
-                    ->label((new Label(
-                        (new Text('abbr', '*'))->title(__('Required field'))->render() . __('Label:'),
-                        Label::INSIDE_TEXT_BEFORE
-                    ))->id('a11yc_label_label')->class('required')->title(__('Required field'))),
+                    ->label(
+                        (new Label(
+                            (new Text('span', '*'))->render() . __('Label:'),
+                            Label::INSIDE_TEXT_BEFORE
+                        ))
+                    )
+                    ->title(__('Required field')),
             ]),
             // Options for button appearance
             (new Text('h5', __('Icon:'))),
@@ -180,20 +187,20 @@ class BackendBehaviors
             (new Text('h5', __('Options:'))),
             (new Para())->items([
                 (new Checkbox('a11yc_font', $a11yc_font))
-                    ->value(1)
-                    ->label((new Label(__('Font adaptation'), Label::INSIDE_TEXT_AFTER))),
+                        ->value(1)
+                        ->label((new Label(__('Font adaptation'), Label::INSIDE_TEXT_AFTER))),
                 (new Checkbox('a11yc_linespacing', $a11yc_linespacing))
-                    ->value(1)
-                    ->label((new Label(__('Line Spacing adaptation'), Label::INSIDE_TEXT_AFTER))),
+                        ->value(1)
+                        ->label((new Label(__('Line Spacing adaptation'), Label::INSIDE_TEXT_AFTER))),
                 (new Checkbox('a11yc_justification', $a11yc_justification))
-                    ->value(1)
-                    ->label((new Label(__('Justification adaptation'), Label::INSIDE_TEXT_AFTER))),
+                        ->value(1)
+                        ->label((new Label(__('Justification adaptation'), Label::INSIDE_TEXT_AFTER))),
                 (new Checkbox('a11yc_contrast', $a11yc_contrast))
-                    ->value(1)
-                    ->label((new Label(__('Contrast adaptation'), Label::INSIDE_TEXT_AFTER))),
+                        ->value(1)
+                        ->label((new Label(__('Contrast adaptation'), Label::INSIDE_TEXT_AFTER))),
                 (new Checkbox('a11yc_image', $a11yc_image))
-                    ->value(1)
-                    ->label((new Label(__('Image replacement'), Label::INSIDE_TEXT_AFTER))),
+                        ->value(1)
+                        ->label((new Label(__('Image replacement'), Label::INSIDE_TEXT_AFTER))),
             ]),
         ])
         ->render();
