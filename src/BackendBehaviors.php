@@ -153,7 +153,7 @@ class BackendBehaviors
         ->fields([
             (new Note())
                 ->class('form-note')
-                ->text(sprintf(__('Fields preceded by %s are mandatory.'), '<span class="required">*</span>')),
+                ->text(sprintf(__('Fields preceded by %s are mandatory.'), (new Text('span', '*'))->class('required')->render())),
             (new Para())->items([
                 (new Checkbox('a11yc_active', $a11yc_active))
                     ->value(1)

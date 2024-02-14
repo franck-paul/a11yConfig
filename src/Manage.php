@@ -22,6 +22,7 @@ use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Form;
 use Dotclear\Helper\Html\Form\Input;
 use Dotclear\Helper\Html\Form\Label;
+use Dotclear\Helper\Html\Form\Note;
 use Dotclear\Helper\Html\Form\Para;
 use Dotclear\Helper\Html\Form\Radio;
 use Dotclear\Helper\Html\Form\Submit;
@@ -149,6 +150,9 @@ class Manage extends Process
             ->action(App::backend()->getPageURL())
             ->method('post')
             ->fields([
+                (new Note())
+                    ->class('form-note')
+                    ->text(sprintf(__('Fields preceded by %s are mandatory.'), (new Text('span', '*'))->class('required')->render())),
                 (new Para())->items([
                     (new Checkbox('a11yc_active', $a11yc_active))
                         ->value(1)
