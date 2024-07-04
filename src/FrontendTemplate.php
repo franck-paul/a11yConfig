@@ -39,6 +39,6 @@ class FrontendTemplate
             'ImageReplacement' => isset($attr['image']) ? (bool) $attr['image'] : true,
         ];
 
-        return '<?php echo "' . addcslashes(FrontendHelper::render($title, $icon, $params), '"\\') . '"; ?>';
+        return '<?= "' . addcslashes(FrontendHelper::render($title, $icon, $params), '"\\') . '" ?>';
     }
 }

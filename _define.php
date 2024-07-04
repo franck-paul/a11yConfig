@@ -26,6 +26,6 @@ $this->registerModule(
 
         'details'    => 'https://open-time.net/?q=a11yConfig',
         'support'    => 'https://github.com/franck-paul/a11yConfig',
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/a11yConfig/master/dcstore.xml',
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/a11yConfig/main/dcstore.xml',
     ]
 );
