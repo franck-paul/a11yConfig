@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief a11yConfig, a plugin for Dotclear 2
  *
@@ -19,14 +20,14 @@ use Dotclear\Core\Process;
 class Prepend extends Process
 {
     // Constants for position (public/admin)
-    final public const IN_TOP    = 0;
+    final public const IN_TOP = 0;
 
     final public const IN_BOTTOM = 1;
 
     // Constants for icon (public/admin)
-    final public const ICON_NONE             = 0;
+    final public const ICON_NONE = 0;
 
-    final public const ICON_WHEELCHAIR       = 1;
+    final public const ICON_WHEELCHAIR = 1;
 
     final public const ICON_VISUALDEFICIENCY = 2;
 
