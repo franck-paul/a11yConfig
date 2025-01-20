@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @brief a11yConfig, a plugin for Dotclear 2
  *
@@ -15,7 +14,7 @@ $this->registerModule(
     'a11yConfig',
     'Implements Access42 accessibility configuration tool',
     'Franck Paul, Biou and contributors',
-    '5.4.1',
+    '5.4',
     [
         'requires'    => [['core', '2.29']],
         'permissions' => 'My',
@@ -28,6 +27,5 @@ $this->registerModule(
         'details'    => 'https://open-time.net/?q=a11yConfig',
         'support'    => 'https://github.com/franck-paul/a11yConfig',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/a11yConfig/main/dcstore.xml',
-        'date'       => '2025-01-20T21:37:45+0100',
     ]
 );
