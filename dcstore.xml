@@ -4,6 +4,7 @@
     <version>5.4</version>
     <author>Franck Paul, Biou and contributors</author>
     <desc>Implements Access42 accessibility configuration tool</desc>
+    <date>2003-08-13T13:42:00+0100</date>
     <file>https://github.com/franck-paul/a11yConfig/releases/download/5.4/plugin-a11yConfig-5.4.zip</file>
     <da:dcmin>2.29</da:dcmin>
     <da:details>https://open-time.net/?q=a11yConfig</da:details>

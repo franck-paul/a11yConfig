@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief a11yConfig, a plugin for Dotclear 2
  *
@@ -16,6 +17,7 @@ $this->registerModule(
     'Franck Paul, Biou and contributors',
     '5.4',
     [
+        'date'        => '2003-08-13T13:42:00+0100',
         'requires'    => [['core', '2.29']],
         'permissions' => 'My',
         'type'        => 'plugin',
