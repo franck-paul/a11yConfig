@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief a11yConfig, a plugin for Dotclear 2
  *
@@ -215,7 +216,7 @@ class Manage extends Process
                 // Submit
                 (new Para())->items([
                     (new Submit(['frmsubmit']))
-                        ->value(__('Check')),
+                        ->value(__('Save')),
                     ... My::hiddenFields(),
                 ]),
             ])

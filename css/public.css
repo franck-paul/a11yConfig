@@ -1,1 +1,38 @@
-@font-face{font-family:"opendys";src:url("index.php?pf=a11yConfig/lib/css/fonts/opendyslexic-regular-webfont.woff2") format("woff2"),url("index.php?pf=a11yConfig/lib/css/fonts/opendyslexic-regular-webfont.woff") format("woff");font-weight:normal;font-style:normal}body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-vd button,body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-wc button{border:none;width:2.5em;height:2.5em;background-size:2.5em 2.5em;margin:.5em;overflow:hidden;color:transparent}body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-vd button:hover,body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-vd button:active,body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-wc button:hover,body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-wc button:active{cursor:pointer}body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-vd button{background-image:url(index.php?pf=a11yConfig/img/visual-deficiency.svg),none}body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-wc button{background-image:url(index.php?pf=a11yConfig/img/wheelchair.svg),none}div#accessconfig:not(.widget){margin:0 .5em}
+@font-face {
+  font-family: 'opendys';
+  src:
+    url('index.php?pf=a11yConfig/lib/css/fonts/opendyslexic-regular-webfont.woff2') format('woff2'),
+    url('index.php?pf=a11yConfig/lib/css/fonts/opendyslexic-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-vd button,
+body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-wc button {
+  border: none;
+  width: 2.5em;
+  height: 2.5em;
+  background-size: 2.5em 2.5em;
+  margin: 0.5em;
+  overflow: hidden;
+  color: transparent;
+}
+
+body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-vd button:hover,
+body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-vd button:active,
+body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-wc button:hover,
+body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-wc button:active {
+  cursor: pointer;
+}
+
+body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-vd button {
+  background-image: url(index.php?pf=a11yConfig/img/visual-deficiency.svg), none;
+}
+
+body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-wc button {
+  background-image: url(index.php?pf=a11yConfig/img/wheelchair.svg), none;
+}
+
+div#accessconfig:not(.widget) {
+  margin: 0 0.5em;
+}

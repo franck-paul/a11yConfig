@@ -1,12 +1,12 @@
 /*global dotclear */
 'use strict';
 
-window.addEventListener('load', () => {
+dotclear.ready(() => {
   const required_control = document.getElementById('a11yc_active');
   const required_fields = document.querySelectorAll('#a11yc_label');
 
   const applyState = () => {
-    required_fields.forEach((field) => (field.required = required_control.checked));
+    for (const field of required_fields) field.required = required_control.checked;
   };
 
   applyState();

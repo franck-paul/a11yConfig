@@ -4,8 +4,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   const data = dotclear.getData('a11yc');
   let container = document.querySelector(data.parent);
-  if (!container && !(container = document.querySelector('body.popup'))) {
-    return;
+  if (!container) {
+    container = document.querySelector('body.popup');
+    if (!container) {
+      return;
+    }
   }
   const elt = document.createElement(data.element);
   elt.setAttribute('id', 'accessconfig');
@@ -18,5 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('load', () => {
-  document.querySelectorAll('img:not([alt=""])').forEach((image) => image.classList.add('a42-ac-replace-img'));
+  for (const image of document.querySelectorAll('img:not([alt=""])')) {
+    image.classList.add('a42-ac-replace-img');
+  }
 });
