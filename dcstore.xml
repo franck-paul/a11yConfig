@@ -1,11 +1,11 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="a11yConfig">
     <name>a11yConfig</name>
-    <version>5.5</version>
+    <version>5.6</version>
     <author>Franck Paul, Biou and contributors</author>
     <desc>Implements Access42 accessibility configuration tool</desc>
-    <date>2025-02-08T15:54:11+0100</date>
-    <file>https://github.com/franck-paul/a11yConfig/releases/download/5.5/plugin-a11yConfig-5.5.zip</file>
+    <date>2025-04-20T16:55:19+0200</date>
+    <file>https://github.com/franck-paul/a11yConfig/releases/download/5.6/plugin-a11yConfig-5.6.zip</file>
     <da:dcmin>2.29</da:dcmin>
     <da:details>https://open-time.net/?q=a11yConfig</da:details>
     <da:support>https://github.com/franck-paul/a11yConfig</da:support>
