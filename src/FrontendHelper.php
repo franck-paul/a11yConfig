@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief a11yConfig, a plugin for Dotclear 2
  *
@@ -14,6 +15,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\a11yConfig;
 
+use Dotclear\Helper\Html\Form\Div;
 use Dotclear\Helper\Html\Html;
 
 class FrontendHelper
@@ -45,10 +47,13 @@ class FrontendHelper
             default                        => '',
         };
 
-        return
-        '<div ' . ($class !== '' ? 'class="' . $class . '" ' : '') . 'id="accessconfig" data-accessconfig-buttonname="' .
-        ($label ? Html::escapeHTML($label) : __('Accessibility parameters')) . '" ' .
-        'data-accessconfig-params=\'' . json_encode($options, JSON_THROW_ON_ERROR) . '\'>' .
-        '</div>';
+        return (new Div())
+            ->id('accessconfig')
+            ->class($class)
+            ->data([
+                'accessconfig-buttonname' => $label ? Html::escapeHTML($label) : __('Accessibility parameters'),
+                'accessconfig-params'     => Html::escapeHTML(json_encode($options, JSON_THROW_ON_ERROR)),
+            ])
+        ->render();
     }
 }
