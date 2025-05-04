@@ -26,6 +26,7 @@ use Dotclear\Helper\Html\Form\Label;
 use Dotclear\Helper\Html\Form\Note;
 use Dotclear\Helper\Html\Form\Para;
 use Dotclear\Helper\Html\Form\Radio;
+use Dotclear\Helper\Html\Form\Span;
 use Dotclear\Helper\Html\Form\Submit;
 use Dotclear\Helper\Html\Form\Text;
 use Dotclear\Helper\Html\Html;
@@ -153,7 +154,7 @@ class Manage extends Process
             ->fields([
                 (new Note())
                     ->class('form-note')
-                    ->text(sprintf(__('Fields preceded by %s are mandatory.'), (new Text('span', '*'))->class('required')->render())),
+                    ->text(sprintf(__('Fields preceded by %s are mandatory.'), (new Span('*'))->class('required')->render())),
                 (new Para())->items([
                     (new Checkbox('a11yc_active', $a11yc_active))
                         ->value(1)
@@ -171,7 +172,7 @@ class Manage extends Process
                         ->placeholder(__('Accessibility parameters'))
                         ->label(
                             (new Label(
-                                (new Text('span', '*'))->render() . __('Label:'),
+                                (new Span('*'))->render() . __('Label:'),
                                 Label::INSIDE_TEXT_BEFORE
                             ))
                         )
