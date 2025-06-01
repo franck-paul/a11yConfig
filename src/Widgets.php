@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief a11yConfig, a plugin for Dotclear 2
  *
@@ -24,7 +25,7 @@ class Widgets
     public static function initWidgets(WidgetsStack $w): string
     {
         $w
-            ->create(self::WIDGET_ID, 'a11yconfig', FrontendWidgets::renderWidget(...), null, __('Style selector to let users adapt your blog to their needs.'))
+            ->create(self::WIDGET_ID, 'a11yconfig', FrontendWidgets::renderWidget(...), null, __('Style selector to let users adapt your blog to their needs.'), My::id())
             ->setting('buttonname', __('Title:'), __('Accessibility Settings'))
             ->setting('icon', __('Icon:'), Prepend::ICON_NONE, 'combo', [
                 __('No')                => Prepend::ICON_NONE,
