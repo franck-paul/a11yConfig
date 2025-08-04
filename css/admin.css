@@ -26,11 +26,13 @@ body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) 
 }
 
 body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-vd button {
-  background-image: url(index.php?pf=a11yConfig/img/visual-deficiency.svg), none;
+  background-image: url(index.php?pf=a11yConfig/img/visual-deficiency-admin.svg), none;
+  background-color: transparent;
 }
 
 body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-wc button {
-  background-image: url(index.php?pf=a11yConfig/img/wheelchair.svg), none;
+  background-image: url(index.php?pf=a11yConfig/img/wheelchair-admin.svg), none;
+  background-color: transparent;
 }
 
 div#accessconfig {
