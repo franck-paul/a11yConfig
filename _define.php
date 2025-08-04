@@ -15,9 +15,9 @@ $this->registerModule(
     'a11yConfig',
     'Implements Access42 accessibility configuration tool',
     'Franck Paul, Biou and contributors',
-    '6.3',
+    '6.4',
     [
-        'date'        => '2025-08-04T10:16:27+0200',
+        'date'        => '2025-08-04T10:35:26+0200',
         'requires'    => [['core', '2.34']],
         'permissions' => 'My',
         'type'        => 'plugin',
