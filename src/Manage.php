@@ -178,12 +178,6 @@ class Manage extends Process
                         )
                         ->title(__('Required field')),
                 ]),
-                // Options for button appearance
-                (new Text('h3', __('Icon:'))),
-                (new Para())->class('form-note')->items([
-                    (new Text(null, __('The previous label will be used as alternative text if one of proposed icons is choosen.'))),
-                ]),
-                (new Para())->items($icons),
                 // Options for automatic insertion
                 (new Text('h3', __('Position:'))),
                 (new Para())->items([
@@ -195,6 +189,12 @@ class Manage extends Process
                     (new Text(null, __('The automatic insertion in header depends on the <strong>publicTopAfterContent</strong> behavior and in footer on <strong>publicFooterContent</strong> behavior. Adapt theme\'s template files if necessary.'))),
                 ]),
                 (new Para())->items($positions),
+                // Options for button appearance
+                (new Text('h3', __('Icon:'))),
+                (new Para())->class('form-note')->items([
+                    (new Text(null, __('The previous label will be used as alternative text if one of proposed icons is choosen.'))),
+                ]),
+                (new Para())->items($icons),
                 // Options
                 (new Text('h3', __('Options:'))),
                 (new Para())->items([
