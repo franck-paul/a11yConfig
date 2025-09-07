@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief a11yConfig, a plugin for Dotclear 2
  *
@@ -15,11 +16,13 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\a11yConfig;
 
 use Dotclear\App;
-use Dotclear\Core\Process;
+use Dotclear\Helper\Process\TraitProcess;
 use Dotclear\Plugin\Uninstaller\Uninstaller;
 
-class Uninstall extends Process
+class Uninstall
 {
+    use TraitProcess;
+
     public static function init(): bool
     {
         return self::status(My::checkContext(My::UNINSTALL));
@@ -40,7 +43,7 @@ class Uninstall extends Process
         // $var   = My::id(); // Var sub-folder
 
         // Database table name
-        // $table = App::con()->prefix() . 'a11yConfig';
+        // $table = 'a11yConfig';
 
         $user_actions = [
 

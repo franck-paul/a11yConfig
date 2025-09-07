@@ -15,10 +15,12 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\a11yConfig;
 
-use Dotclear\Core\Process;
+use Dotclear\Helper\Process\TraitProcess;
 
-class Prepend extends Process
+class Prepend
 {
+    use TraitProcess;
+
     // Constants for position (public/admin)
     final public const IN_TOP = 0;
 
