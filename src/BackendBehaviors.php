@@ -16,7 +16,6 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\a11yConfig;
 
 use Dotclear\App;
-use Dotclear\Core\Backend\Page;
 use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Fieldset;
 use Dotclear\Helper\Html\Form\Input;
@@ -60,7 +59,7 @@ class BackendBehaviors
                 'parent'  => (int) $preferences->position === Prepend::IN_TOP ? 'ul#top-info-user' : 'footer',
                 'element' => (int) $preferences->position === Prepend::IN_TOP ? 'li' : 'div',
             ];
-            echo Page::jsJson('a11yc', $data);
+            echo App::backend()->page()->jsJson('a11yc', $data);
 
             echo
             My::cssLoad('/lib/css/accessconfig.min.css') .
