@@ -3,7 +3,6 @@
 [![Release](https://img.shields.io/github/v/release/franck-paul/a11yConfig)](https://github.com/franck-paul/a11yConfig/releases)
 [![Date](https://img.shields.io/github/release-date/franck-paul/a11yConfig)](https://github.com/franck-paul/a11yConfig/releases)
 [![Issues](https://img.shields.io/github/issues/franck-paul/a11yConfig)](https://github.com/franck-paul/a11yConfig/issues)
-[![Dotaddict](https://img.shields.io/badge/dotaddict-official-green.svg)](https://plugins.dotaddict.org/dc2/details/a11yConfig)
 [![License](https://img.shields.io/github/license/franck-paul/a11yConfig)](https://github.com/franck-paul/a11yConfig/blob/master/LICENSE)
 
 Dotclear 2 plugin which embed the [Access42 AccessConfig tool](https://accessconfig.a11y.fr/)
