@@ -8,7 +8,7 @@
  *
  * @author Franck Paul, Biou and contributors
  *
- * @copyright Franck Paul carnet.franck.paul@gmail.com
+ * @copyright Franck Paul contact@open-time.net
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
 declare(strict_types=1);
@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\a11yConfig;
 
 use Dotclear\Plugin\widgets\Widgets as AppWidgets;
+use Dotclear\Plugin\widgets\WidgetsElement;
 use Dotclear\Plugin\widgets\WidgetsStack;
 
 class Widgets
@@ -50,6 +51,9 @@ class Widgets
      */
     public static function initDefaultWidgets(WidgetsStack $w, array $d): void
     {
-        $d[AppWidgets::WIDGETS_NAV]->append($w->get(self::WIDGET_ID));
+        $widget = ($widget = $w->get(self::WIDGET_ID)) instanceof WidgetsElement ? $widget : null;
+        if ($widget instanceof WidgetsElement) {
+            $d[AppWidgets::WIDGETS_NAV]->append($widget);
+        }
     }
 }

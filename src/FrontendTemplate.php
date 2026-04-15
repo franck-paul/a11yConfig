@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief a11yConfig, a plugin for Dotclear 2
  *
@@ -7,7 +8,7 @@
  *
  * @author Franck Paul, Biou and contributors
  *
- * @copyright Franck Paul carnet.franck.paul@gmail.com
+ * @copyright Franck Paul contact@open-time.net
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
 declare(strict_types=1);
@@ -28,8 +29,8 @@ class FrontendTemplate
             return '';
         }
 
-        $title = $attr['title'] ?? null;
-        $icon  = isset($attr['icon']) ? (int) $attr['icon'] : Prepend::ICON_NONE;
+        $title = isset($attr['title']) && is_string($title = $attr['title']) ? $title : null;
+        $icon  = isset($attr['icon'])  && is_numeric($icon = $attr['icon']) ? (int) $icon : Prepend::ICON_NONE;
 
         $params = [
             'Font'             => isset($attr['font']) ? (bool) $attr['font'] : true,

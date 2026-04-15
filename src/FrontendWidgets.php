@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief a11yConfig, a plugin for Dotclear 2
  *
@@ -7,7 +8,7 @@
  *
  * @author Franck Paul, Biou and contributors
  *
- * @copyright Franck Paul carnet.franck.paul@gmail.com
+ * @copyright Franck Paul contact@open-time.net
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
 declare(strict_types=1);
@@ -37,6 +38,9 @@ class FrontendWidgets
             'ImageReplacement' => ((bool) $w->get('image')),
         ];
 
-        return FrontendHelper::render($w->get('buttonname'), (int) $w->get('icon'), $params, 'widget');
+        $name = is_string($name = $w->get('buttonname')) ? $name : null;
+        $icon = is_numeric($icon = $w->get('icon')) ? (int) $icon : 0;
+
+        return FrontendHelper::render($name, $icon, $params, 'widget');
     }
 }

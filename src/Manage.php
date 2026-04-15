@@ -8,7 +8,7 @@
  *
  * @author Franck Paul, Biou and contributors
  *
- * @copyright Franck Paul carnet.franck.paul@gmail.com
+ * @copyright Franck Paul contact@open-time.net
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
 declare(strict_types=1);
@@ -52,21 +52,26 @@ class Manage
         }
 
         if ($_POST !== []) {
+            // Post data helpers
+            $_Bool = fn (string $name): bool => !empty($_POST[$name]);
+            $_Int  = fn (string $name, int $default = 0): int => isset($_POST[$name]) && is_numeric($val = $_POST[$name]) ? (int) $val : $default;
+            $_Str  = fn (string $name, string $default = ''): string => isset($_POST[$name]) && is_string($val = $_POST[$name]) ? $val : $default;
+
             try {
                 $settings = My::settings();
 
-                $settings->put('active', !empty($_POST['a11yc_active']), App::blogWorkspace()::NS_BOOL);
+                $settings->put('active', $_Bool('a11yc_active'), App::blogWorkspace()::NS_BOOL);
 
-                $settings->put('injection', !empty($_POST['a11yc_injection']), App::blogWorkspace()::NS_BOOL);
-                $settings->put('label', Html::escapeHTML($_POST['a11yc_label']), App::blogWorkspace()::NS_STRING);
-                $settings->put('icon', abs((int) $_POST['a11yc_icon']), App::blogWorkspace()::NS_INT);
-                $settings->put('position', abs((int) $_POST['a11yc_position']), App::blogWorkspace()::NS_INT);
+                $settings->put('injection', $_Bool('a11yc_injection'), App::blogWorkspace()::NS_BOOL);
+                $settings->put('label', Html::escapeHTML($_Str('a11yc_label')), App::blogWorkspace()::NS_STRING);
+                $settings->put('icon', abs($_Int('a11yc_icon')), App::blogWorkspace()::NS_INT);
+                $settings->put('position', abs($_Int('a11yc_position')), App::blogWorkspace()::NS_INT);
 
-                $settings->put('font', !empty($_POST['a11yc_font']), App::blogWorkspace()::NS_BOOL);
-                $settings->put('linespacing', !empty($_POST['a11yc_linespacing']), App::blogWorkspace()::NS_BOOL);
-                $settings->put('justification', !empty($_POST['a11yc_justification']), App::blogWorkspace()::NS_BOOL);
-                $settings->put('contrast', !empty($_POST['a11yc_contrast']), App::blogWorkspace()::NS_BOOL);
-                $settings->put('image', !empty($_POST['a11yc_image']), App::blogWorkspace()::NS_BOOL);
+                $settings->put('font', $_Bool('a11yc_font'), App::blogWorkspace()::NS_BOOL);
+                $settings->put('linespacing', $_Bool('a11yc_linespacing'), App::blogWorkspace()::NS_BOOL);
+                $settings->put('justification', $_Bool('a11yc_justification'), App::blogWorkspace()::NS_BOOL);
+                $settings->put('contrast', $_Bool('a11yc_contrast'), App::blogWorkspace()::NS_BOOL);
+                $settings->put('image', $_Bool('a11yc_image'), App::blogWorkspace()::NS_BOOL);
 
                 App::blog()->triggerBlog();
 
@@ -89,6 +94,11 @@ class Manage
             return;
         }
 
+        // Variable data helpers
+        $_Bool = fn (mixed $var): bool => (bool) $var;
+        $_Int  = fn (mixed $var, int $default = 0): int => $var !== null && is_numeric($val = $var) ? (int) $val : $default;
+        $_Str  = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
+
         // Get current options
         $settings = My::settings();
 
@@ -103,18 +113,17 @@ class Manage
             Prepend::ICON_VISUALDEFICIENCY => __('Visual deficiency'),
         ];
 
-        $a11yc_active = (bool) $settings->active;
+        $a11yc_active = $_Bool($settings->active);
 
-        $a11yc_injection = (bool) $settings->injection;
-        $a11yc_label     = $settings->label;
-        $a11yc_icon      = (int) $settings->icon;
-        $a11yc_position  = (int) $settings->position;
-
-        $a11yc_font          = (bool) $settings->font;
-        $a11yc_linespacing   = (bool) $settings->linespacing;
-        $a11yc_justification = (bool) $settings->justification;
-        $a11yc_contrast      = (bool) $settings->contrast;
-        $a11yc_image         = (bool) $settings->image;
+        $a11yc_injection     = $_Bool($settings->injection);
+        $a11yc_label         = $_Str($settings->label);
+        $a11yc_icon          = $_Int($settings->icon);
+        $a11yc_position      = $_Int($settings->position);
+        $a11yc_font          = $_Bool($settings->font);
+        $a11yc_linespacing   = $_Bool($settings->linespacing);
+        $a11yc_justification = $_Bool($settings->justification);
+        $a11yc_contrast      = $_Bool($settings->contrast);
+        $a11yc_image         = $_Bool($settings->image);
 
         $icons = [];
         $i     = 0;

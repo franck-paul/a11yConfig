@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief a11yConfig, a plugin for Dotclear 2
  *
@@ -7,7 +8,7 @@
  *
  * @author Franck Paul, Biou and contributors
  *
- * @copyright Franck Paul carnet.franck.paul@gmail.com
+ * @copyright Franck Paul contact@open-time.net
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
 declare(strict_types=1);
@@ -57,9 +58,13 @@ class FrontendBehaviors
             return;
         }
 
-        if ((int) $settings->position !== $position) {
+        $settings_position = is_numeric($settings_position = $settings->position) ? (int) $settings_position : 0;
+        if ($settings_position !== $position) {
             return;
         }
+
+        $label = is_string($label = $settings->label) ? $label : null;
+        $icon  = is_numeric($icon = $settings->icon) ? (int) $icon : 0;
 
         $params = [
             'Font'             => (bool) $settings->font,
@@ -69,6 +74,6 @@ class FrontendBehaviors
             'ImageReplacement' => (bool) $settings->image,
         ];
 
-        echo FrontendHelper::render($settings->label, $settings->icon, $params);
+        echo FrontendHelper::render($label, $icon, $params);
     }
 }
