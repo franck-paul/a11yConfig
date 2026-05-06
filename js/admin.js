@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   const elt = document.createElement(data.element);
   elt.setAttribute('id', 'accessconfig');
-  elt.setAttribute('data-accessconfig-buttonname', data.label);
-  elt.setAttribute('data-accessconfig-params', JSON.stringify(data.options));
+  elt.dataset.accessconfigButtonname = data.label;
+  elt.dataset.accessconfigParams = JSON.stringify(data.options);
   if (data.class !== '') {
     elt.setAttribute('class', data.class);
   }
