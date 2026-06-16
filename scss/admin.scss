@@ -3,14 +3,17 @@
 // Dyslexia font
 @font-face {
   font-family: 'opendys';
-  src: url('index.php?pf=a11yConfig/lib/css/fonts/opendyslexic-regular-webfont.woff2') format('woff2'), url('index.php?pf=a11yConfig/lib/css/fonts/opendyslexic-regular-webfont.woff') format('woff');
+  src:
+    url('index.php?pf=a11yConfig/lib/css/fonts/opendyslexic-regular-webfont.woff2') format('woff2'),
+    url('index.php?pf=a11yConfig/lib/css/fonts/opendyslexic-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 // Button as an image
 body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) {
-  #accessconfig.a11yc-vd, #accessconfig.a11yc-wc {
+  #accessconfig.a11yc-vd,
+  #accessconfig.a11yc-wc {
     button {
       border: none;
       width: 2em;
@@ -19,7 +22,8 @@ body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) 
       overflow: hidden;
       color: transparent;
       background-image: none;
-      &:hover, &:active {
+      &:hover,
+      &:active {
         cursor: pointer;
       }
     }
@@ -36,9 +40,9 @@ body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) 
 div#accessconfig {
   display: inline-block;
   float: left;
-  margin: 0 .5em 0 0;
+  margin: 0 0.5em 0 0;
   button {
-    margin: 0 .5em 0 0;
+    margin: 0 0.5em 0 0;
   }
 }
 
@@ -46,8 +50,8 @@ div#accessconfig {
 .popup li#accessconfig {
   position: absolute;
   list-style: none;
-  right: .5em;
-  top: .65em;
+  right: 0.5em;
+  top: 0.65em;
 }
 
 // AccessConfig options dialog
@@ -75,10 +79,23 @@ div#accessconfig {
 
 // Remove background image on some elements (button, …)
 // An issue has been opened about this topic (https://github.com/access42/AccessConfig/issues/2)
-button, input[type=button], input.button, input[type=reset], input[type=submit], input[type=submit].reset, input.reset, input[type=submit].delete, input.delete, a.button, a.button.delete, a.button.reset {
-  body.a42-ac-inv-contrast &, body.a42-ac-high-contrast & {
+button,
+input[type='button'],
+input.button,
+input[type='reset'],
+input[type='submit'],
+input[type='submit'].reset,
+input.reset,
+input[type='submit'].delete,
+input.delete,
+a.button,
+a.button.delete,
+a.button.reset {
+  body.a42-ac-inv-contrast &,
+  body.a42-ac-high-contrast & {
     background-image: none;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       filter: invert(100%);
     }
   }
@@ -88,7 +105,8 @@ button, input[type=button], input.button, input[type=reset], input[type=submit],
 // -------
 
 // Legacy Editor
-body.a42-ac-inv-contrast, body.a42-ac-high-contrast {
+body.a42-ac-inv-contrast,
+body.a42-ac-high-contrast {
   .jstElements button {
     width: inherit;
     span {
@@ -98,7 +116,8 @@ body.a42-ac-inv-contrast, body.a42-ac-high-contrast {
 }
 
 // Cancel contrast CSS for CKEditor as it makes it unusable */
-body.a42-ac-inv-contrast, body.a42-ac-high-contrast {
+body.a42-ac-inv-contrast,
+body.a42-ac-high-contrast {
   .cke * {
     color: initial !important;
     background-color: initial !important;
@@ -109,14 +128,16 @@ body.a42-ac-inv-contrast, body.a42-ac-high-contrast {
 // -----------------
 
 // cloneEntry
-body.a42-ac-inv-contrast, body.a42-ac-high-contrast {
-  input[type=submit].clone {
+body.a42-ac-inv-contrast,
+body.a42-ac-high-contrast {
+  input[type='submit'].clone {
     background-image: none;
   }
 }
 
 // dcRevisions
-body.a42-ac-inv-contrast, body.a42-ac-high-contrast {
+body.a42-ac-inv-contrast,
+body.a42-ac-high-contrast {
   .button.add {
     background-image: none;
   }
