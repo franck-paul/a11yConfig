@@ -22,7 +22,7 @@ class FrontendWidgets
     public static function renderWidget(WidgetsElement $w): string
     {
         $settings = My::settings();
-        if (!(bool) $settings->active) {
+        if (!$settings->getBool('active', false)) {
             return '';
         }
 

@@ -35,10 +35,10 @@ class BackendBehaviors
     {
         $preferences = My::prefs();
 
-        if ($preferences->active) {
-            $icon     = is_numeric($icon = $preferences->icon) ? (int) $icon : 0;
-            $label    = is_string($label = $preferences->label) ? $label : null;
-            $position = is_numeric($position = $preferences->position) ? (int) $position : 0;
+        if ($preferences->getBool('active')) {
+            $icon     = $preferences->getInt('icon', false);
+            $label    = $preferences->getStr('label');
+            $position = $preferences->getInt('position', false);
 
             $class = match ($icon) {
                 Prepend::ICON_WHEELCHAIR       => 'a11yc-wc',
@@ -51,11 +51,11 @@ class BackendBehaviors
                 'options' => [
                     'Prefix'           => 'a42-ac',
                     'Modal'            => true,
-                    'Font'             => (bool) $preferences->font,
-                    'LineSpacing'      => (bool) $preferences->linespacing,
-                    'Justification'    => (bool) $preferences->justification,
-                    'Contrast'         => (bool) $preferences->contrast,
-                    'ImageReplacement' => (bool) $preferences->image,
+                    'Font'             => $preferences->getBool('font', false),
+                    'LineSpacing'      => $preferences->getBool('linespacing', false),
+                    'Justification'    => $preferences->getBool('justification', false),
+                    'Contrast'         => $preferences->getBool('contrast', false),
+                    'ImageReplacement' => $preferences->getBool('image', false),
                 ],
                 // Plugin specific data
                 'label'   => $label,
@@ -111,11 +111,6 @@ class BackendBehaviors
 
     public static function adminPreferencesForm(): string
     {
-        // Variable data helpers
-        $_Bool = fn (mixed $var): bool => (bool) $var;
-        $_Int  = fn (mixed $var, int $default = 0): int => $var !== null && is_numeric($val = $var) ? (int) $val : $default;
-        $_Str  = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
-
         $a11yc_positions = [
             Prepend::IN_TOP    => __('In admin header'),
             Prepend::IN_BOTTOM => __('In admin footer'),
@@ -130,17 +125,17 @@ class BackendBehaviors
         // Get user's prefs for plugin options
         $preferences = My::prefs();
 
-        $a11yc_active = $_Bool($preferences->active);
+        $a11yc_active = $preferences->getBool('active', false);
 
-        $a11yc_label    = $_Str($preferences->label);
-        $a11yc_icon     = $_Int($preferences->icon);
-        $a11yc_position = $_Int($preferences->position);
+        $a11yc_label    = $preferences->getStr('label', false);
+        $a11yc_icon     = $preferences->getInt('icon', false);
+        $a11yc_position = $preferences->getInt('position', false);
 
-        $a11yc_font          = $_Bool($preferences->font);
-        $a11yc_linespacing   = $_Bool($preferences->linespacing);
-        $a11yc_justification = $_Bool($preferences->justification);
-        $a11yc_contrast      = $_Bool($preferences->contrast);
-        $a11yc_image         = $_Bool($preferences->image);
+        $a11yc_font          = $preferences->getBool('font', false);
+        $a11yc_linespacing   = $preferences->getBool('linespacing', false);
+        $a11yc_justification = $preferences->getBool('justification', false);
+        $a11yc_contrast      = $preferences->getBool('contrast', false);
+        $a11yc_image         = $preferences->getBool('image', false);
 
         $icons = [];
         $i     = 0;

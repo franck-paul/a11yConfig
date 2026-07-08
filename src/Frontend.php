@@ -34,7 +34,7 @@ class Frontend
         }
 
         $settings = My::settings();
-        if (!(bool) $settings->active) {
+        if (!$settings->getBool('active', false)) {
             return false;
         }
 

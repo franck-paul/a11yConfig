@@ -94,11 +94,6 @@ class Manage
             return;
         }
 
-        // Variable data helpers
-        $_Bool = fn (mixed $var): bool => (bool) $var;
-        $_Int  = fn (mixed $var, int $default = 0): int => $var !== null && is_numeric($val = $var) ? (int) $val : $default;
-        $_Str  = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
-
         // Get current options
         $settings = My::settings();
 
@@ -113,17 +108,17 @@ class Manage
             Prepend::ICON_VISUALDEFICIENCY => __('Visual deficiency'),
         ];
 
-        $a11yc_active = $_Bool($settings->active);
+        $a11yc_active = $settings->getBool('active', false);
 
-        $a11yc_injection     = $_Bool($settings->injection);
-        $a11yc_label         = $_Str($settings->label);
-        $a11yc_icon          = $_Int($settings->icon);
-        $a11yc_position      = $_Int($settings->position);
-        $a11yc_font          = $_Bool($settings->font);
-        $a11yc_linespacing   = $_Bool($settings->linespacing);
-        $a11yc_justification = $_Bool($settings->justification);
-        $a11yc_contrast      = $_Bool($settings->contrast);
-        $a11yc_image         = $_Bool($settings->image);
+        $a11yc_injection     = $settings->getBool('injection', false);
+        $a11yc_label         = $settings->getStr('label', false);
+        $a11yc_icon          = $settings->getInt('icon', false);
+        $a11yc_position      = $settings->getInt('position', false);
+        $a11yc_font          = $settings->getBool('font', false);
+        $a11yc_linespacing   = $settings->getBool('linespacing', false);
+        $a11yc_justification = $settings->getBool('justification', false);
+        $a11yc_contrast      = $settings->getBool('contrast', false);
+        $a11yc_image         = $settings->getBool('image', false);
 
         $icons = [];
         $i     = 0;

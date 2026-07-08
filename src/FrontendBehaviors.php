@@ -20,7 +20,7 @@ class FrontendBehaviors
     public static function publicHeadContent(): string
     {
         $settings = My::settings();
-        if (!(bool) $settings->active) {
+        if (!$settings->getBool('active', false)) {
             return '';
         }
 
@@ -50,28 +50,28 @@ class FrontendBehaviors
     private static function inject(int $position): void
     {
         $settings = My::settings();
-        if (!(bool) $settings->active) {
+        if (!$settings->getBool('active', false)) {
             return;
         }
 
-        if (!(bool) $settings->injection) {
+        if (!$settings->getBool('injection', false)) {
             return;
         }
 
-        $settings_position = is_numeric($settings_position = $settings->position) ? (int) $settings_position : 0;
+        $settings_position = $settings->getInt('position', false);
         if ($settings_position !== $position) {
             return;
         }
 
-        $label = is_string($label = $settings->label) ? $label : null;
-        $icon  = is_numeric($icon = $settings->icon) ? (int) $icon : 0;
+        $label = $settings->getStr('label');
+        $icon  = $settings->getInt('icon', false);
 
         $params = [
-            'Font'             => (bool) $settings->font,
-            'LineSpacing'      => (bool) $settings->linespacing,
-            'Justification'    => (bool) $settings->justification,
-            'Contrast'         => (bool) $settings->contrast,
-            'ImageReplacement' => (bool) $settings->image,
+            'Font'             => $settings->getBool('font', false),
+            'LineSpacing'      => $settings->getBool('linespacing', false),
+            'Justification'    => $settings->getBool('justification', false),
+            'Contrast'         => $settings->getBool('contrast', false),
+            'ImageReplacement' => $settings->getBool('image', false),
         ];
 
         echo FrontendHelper::render($label, $icon, $params);
