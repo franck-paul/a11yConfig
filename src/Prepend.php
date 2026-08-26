@@ -22,15 +22,32 @@ class Prepend
     use TraitProcess;
 
     // Constants for position (public/admin)
+
+    /**
+     * @var int IN_TOP
+     */
     final public const IN_TOP = 0;
 
+    /**
+     * @var int IN_BOTTOM
+     */
     final public const IN_BOTTOM = 1;
 
     // Constants for icon (public/admin)
+
+    /**
+     * @var int ICON_NONE
+     */
     final public const ICON_NONE = 0;
 
+    /**
+     * @var int ICON_WHEELCHAIR
+     */
     final public const ICON_WHEELCHAIR = 1;
 
+    /**
+     * @var int ICON_VISUALDEFICIENCY
+     */
     final public const ICON_VISUALDEFICIENCY = 2;
 
     public static function init(): bool
