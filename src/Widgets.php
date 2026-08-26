@@ -21,6 +21,9 @@ use Dotclear\Plugin\widgets\WidgetsStack;
 
 class Widgets
 {
+    /**
+     * @var string WIDGET_ID
+     */
     private const WIDGET_ID = 'a11yconfig';
 
     public static function initWidgets(WidgetsStack $w): string
