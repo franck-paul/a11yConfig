@@ -26,9 +26,9 @@ class Widgets
      */
     private const WIDGET_ID = 'a11yconfig';
 
-    public static function initWidgets(WidgetsStack $w): string
+    public static function initWidgets(WidgetsStack $widgetsStack): string
     {
-        $w
+        $widgetsStack
             ->create(self::WIDGET_ID, 'a11yconfig', FrontendWidgets::renderWidget(...), null, __('Style selector to let users adapt your blog to their needs.'), My::id())
             ->setting('buttonname', __('Title:'), __('Accessibility Settings'))
             ->setting('icon', __('Icon:'), Prepend::ICON_NONE, 'combo', [
@@ -49,12 +49,12 @@ class Widgets
     /**
      * Initializes the default widgets.
      *
-     * @param      \Dotclear\Plugin\widgets\WidgetsStack    $w  Widgets stack
+     * @param      \Dotclear\Plugin\widgets\WidgetsStack    $widgetsStack  Widgets stack
      * @param      array<string, WidgetsStack>              $d  Widgets definitions
      */
-    public static function initDefaultWidgets(WidgetsStack $w, array $d): void
+    public static function initDefaultWidgets(WidgetsStack $widgetsStack, array $d): void
     {
-        $widget = ($widget = $w->get(self::WIDGET_ID)) instanceof WidgetsElement ? $widget : null;
+        $widget = ($widget = $widgetsStack->get(self::WIDGET_ID)) instanceof WidgetsElement ? $widget : null;
         if ($widget instanceof WidgetsElement) {
             $d[AppWidgets::WIDGETS_NAV]->append($widget);
         }

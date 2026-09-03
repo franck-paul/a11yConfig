@@ -19,27 +19,27 @@ use Dotclear\Plugin\widgets\WidgetsElement;
 
 class FrontendWidgets
 {
-    public static function renderWidget(WidgetsElement $w): string
+    public static function renderWidget(WidgetsElement $widgetsElement): string
     {
         $settings = My::settings();
         if (!$settings->getBool('active', false)) {
             return '';
         }
 
-        if ($w->offline) {
+        if ($widgetsElement->offline) {
             return '';
         }
 
         $params = [
-            'Font'             => ((bool) $w->get('font')),
-            'LineSpacing'      => ((bool) $w->get('linespacing')),
-            'Justification'    => ((bool) $w->get('justification')),
-            'Contrast'         => ((bool) $w->get('contrast')),
-            'ImageReplacement' => ((bool) $w->get('image')),
+            'Font'             => ((bool) $widgetsElement->get('font')),
+            'LineSpacing'      => ((bool) $widgetsElement->get('linespacing')),
+            'Justification'    => ((bool) $widgetsElement->get('justification')),
+            'Contrast'         => ((bool) $widgetsElement->get('contrast')),
+            'ImageReplacement' => ((bool) $widgetsElement->get('image')),
         ];
 
-        $name = is_string($name = $w->get('buttonname')) ? $name : null;
-        $icon = is_numeric($icon = $w->get('icon')) ? (int) $icon : 0;
+        $name = is_string($name = $widgetsElement->get('buttonname')) ? $name : null;
+        $icon = is_numeric($icon = $widgetsElement->get('icon')) ? (int) $icon : 0;
 
         return FrontendHelper::render($name, $icon, $params, 'widget');
     }
