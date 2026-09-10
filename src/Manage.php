@@ -164,9 +164,9 @@ class Manage
                         ->value(1)
                         ->label((new Label(__('Activate a11yConfig on blog'), Label::INSIDE_TEXT_AFTER))),
                 ]),
-                (new Para())->class('form-note')->items([
-                    (new Text(null, sprintf(__('A widget is available (see <a href="%s">%s</a>)'), App::backend()->url()->get('admin.plugin.widgets'), __('Presentation widgets')))),
-                ]),
+                (new Note())
+                    ->class('form-note')
+                    ->text(sprintf(__('A widget is available (see <a href="%s">%s</a>)'), App::backend()->url()->get('admin.plugin.widgets'), __('Presentation widgets'))),
                 (new Para())->items([
                     (new Input('a11yc_label'))
                         ->size(30)
@@ -189,15 +189,15 @@ class Manage
                         ->value(1)
                         ->label((new Label(__('Automatic insertion'), Label::INSIDE_TEXT_AFTER))),
                 ]),
-                (new Para())->class('form-note')->items([
-                    (new Text(null, __('The automatic insertion in header depends on the <strong>publicTopAfterContent</strong> behavior and in footer on <strong>publicFooterContent</strong> behavior. Adapt theme\'s template files if necessary.'))),
-                ]),
+                (new Note())
+                    ->class('form-note')
+                    ->text(__('The automatic insertion in header depends on the <strong>publicTopAfterContent</strong> behavior and in footer on <strong>publicFooterContent</strong> behavior. Adapt theme\'s template files if necessary.')),
                 (new Para())->items($positions),
                 // Options for button appearance
                 (new Text('h3', __('Icon:'))),
-                (new Para())->class('form-note')->items([
-                    (new Text(null, __('The previous label will be used as alternative text if one of proposed icons is choosen.'))),
-                ]),
+                (new Note())
+                    ->class('form-note')
+                    ->text(__('The previous label will be used as alternative text if one of proposed icons is choosen.')),
                 (new Para())->items($icons),
                 // Options
                 (new Text('h3', __('Options:'))),

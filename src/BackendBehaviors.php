@@ -184,9 +184,9 @@ class BackendBehaviors
             ]),
             // Options for button appearance
             (new Text('h5', __('Icon:'))),
-            (new Para())->class('form-note')->items([
-                (new Text(null, __('The previous label will be used as alternative text if one of proposed icons is choosen.'))),
-            ]),
+            (new Note())
+                ->class('form-note')
+                ->text(__('The previous label will be used as alternative text if one of proposed icons is choosen.')),
             (new Para())->items($icons),
             // Options for automatic insertion
             (new Text('h5', __('Position:'))),
