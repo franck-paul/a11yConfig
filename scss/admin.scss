@@ -40,9 +40,15 @@ body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) 
 div#accessconfig {
   display: inline-block;
   float: left;
-  margin: 0 0.5em 0 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0.5em;
   button {
-    margin: 0 0.5em 0 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0.5em;
   }
 }
 

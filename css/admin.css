@@ -10,8 +10,8 @@
 body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-vd button,
 body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-wc button {
   border: none;
-  width: 2em;
-  height: 2em;
+  inline-size: 2em;
+  block-size: 2em;
   background-size: 2em 2em;
   overflow: hidden;
   color: transparent;
@@ -37,19 +37,25 @@ body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) 
 
 div#accessconfig {
   display: inline-block;
-  float: left;
-  margin: 0 0.5em 0 0;
+  float: inline-start;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0.5em;
 }
 
 div#accessconfig button {
-  margin: 0 0.5em 0 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0.5em;
 }
 
 .popup li#accessconfig {
   position: absolute;
   list-style: none;
-  right: 0.5em;
-  top: 0.65em;
+  inset-inline-end: 0.5em;
+  inset-block-start: 0.65em;
 }
 
 #a42-ac {
@@ -157,7 +163,7 @@ body.a42-ac-high-contrast a.button.reset:focus {
 
 body.a42-ac-inv-contrast .jstElements button,
 body.a42-ac-high-contrast .jstElements button {
-  width: inherit;
+  inline-size: inherit;
 }
 
 body.a42-ac-inv-contrast .jstElements button span,
@@ -182,5 +188,5 @@ body.a42-ac-high-contrast .button.add {
 }
 
 #a42-ac input[type='radio'] + label::after {
-  top: 0.8em;
+  inset-block-start: 0.8em;
 }

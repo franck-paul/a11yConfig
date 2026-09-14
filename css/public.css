@@ -10,8 +10,8 @@
 body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-vd button,
 body:not(.a42-ac-inv-contrast):not(.a42-ac-high-contrast):not(.a42-ac-text-img) #accessconfig.a11yc-wc button {
   border: none;
-  width: 2.5em;
-  height: 2.5em;
+  inline-size: 2.5em;
+  block-size: 2.5em;
   background-size: 2.5em 2.5em;
   margin: 0.5em;
   overflow: hidden;
