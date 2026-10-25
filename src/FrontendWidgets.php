@@ -26,7 +26,7 @@ class FrontendWidgets
             return '';
         }
 
-        if ($widgetsElement->offline) {
+        if ($widgetsElement->isOffline()) {
             return '';
         }
 
