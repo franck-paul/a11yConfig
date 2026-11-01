@@ -63,7 +63,7 @@ class FrontendBehaviors
             return;
         }
 
-        $label = $settings->getStr('label');
+        $label = $settings->getStr('label', false);
         $icon  = $settings->getInt('icon', false);
 
         $params = [

@@ -38,7 +38,7 @@ class FrontendWidgets
             'ImageReplacement' => ((bool) $widgetsElement->get('image')),
         ];
 
-        $name = is_string($name = $widgetsElement->get('buttonname')) ? $name : null;
+        $name = is_string($name = $widgetsElement->get('buttonname')) ? $name : '';
         $icon = is_numeric($icon = $widgetsElement->get('icon')) ? (int) $icon : 0;
 
         return FrontendHelper::render($name, $icon, $params, 'widget');

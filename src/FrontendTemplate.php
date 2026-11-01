@@ -29,7 +29,7 @@ class FrontendTemplate
             return '';
         }
 
-        $title = isset($attr['title']) && is_string($title = $attr['title']) ? $title : null;
+        $title = isset($attr['title']) && is_string($title = $attr['title']) ? $title : '';
         $icon  = isset($attr['icon'])  && is_numeric($icon = $attr['icon']) ? (int) $icon : Prepend::ICON_NONE;
 
         $params = [

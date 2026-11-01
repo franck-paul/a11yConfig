@@ -23,12 +23,12 @@ class FrontendHelper
     /**
      * Render function
      *
-     * @param      null|string              $label   The label
+     * @param      string                   $label   The label
      * @param      int                      $icon    The icon
      * @param      array<string, mixed>     $params  The parameters
      * @param      string                   $class   The class
      */
-    public static function render(?string $label, int $icon, array $params, string $class = ''): string
+    public static function render(string $label, int $icon, array $params, string $class = ''): string
     {
         $options = [
             'Prefix'           => 'a42-ac',
@@ -51,7 +51,7 @@ class FrontendHelper
             ->id('accessconfig')
             ->class($class)
             ->data([
-                'accessconfig-buttonname' => $label ? Html::escapeHTML($label) : __('Accessibility parameters'),
+                'accessconfig-buttonname' => $label !== '' ? Html::escapeHTML($label) : __('Accessibility parameters'),
                 'accessconfig-params'     => Html::escapeHTML(json_encode($options, JSON_THROW_ON_ERROR)),
             ])
         ->render();

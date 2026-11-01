@@ -35,7 +35,7 @@ class BackendBehaviors
     {
         $preferences = My::prefs();
 
-        if ($preferences->getBool('active')) {
+        if ($preferences->getBool('active', false)) {
             $icon     = $preferences->getInt('icon', false);
             $label    = $preferences->getStr('label');
             $position = $preferences->getInt('position', false);
