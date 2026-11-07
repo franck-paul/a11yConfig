@@ -1,11 +1,11 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="a11yConfig">
     <name>a11yConfig</name>
-    <version>8.0</version>
+    <version>8.1</version>
     <author>Franck Paul, Biou and contributors</author>
     <desc>Implements Access42 accessibility configuration tool</desc>
-    <date>2026-08-03T09:42:16+0200</date>
-    <file>https://github.com/franck-paul/a11yConfig/releases/download/8.0/plugin-a11yConfig-8.0.zip</file>
+    <date>2026-11-07T16:38:08+0100</date>
+    <file>https://github.com/franck-paul/a11yConfig/releases/download/8.1/plugin-a11yConfig-8.1.zip</file>
     <da:dcmin>2.39</da:dcmin>
     <da:details>https://dotclear.org/plugin/detail/a11yConfig</da:details>
     <da:support>https://github.com/franck-paul/a11yConfig</da:support>
