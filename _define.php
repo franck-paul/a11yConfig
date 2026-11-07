@@ -18,9 +18,9 @@ if (isset($this) && is_object($this) && method_exists($this, 'registerModule') &
         'a11yConfig',
         'Implements Access42 accessibility configuration tool',
         'Franck Paul, Biou and contributors',
-        '8.0',
+        '8.1',
         [
-            'date'        => '2026-08-03T09:42:16+0200',
+            'date'        => '2026-11-07T16:38:08+0100',
             'requires'    => [['core', '2.39']],
             'permissions' => 'My',
             'type'        => 'plugin',
